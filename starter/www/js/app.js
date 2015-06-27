@@ -69,7 +69,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-
+  .state('app.addHomeworkScreen', {
+    url: "/addHomework",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/addHomework.html"
+      }
+    }
+  })
   .state('app.single', {
     url: "/playlists/:playlistId",
     views: {
