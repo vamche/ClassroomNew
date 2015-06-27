@@ -1,8 +1,12 @@
 <ion-view view-title="Attendance">
-  <ion-content>
+ <ion-content>
+    <div class="containerAttendance">
+      <div pickadate ng-model="date" min-date="minDate" max-date="maxDate" disabled-dates='disabledDates'   absent-Dates='absentDates'  prsent-Dates='presentDates' holiday-Dates='holidayDates' event-Dates='eventDates'></div>
+    </div>
     <ion-list>
       <ion-item ng-repeat="playlist in playlists">
-        {{playlist.title}}
+        {{playlist.title}}</br>
+		{{playlist.date}}
       </ion-item>
     </ion-list>
   </ion-content>

@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['pickadate'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   
@@ -40,16 +40,29 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('attendanceCtrl', function($scope) {
+.controller('attendanceCtrl', function($scope,dateFilter) {
+   $scope.date = dateFilter(new Date(), 'yyyy-MM-dd');//'2013-11-26';
+   $scope.minDate = '2010-1-1';
+   $scope.maxDate = '2050-12-30';
+   $scope.disabledDates = ['2015-06-25', '2013-11-30'];
+   $scope.absentDates = ['2015-05-05','2015-05-12','2015-06-10'];
+   $scope.presentDates =['2015-07-03','2015-06-14'];
+   $scope.holidayDates = ['2015-06-25','2015-06-18'];
+   $scope.eventDates = ['2015-07-15','2015-06-22'];  
   $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+    { title: 'Absent Date',date: '2015-05-05', id: 1 },
+    { title: 'Absent Date',date: '2015-05-12', id: 2 },
+    { title: 'Absent Date',date: '2015-06-10', id: 3 },
+    { title: 'Present Date',date: '2015-07-03', id: 4 },
+    { title: 'Present Date',date: '2015-06-14', id: 5},
+	{ title: 'Holiday Date',date: '2015-06-25', id: 6},
+	{ title: 'Holiday Date',date: '2015-06-18', id: 7},
+	{ title:'Event Date',date: '2015-07-15', id: 8},
+	{ title: 'Event Date',date: '2015-06-22', id: 9}
   ];
 })
+
+
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
