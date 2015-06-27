@@ -1,4 +1,4 @@
-      angular.module('starter', ['pickadate']);
+angular.module('starter', ['pickadate']);
 
 	  .controller('attendanceController', function($scope,dateFilter) {
         $scope.date = dateFilter(new Date(), 'yyyy-MM-dd');//'2013-11-26';
@@ -31,3 +31,5 @@
 			 
 			
       })
+	  
+	 

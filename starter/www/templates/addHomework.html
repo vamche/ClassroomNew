@@ -1,25 +1,41 @@
-<ion-view view-title="Add">
-    <ion-header-bar class="bar-stable">
-        <h1 class="title">Add</h1>
-        <div class="buttons">
-            <a href="#/menu" class="button button-assertive button-clear  icon-right ion-android-close"></a>
-        </div>
-    </ion-header-bar>
-    <ion-content padding="false" scroll="false" class="has-header">
-        <ion-list>
-            <label class="item item-select">
-                <span class="input-label">Class</span>
-                <select></select>
-            </label>
-            <label class="item item-select">
-                <span class="input-label">Subject</span>
-                <select></select>
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Homework</span><textarea placeholder=""> </textarea>
-            </label>
-        </ion-list>
-        <a href="#/menu" class="button button-energized button-block ">Add</a>
-        <button class="button button-positive button-clear button-block ">Reset</button>
+<ion-view view-title="Add Homework">
+    <ion-pane>
+      <ion-header-bar class="bar bar-header bar-dark">
+        <h1 class="title"></h1>
+      </ion-header-bar>
+      <ion-content  ng-controller="AddHomework">
+      <ion-list>
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable item-icon-right"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              
+           
+             {{group.name}}  &nbsp; <a class=""> <b>{{group.selectedItem}}</b> </a>
+             <i class="icon" ng-class="isGroupShown(group) ? 'ion-arrow-up-b' : 'ion-arrow-down-b'"></i>
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)"
+                    ng-click="selectItem(group,item)">
+            {{item}}
+          </ion-item>
+          </div>
+            
+           <label class="item item-input item-floating-label">
+            <span class="input-label">Homework</span>
+            <input type="text" placeholder="Homework">
+          </label>
+          <button class="button button-full button-balanced">
+            Add
+          </button>
+           <button class="button button-full button-clear button-energized" ng-click="resetHomework()">
+            Reset
+          </button>
+         
+      </ion-list>
+      
     </ion-content>
+    
+    </ion-pane>
 </ion-view>

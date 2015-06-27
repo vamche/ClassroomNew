@@ -33,8 +33,8 @@
 .pickadate-cell li {
   display: block;
   float: left;
-  border: 1px solid #DCDCDC;
-  border-width: 0 1px 1px 0;
+  border: 0;
+  border-width: 0;
   width: 14.285%;
   padding: 1.3% 0 1.3% 0;
   box-sizing: border-box;
@@ -109,13 +109,13 @@
 }
 
 .pickadate-cell .pickadate-head {
-  border-top: 1px solid #DCDCDC;
-  background: #0000FF;
+  border-top: 0;
+  background: #2980B9;
 }
 
 .pickadate-cell .pickadate-head:nth-child(1),
 .pickadate-cell .pickadate-head:nth-child(7) {
-  background: #0000FF;
+  background: #2980B9;
 }
 
 .pickadate-centered-heading {
