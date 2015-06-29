@@ -1,0 +1,19 @@
+<ion-view hide-nav-bar="true">
+     <ion-pane>
+      <ion-header-bar class="bar-dark" >
+	      <button class="button-icon ion-chevron-left button-clear" ng-click="goBack()"></button>
+		  <div class="h1 title">Absent Days</div>
+	  </ion-header-bar>
+      <ion-content>
+        <ion-list>
+
+        <ion-item ng-repeat="item in absentInfo">		
+            <h4>Date : {{ item.date }} </br></h4>
+            Reason for absent : {{ item.data }}
+          
+        </ion-item>
+
+      </ion-list>
+      </ion-content>
+    </ion-pane>
+</ion-view>

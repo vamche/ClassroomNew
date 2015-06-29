@@ -40,26 +40,34 @@ angular.module('starter.controllers', ['pickadate'])
   };
 })
 
-.controller('attendanceCtrl', function($scope,dateFilter) {
+.controller('attendanceCtrl', function($scope,dateFilter,$state) {
    $scope.date = dateFilter(new Date(), 'yyyy-MM-dd');//'2013-11-26';
    $scope.minDate = '2010-1-1';
    $scope.maxDate = '2050-12-30';
-   $scope.disabledDates = ['2015-06-25', '2013-11-30'];
-   $scope.absentDates = ['2015-05-05','2015-05-12','2015-06-10'];
-   $scope.presentDates =['2015-07-03','2015-06-14'];
-   $scope.holidayDates = ['2015-06-25','2015-06-18'];
-   $scope.eventDates = ['2015-07-15','2015-06-22'];  
-  $scope.playlists = [
-    { title: 'Absent Date',date: '2015-05-05', id: 1 },
-    { title: 'Absent Date',date: '2015-05-12', id: 2 },
-    { title: 'Absent Date',date: '2015-06-10', id: 3 },
-    { title: 'Present Date',date: '2015-07-03', id: 4 },
-    { title: 'Present Date',date: '2015-06-14', id: 5},
-	{ title: 'Holiday Date',date: '2015-06-25', id: 6},
-	{ title: 'Holiday Date',date: '2015-06-18', id: 7},
-	{ title:'Event Date',date: '2015-07-15', id: 8},
-	{ title: 'Event Date',date: '2015-06-22', id: 9}
+   $scope.disabledDates = [];
+   $scope.attendanceInfo = [ { data: 'Sick Leave due to fever',date: '2015-06-26',type: 'absent'},
+							{ data: 'Sick Leave due to fever',date: '2015-06-27',type: 'absent'},
+							{ data: 'holiday Date',date: '2015-06-24' , type :'holiday'}
+						]; 
+						
+	$scope.absentInfo = [ { data: 'Sick Leave due to fever',date: '2015-06-26'},
+							{ data: 'Sick Leave due to fever',date: '2015-06-27'}
+						]; 
+  $scope.absentlists = [
+    { title: 'Total No of Present Days',data: '22', id: 1 },
+	{ title: 'Total No of Absent Days',data: '2', id: 2 },
+    { title: 'Total No of Working days',data: '24', id: 3 }
   ];
+  
+   $scope.edit = function(absentlist) {
+    if(absentlist.id == "2"){
+		$state.go('app.absentListAttendance');
+	}
+  };
+  $scope.goBack = function(){
+	$state.go('app.attendance');
+  }
+  
 })
 
 

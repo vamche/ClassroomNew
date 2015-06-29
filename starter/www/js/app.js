@@ -68,6 +68,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+	
+	.state('app.absentListAttendance', {
+      url: "/absentListAttendance",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/absentListAttendance.html",
+          controller: 'attendanceCtrl'
+        }
+      }
+    })
+	
+	
   .state('app.addHomework', {
     url: "/addHomework",
     views: {

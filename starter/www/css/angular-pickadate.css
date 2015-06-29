@@ -5,6 +5,7 @@
 
 .pickadate-header {
   position: relative;
+  background: #11c1f3;
 }
 
 .pickadate {
@@ -78,7 +79,7 @@
 .pickadate-cell .pickadate-present {
   cursor: pointer;
   font-size: 12px;
-  color: #0000FF;
+  color: #11c1f3;
   font-weight: bold;
 }
 
@@ -110,19 +111,19 @@
 
 .pickadate-cell .pickadate-head {
   border-top: 0;
-  background: #2980B9;
+  background: #11c1f3;
 }
 
 .pickadate-cell .pickadate-head:nth-child(1),
 .pickadate-cell .pickadate-head:nth-child(7) {
-  background: #2980B9;
+  background: #11c1f3;
 }
 
 .pickadate-centered-heading {
   font-weight: normal;
   text-align: center;
   font-size: 1em;
-  margin: 13px 0 13px 0;
+  background: #11c1f3;
 }
 
 .pickadate-controls {
@@ -134,17 +135,17 @@
 
 .pickadate-controls .pickadate-prevY {
   float: left;
-  margin-left: 0;
+  margin-left: 0px;
 }
 
 .pickadate-controls .pickadate-prevM {
   float: left;
-  margin-left: 10px;
+  margin-left: 0px;
 }
 
 .pickadate-controls .pickadate-nextM {
   float: right;
-  margin-right: 40px;
+  margin-right: 0px;
 }
 
 .pickadate-controls .pickadate-nextY {
@@ -155,4 +156,8 @@
 .pickadate-controls a {
   text-decoration: none;
   font-size: 0.9em;
+}
+
+.no-margin{
+	margin : 0px;
 }

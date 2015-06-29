@@ -71,21 +71,18 @@
           minDate: '=',
           maxDate: '=',
           disabledDates: '=',
-		  absentDates: '=',
-		  presentDates: '=',
-		  holidayDates: '=',
-		  eventDates: '='
+		  attendanceInfo: '=',
         },
         template:
           '<div class="pickadate">' +
             '<div class="pickadate-header">' +
               '<div class="pickadate-controls">' +
-                '<a href="" class="pickadate-prevY" ng-click="changeMonth(-12)" ng-show="allowPrevMonth">{{t("prevY")}}</a>' +
-                '<a href="" class="pickadate-prevM" ng-click="changeMonth(-1)"  ng-show="allowPrevMonth">{{t("prevM")}}</a>' +
-                '<a href="" class="pickadate-nextM" ng-click="changeMonth(1)"   ng-show="allowNextMonth">{{t("nextM")}}</a>' +                
-                '<a href="" class="pickadate-nextY" ng-click="changeMonth(12)"  ng-show="allowNextMonth">{{t("nextY")}}</a>' +
+                /*'<a href="" class="pickadate-prevY" ng-click="changeMonth(-12)" ng-show="allowPrevMonth">{{t("prevY")}}</a>' +*/
+                '<button class="button-icon icon ion-android-arrow-dropleft pickadate-prevM" ng-click="changeMonth(-1)"  ng-show="allowPrevMonth"></button>' +
+                '<button class="button-icon icon ion-android-arrow-dropright pickadate-nextM" ng-click="changeMonth(1)"   ng-show="allowNextMonth"></button>' +                
+                /*'<a href="" class="pickadate-nextY" ng-click="changeMonth(12)"  ng-show="allowNextMonth">{{t("nextY")}}</a>' +*/
               '</div>' +
-              '<h3 class="pickadate-centered-heading">' +
+              '<h3 class="pickadate-centered-heading padding no-margin">' +
                 '<strong>{{currentDate | date:"MMMM - yyyy"}}</strong>' +
               '</h3>' +
             '</div>' +
@@ -109,10 +106,7 @@
           var minDate       = scope.minDate && dateUtils.stringToDate(scope.minDate),
               maxDate       = scope.maxDate && dateUtils.stringToDate(scope.maxDate),
               disabledDates = scope.disabledDates || [],
-			  absentDates = scope.absentDates || [],
-			  presentDates = scope.presentDates || [],
-			  holidayDates = scope.holidayDates || [],
-			  eventDates = scope.eventDates || [],
+			  attendanceInfo = scope.attendanceInfo || [],
               currentDate   = (scope.defaultDate && dateUtils.stringToDate(scope.defaultDate)) || new Date();
 
           scope.dayNames    = $locale.DATETIME_FORMATS['SHORTDAY'];
@@ -138,35 +132,48 @@
             }
 
             var nextMonthInitialDate = new Date(initialDate);
+			
             nextMonthInitialDate.setMonth(currentMonth);
 
             scope.allowPrevMonth = !minDate || initialDate > minDate;
             scope.allowNextMonth = !maxDate || nextMonthInitialDate < maxDate;
-
-            for (var i = 0; i < allDates.length; i++) {
-              var className = "", date = allDates[i];
-
+			for (var i = 0; i < allDates.length; i++) {
+              var className = "", date = allDates[i]; 
+			  var dataVal = "";
+			  var dateVal = "";
+			  var isSpecialDate = false;
+			  if(attendanceInfo){
+				var len = attendanceInfo.length;
+				var typeVal = "";
+				for(var k=0;k<len;k++){			
+					dateVal = attendanceInfo[k].date;
+					if (dateVal == date) {
+						isSpecialDate = true;
+					    typeVal = attendanceInfo[k].type;
+						dataVal = attendanceInfo[k].data;
+					    if(typeVal == 'absent'){
+						    typeVal = 'Absent';
+							className = 'pickadate-absent';
+						}else if(typeVal == 'holiday'){
+						    typeVal = 'Holiday';
+							className = 'pickadate-holiday';
+						}					
+					}
+				}
+			  }
+			  
               if (date < scope.minDate || date > scope.maxDate || dateFilter(date, 'M') !== currentMonth.toString()) {
                 className = 'pickadate-disabled';
               } else if (indexOf.call(disabledDates, date) >= 0) {
                 className = 'pickadate-disabled pickadate-unavailable';
-              }else if (indexOf.call(absentDates, date) >= 0) {
-                className = 'pickadate-absent';
-              }else if (indexOf.call(presentDates, date) >= 0) {
-                className = 'pickadate-present';
-              }else if (indexOf.call(holidayDates, date) >= 0) {
-                className = 'pickadate-holiday';
-              }else if (indexOf.call(eventDates, date) >= 0) {
-                className = 'pickadate-event';
-              } else {
-                className = 'pickadate-enabled';
-              }
-
+              } else if(!isSpecialDate){
+				typeVal = 'Present';
+				className = 'pickadate-present';
+			  }
               if (date === today) {
                 className += ' pickadate-today';
               }
-
-              dates.push({date: date, className: className,data:"hello"});
+			   dates.push({date: date, className: className,data:dataVal,type:typeVal});
             }
 
             scope.dates = dates;
