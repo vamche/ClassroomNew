@@ -1,9 +1,8 @@
-<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="true">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-
+      <!--ion-nav-back-button>
+      </ion-nav-back-button-->
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
@@ -18,9 +17,6 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
-        </ion-item>
         <ion-item menu-close href="#/app/search">
           Search
         </ion-item>
@@ -30,9 +26,9 @@
         <ion-item menu-close href="#/app/attendance">
           Attendance
         </ion-item>
-		<ion-item menu-close href="#/app/addHomework">
-          Add Homework
-        </ion-i
+		<ion-item menu-close href="#/app/Homework">
+          Homework
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>

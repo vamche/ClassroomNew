@@ -23,7 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-     .state('login', {
+     .state('app.login', {
       url: "/login",
       
 	  views: {
@@ -37,8 +37,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   .state('app', {
     url: "/app",
     abstract: true,
-    templateUrl: "templates/menu.html",
-    controller: 'AppCtrl'
+    templateUrl: "templates/menu.html"
   })
 
   .state('app.search', {
@@ -69,14 +68,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-  .state('app.addHomeworkScreen', {
+  .state('app.addHomework', {
     url: "/addHomework",
     views: {
       'menuContent': {
-        templateUrl: "templates/addHomework.html"
+        templateUrl: "templates/addHomework.html",
+		controller: 'HomeworkCtrl'
       }
     }
   })
+  
+    .state('app.HomeworkScreen', {
+    url: "/Homework",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/Homework.html",
+		controller: 'HomeworkCtrl'
+      }
+    }
+  })
+  
   .state('app.single', {
     url: "/playlists/:playlistId",
     views: {
@@ -88,5 +99,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
   
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/dashboard');
+  $urlRouterProvider.otherwise('/app/login');
 });

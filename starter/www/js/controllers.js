@@ -66,9 +66,8 @@ angular.module('starter.controllers', ['pickadate'])
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
-.controller('AddHomework', function($scope) {
+.controller('HomeworkCtrl', function($scope,$state) {
 			$scope.groups = [];
-			$scope.homework = "";
 
 			$scope.groups = [{  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" },
 							 {  name: "Select Subject", items: ["Maths","Science","English"], selectedItem : "" }];
@@ -95,8 +94,51 @@ angular.module('starter.controllers', ['pickadate'])
 			for(var i=0;i<$scope.groups.length;i++){
 			  $scope.groups[i].selectedItem = "";
 			}
-			$scope.homework = "";
+			$scope.homeworkVal = "";
 			$scope.shownGroup = null;
 		  };
+		  
+		$scope.addItems=function(){
+		  if($scope.groups[0].selectedItem != "" && $scope.groups[1].selectedItem != "" && $scope.homeworkVal != ""){
+				$scope.items.push({
+					id: Math.floor((Math.random() * 100) + 1),
+					title: $scope.homeworkVal,
+					subject: $scope.groups[1].selectedItem,
+					batch: $scope.groups[0].selectedItem
+				});			  
+			  $state.go('app.HomeworkScreen');
+		   }
+   }
+   
+   
+   $scope.data = {
+    showDelete: false
+  };
+  
+  $scope.edit = function(item) {
+    alert('Edit Item: ' + item.id);
+  };
+ 
+  $scope.delete = function(item) {
+    $scope.items.splice($scope.items.indexOf(item), 1);
+  };
+  
+   $scope.addHomework = function() {
+	  
+      $state.go('app.addHomework'); 
+    };
+  
+  $scope.items = [
+    { id: 0, title: "Read chapter 9", subject: "English", batch: "X" },
+    { id: 1, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 2, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 3, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 4, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 5, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 6, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 7, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 8, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 9, title: "Read chapter 9", subject: "English", batch: "X"  }
+  ];
   
 });

@@ -166,7 +166,7 @@
                 className += ' pickadate-today';
               }
 
-              dates.push({date: date, className: className});
+              dates.push({date: date, className: className,data:"hello"});
             }
 
             scope.dates = dates;
@@ -174,7 +174,7 @@
 
           scope.setDate = function(dateObj) {
             if (isDateDisabled(dateObj)) return;
-            ngModel.$setViewValue(dateObj.date);
+            ngModel.$setViewValue(dateObj);
           };
 
           ngModel.$render = function () {
