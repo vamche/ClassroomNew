@@ -44,7 +44,7 @@
 }
 
 .pickadate-cell li:nth-child(7n+0) {
-  border-right: 1px solid #DCDCDC;
+  border-right: 0px solid #DCDCDC;
 }
 
 .pickadate-cell li:nth-child(1),
@@ -53,7 +53,7 @@
 .pickadate-cell li:nth-child(22),
 .pickadate-cell li:nth-child(29),
 .pickadate-cell li:nth-child(36) {
-  border-left: 1px solid #DCDCDC;
+  border-left: 0px solid #DCDCDC;
 }
 
 .pickadate-cell .pickadate-disabled,
@@ -110,7 +110,7 @@
 }
 
 .pickadate-cell .pickadate-head {
-  border-top: 0;
+  border: 0;
   background: #11c1f3;
 }
 

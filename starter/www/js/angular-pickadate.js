@@ -54,7 +54,7 @@
 
           for (i = _i = first; first <= last ? _i < last : _i > last; i = first <= last ? ++_i : --_i) {
             date = this.stringToDate(initial);
-            date.setDate(date.getDate() + i);
+            date.setDate(date.getDate() + i,0);
             dates.push(dateFilter(date, format));
           }
           return dates;
@@ -94,9 +94,54 @@
                   '</li>' +
                 '</ul>' +
                 '<ul class="pickadate-cell">' +
-                  '<li ng-repeat="d in dates" ng-click="setDate(d)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
+                  '<li ng-repeat="d in dates.slice(0,7)" ng-click="setDate(d,1)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
-                  '</li>' +
+					'</li>' +
+					'<div id="Row1" class="checkCard hide card padding selected-date">'+
+						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
+						'{{ date.type }} </br>'+
+						'Comments : {{ date.data }}'+
+					'</div>'+
+                  '<li ng-repeat="d in dates.slice(7,14)" ng-click="setDate(d,2)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
+                    '{{d.date | date:"d"}}' +
+					'</li>' +
+					'<div id="Row2" class="checkCard hide card padding selected-date">'+
+						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
+						'{{ date.type }} </br>'+
+						'Comments : {{ date.data }}'+
+					'</div>'+
+                  '<li ng-repeat="d in dates.slice(14,21)" ng-click="setDate(d,3)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
+                    '{{d.date | date:"d"}}' +
+					'</li>' +
+					'<div id="Row3" class="checkCard hide card padding selected-date">'+
+						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
+						'{{ date.type }} </br>'+
+						'Comments : {{ date.data }}'+
+					'</div>'+
+                  '<li ng-repeat="d in dates.slice(21,28)" ng-click="setDate(d,4)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
+                    '{{d.date | date:"d"}}' +
+					'</li>' +
+					'<div id="Row4" class="checkCard hide card padding selected-date">'+
+						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
+						'{{ date.type }} </br>'+
+						'Comments : {{ date.data }}'+
+					'</div>'+	
+                  '<li ng-repeat="d in dates.slice(28,35)" ng-click="setDate(d,5)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
+                    '{{d.date | date:"d"}}' +
+					'</li>' +
+					'<div id="Row5" class="checkCard hide card padding selected-date">'+
+						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
+						'{{ date.type }} </br>'+
+						'Comments : {{ date.data }}'+
+					'</div>'+
+				'<li ng-repeat="d in dates.slice(35,42)" ng-click="setDate(d,6)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
+                    '{{d.date | date:"d"}}' +
+					'</li>' +
+					'<div id="Row6" class="checkCard hide card padding selected-date">'+
+						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
+						'{{ date.type }} </br>'+
+						'Comments : {{ date.data }}'+
+					'</div>'+					
                 '</ul>' +
               '</div>' +
             '</div>' +
@@ -179,9 +224,25 @@
             scope.dates = dates;
           };
 
-          scope.setDate = function(dateObj) {
+          scope.setDate = function(dateObj,value) {
+		  
+		     console.log(value);
             if (isDateDisabled(dateObj)) return;
             ngModel.$setViewValue(dateObj);
+			if(this.d.className != "pickadate-disabled"){
+				for(var t = 1; t < 7 ; t++){
+					var rowVal = '#Row'+t;
+					var myE1 = "";
+					myE1 = angular.element( document.querySelector( rowVal ) );
+					if(value == t){				    					
+						myE1.removeClass('hide');
+					}else{
+						myE1.addClass('hide'); 
+					}
+				
+				}
+			}
+			
           };
 
           ngModel.$render = function () {
@@ -189,7 +250,7 @@
               scope.currentDate = currentDate = dateUtils.stringToDate(date);
             } else if (date) {
               // if the initial date set by the user is in the disabled dates list, unset it
-              scope.setDate({});
+              scope.setDate({},0);
             }
             scope.render(currentDate);
           };
@@ -199,7 +260,7 @@
             // sets the date to March the 3rd, since the date object adds 30 days to the current
             // date. Settings the date to the 2nd day of the month is a workaround to prevent this
             // behaviour
-            currentDate.setDate(1);
+            currentDate.setDate(1,0);
             currentDate.setMonth(currentDate.getMonth() + offset);
             scope.render(currentDate);
           };
