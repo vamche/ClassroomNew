@@ -4,7 +4,7 @@
 	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
         <h1 class="title">Attendance</h1>
       </ion-header-bar>
- <ion-content scroll="false">
+ <ion-content scroll="false" ng-controller="attendanceCtrl">
     <div class="containerAttendance">
       <div pickadate ng-model="date" min-date="minDate" max-date="maxDate" disabled-dates='disabledDates'   attendance-Info='attendanceInfo'></div>
 	  <!--div class="card padding selected-date">

@@ -62,7 +62,7 @@
       };
     }])
 
-    .directive('pickadate', ['$locale', 'pickadateUtils', 'pickadateI18n', 'dateFilter', function($locale, dateUtils, i18n, dateFilter) {
+    .directive('pickadate', ['$locale','$timeout', 'pickadateUtils', 'pickadateI18n', 'dateFilter', function($locale,$timeout, dateUtils, i18n, dateFilter) {
       return {
         require: 'ngModel',
         scope: {
@@ -97,7 +97,7 @@
                   '<li ng-repeat="d in dates.slice(0,7)" ng-click="setDate(d,1)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row1" class="checkCard hide card padding selected-date">'+
+					'<div id="Row1" class="checkCard ng-hide card padding selected-date">'+
 						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
 						'{{ date.type }} </br>'+
 						'Comments : {{ date.data }}'+
@@ -105,7 +105,7 @@
                   '<li ng-repeat="d in dates.slice(7,14)" ng-click="setDate(d,2)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row2" class="checkCard hide card padding selected-date">'+
+					'<div id="Row2" class="checkCard ng-hide card padding selected-date">'+
 						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
 						'{{ date.type }} </br>'+
 						'Comments : {{ date.data }}'+
@@ -113,7 +113,7 @@
                   '<li ng-repeat="d in dates.slice(14,21)" ng-click="setDate(d,3)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row3" class="checkCard hide card padding selected-date">'+
+					'<div id="Row3" class="checkCard ng-hide card padding selected-date">'+
 						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
 						'{{ date.type }} </br>'+
 						'Comments : {{ date.data }}'+
@@ -121,7 +121,7 @@
                   '<li ng-repeat="d in dates.slice(21,28)" ng-click="setDate(d,4)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row4" class="checkCard hide card padding selected-date">'+
+					'<div id="Row4" class="checkCard ng-hide card padding selected-date">'+
 						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
 						'{{ date.type }} </br>'+
 						'Comments : {{ date.data }}'+
@@ -129,7 +129,7 @@
                   '<li ng-repeat="d in dates.slice(28,35)" ng-click="setDate(d,5)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row5" class="checkCard hide card padding selected-date">'+
+					'<div id="Row5" class="checkCard ng-hide card padding selected-date">'+
 						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
 						'{{ date.type }} </br>'+
 						'Comments : {{ date.data }}'+
@@ -137,7 +137,7 @@
 				'<li ng-repeat="d in dates.slice(35,42)" ng-click="setDate(d,6)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row6" class="checkCard hide card padding selected-date">'+
+					'<div id="Row6" class="checkCard ng-hide card padding selected-date">'+
 						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
 						'{{ date.type }} </br>'+
 						'Comments : {{ date.data }}'+
@@ -230,18 +230,34 @@
             if (isDateDisabled(dateObj)) return;
             ngModel.$setViewValue(dateObj);
 			if(this.d.className != "pickadate-disabled"){
+			    var dataDisplay = false;
+				var k ="";
 				for(var t = 1; t < 7 ; t++){
 					var rowVal = '#Row'+t;
 					var myE1 = "";
 					myE1 = angular.element( document.querySelector( rowVal ) );
-					if(value == t){				    					
-						myE1.removeClass('hide');
+					myE1.addClass('ng-hide');
+					if(value == t){	
+						if(myE1.hasClass('ng-hide')){
+						    dataDisplay = true;
+							myE1.removeClass('ng-hide');
+							k = t;
+						}else{						
+							myE1.addClass('ng-hide');
+						}
 					}else{
-						myE1.addClass('hide'); 
+						myE1.addClass('ng-hide'); 
 					}
 				
 				}
 			}
+			    if(dataDisplay){
+				   var rowVal1 = '#Row'+k;
+				   var myE3 = angular.element( document.querySelector( rowVal1 ) );
+			       $timeout(function(){
+						myE3.addClass('ng-hide');
+					}, 2000);
+				}
 			
           };
 
