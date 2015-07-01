@@ -84,8 +84,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: "/addHomework",
     views: {
       'menuContent': {
-        templateUrl: "templates/addHomework.html",
-		controller: 'HomeworkCtrl'
+        templateUrl: "templates/addHomework.html"
       }
     }
   })
@@ -96,6 +95,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       'menuContent': {
         templateUrl: "templates/Homework.html",
 		controller: 'HomeworkCtrl'
+      }
+    }
+  })
+  
+ .state('app.takeAttendance', {
+    url: "/takeAttendance",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/takeAttendance.html",
+		controller: 'takeAttendance'
       }
     }
   })

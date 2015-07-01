@@ -105,7 +105,7 @@
                   '<li ng-repeat="d in dates.slice(7,14)" ng-click="setDate(d,2)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row2" class="checkCard ng-hide card padding selected-date">'+
+					'<div id="Row2" class="checkCard ng-hide card padding selected-date" >'+
 						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
 						'{{ date.type }} </br>'+
 						'Comments : {{ date.data }}'+
@@ -113,7 +113,7 @@
                   '<li ng-repeat="d in dates.slice(14,21)" ng-click="setDate(d,3)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row3" class="checkCard ng-hide card padding selected-date">'+
+					'<div id="Row3" class="checkCard ng-hide card padding selected-date" >'+
 						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
 						'{{ date.type }} </br>'+
 						'Comments : {{ date.data }}'+
@@ -224,9 +224,35 @@
             scope.dates = dates;
           };
 
-          scope.setDate = function(dateObj,value) {
-		  
-		     console.log(value);
+          scope.isShown = function(value) {		
+              		     console.log(value);		  
+		     /*console.log(value);
+			if(this.d.className != "pickadate-disabled"){
+			    var dataDisplay = false;
+				for(var t = 1; t < 7 ; t++){
+					var rowVal = '#Row'+t;
+					var myE1 = "";
+					myE1 = angular.element( document.querySelector( rowVal ) );
+					myE1.addClass('ng-hide');
+					if(value == t){	
+						if(myE1.hasClass('ng-hide')){
+						    dataDisplay = true;
+							myE1.removeClass('ng-hide');
+							k = t;
+						}else{						
+							myE1.addClass('ng-hide');
+						}
+					}else{
+						myE1.addClass('ng-hide'); 
+					}
+				
+				}
+			}
+             return dataDisplay;*/
+			 return 1;
+			
+          };
+            scope.setDate = function(dateObj,value) {
             if (isDateDisabled(dateObj)) return;
             ngModel.$setViewValue(dateObj);
 			if(this.d.className != "pickadate-disabled"){
@@ -261,6 +287,12 @@
 			
           };
 
+ 
+ 
+ 
+ 
+ 
+ 
           ngModel.$render = function () {
             if ((date = ngModel.$modelValue) && (indexOf.call(disabledDates, date) === -1)) {
               scope.currentDate = currentDate = dateUtils.stringToDate(date);

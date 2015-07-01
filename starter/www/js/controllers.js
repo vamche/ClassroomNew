@@ -149,4 +149,256 @@ angular.module('starter.controllers', ['pickadate'])
     { id: 9, title: "Read chapter 9", subject: "English", batch: "X"  }
   ];
   
+})
+
+
+
+
+
+.controller('takeAttendance', function($scope,$state) {
+			$scope.studentsOfBatch = [];
+			$scope.groups = [];
+
+			$scope.groups = [{  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" },
+							 {  name: "Select Batch", items: ["Batch A","Batch B","Batch C"], selectedItem : "" }];
+		  /*
+		   * if given group is the selected group, deselect it
+		   * else, select the given group
+		   */
+		  $scope.toggleGroup = function(group) {
+			if ($scope.isGroupShown(group)) {
+			  $scope.shownGroup = null;
+			} else {
+			  $scope.shownGroup = group;
+			}
+			
+			if($scope.groups[0].selectedItem != "" && $scope.groups[1].selectedItem != ""){
+				if($scope.listOfStudents)
+				{
+					var classVal = $scope.listOfStudents;
+					var len = $scope.listOfStudents.length;
+					for(var i=0;i<len;i++){
+						var batchVal = classVal[i][$scope.groups[0].selectedItem];
+						if(batchVal){
+							var batchLength = batchVal.length;
+							for(var k=0;k<batchLength;k++){
+								var value1 = batchVal[k][$scope.groups[1].selectedItem];
+								if(value1){
+									$scope.studentsOfBatch = value1;
+								}
+							}
+						}
+					}
+				}
+			
+			}
+		  };
+		  $scope.selectItem = function(group,item) {
+			$scope.shownGroup.selectedItem = item;
+			$scope.toggleGroup(group);
+			$scope.absentList = [];
+		  };
+		  $scope.isGroupShown = function(group) {
+			return $scope.shownGroup === group;
+		  };
+		   $scope.absentList = [];
+          $scope.clickItem = function($event,student,rollNo){
+				
+			    var checkbox = $event.target;
+				var action = (checkbox.checked ? 'remove' : 'add');
+				if (action == 'add') {
+					 $scope.absentList.push({
+						RollNo: rollNo
+					});
+					console.log($scope.absentList);	
+				}
+				if (action == 'remove') {
+					$scope.absentList.splice($scope.absentList.indexOf(rollNo), 1);
+				}	
+                			
+		  };
+			$scope.saveAttendance = function(){
+				console.log($scope.absentList);
+			};
+			
+		  
+		    $scope.listOfStudents =[{
+			"X":[
+				{
+					"Batch A":[
+						{	Name : "Vamsi",
+							RollNo:"U081"
+						},
+						{	Name : "Gokul",
+							RollNo:"U082"
+						},
+						{	Name : "Naren",
+							RollNo:"U083"
+						},
+						{	Name : "Rahul",
+							RollNo:"U084"
+						},
+						{	Name : "Rajesh",
+							RollNo:"U085"
+						}
+						]
+				},
+				{	
+					"Batch B":[
+						{	Name : "Gayatree",
+							RollNo:"U086"
+						},
+						{	Name : "Sita",
+							RollNo:"U087"
+						},
+						{	Name : "Arun",
+							RollNo:"U088"
+						},
+						{	Name : "Kiran",
+							RollNo:"U089"
+						},
+						{	Name : "Amrita",
+							RollNo:"U090"
+						}
+						]
+				},
+				{
+					"Batch C":[
+						{	Name : "Ranjitha",
+							RollNo:"U091"
+						},
+						{	Name : "Karuna",
+							RollNo:"U092"
+						},
+						{	Name : "Pankaj",
+							RollNo:"U093"
+						},
+						{	Name : "Sandeep",
+							RollNo:"U094"
+						},
+						{	Name : "Sanghu",
+							RollNo:"U095"
+						}
+						]
+				}
+			]},
+			{
+			"IX":[
+				{
+					"Batch A":[
+						{	Name : "Pooja",
+							RollNo:"U096"
+						},
+						{	Name : "Padma",
+							RollNo:"U097"
+						},
+						{	Name : "Pavitha",
+							RollNo:"U098"
+						},
+						{	Name : "Ramki",
+							RollNo:"U099"
+						},
+						{	Name : "Prakriti",
+							RollNo:"U100"
+						}]
+				},
+				{
+					"Batch B":[
+						{	Name : "Abhay",
+							RollNo:"U101"
+						},
+						{	Name : "Abhishek",
+							RollNo:"U102"
+						},
+						{	Name : "Rashu",
+							RollNo:"U103"
+						},
+						{	Name : "Virendra",
+							RollNo:"U104"
+						},
+						{	Name : "Mohan",
+							RollNo:"U105"
+						}]
+				},
+				{
+					"Batch C":[
+						{	Name : "Krishna",
+							RollNo:"U106"
+						},
+						{	Name : "Radha",
+							RollNo:"U107"
+						},
+						{	Name : "Anu",
+							RollNo:"U108"
+						},
+						{	Name : "Raghu",
+							RollNo:"U109"
+						},
+						{	Name : "Dilip",
+							RollNo:"U110"
+						}]
+				}
+
+			]},
+			{
+			"IIX":[
+
+				{
+				"Batch A":[
+					{	Name : "Ram",
+						RollNo:"U081"
+					},
+					{	Name : "Sita",
+						RollNo:"U082"
+					},
+					{	Name : "Laxman",
+						RollNo:"U083"
+					},
+					{	Name : "Ganesh",
+						RollNo:"U084"
+					},
+					{	Name : "Mahesh",
+						RollNo:"U085"
+					}]
+				},
+				{
+					"Batch B":[
+						{	Name : "Ravi",
+							RollNo:"U086"
+						},
+						{	Name : "Ankita",
+							RollNo:"U087"
+						},
+						{	Name : "Aditi",
+							RollNo:"U088"
+						},
+						{	Name : "Ruchika",
+							RollNo:"U089"
+						},
+						{	Name : "Aishwariya",
+							RollNo:"U090"
+						}]
+				},
+				{
+				"Batch C":[
+					{	Name : "Neha",
+						RollNo:"U091"
+					},
+					{	Name : "Meenu",
+						RollNo:"U092"
+					},
+					{	Name : "Sonu",
+						RollNo:"U093"
+					},
+					{	Name : "Kanhaiya",
+						RollNo:"U094"
+					},
+					{	Name : "Madhu",
+						RollNo:"U095"
+					}]
+					
+				}
+				]}];
+
+  
 });
