@@ -55,7 +55,7 @@ color:#11c1f3;
   border: 0;
   border-width: 0;
   width: 14.285%;
-  padding: 1.3% 0 1.3% 0;
+  padding: 1.3% 1.3% 1.3% 1.3%;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -120,7 +120,7 @@ color:#11c1f3;
 }
 
 .pickadate-cell .pickadate-active {
-  background-color: #b52a00;
+  background-color: #ffc900;
 }
 
 .pickadate-cell .pickadate-active {

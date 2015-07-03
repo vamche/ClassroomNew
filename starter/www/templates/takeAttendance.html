@@ -37,17 +37,21 @@
           Cancel
         </button>
       </div>	  
-	<ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
-		<ion-list>
-			<ion-item ng-repeat="student in studentsOfBatch | filter: data.searchQuery" ng-click="clickItem($event,student,student.RollNo)"">			 
-			 <label class="checkbox">
-				<input type="checkbox"  ng-checked="1"/>
-			 </label>
-			<h3 class="energized">{{student.Name}}</br></h3>
-		   {{student.RollNo}}
-			</ion-item>
-    </ion-list>
-   </ion-scroll>
+  	<ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
+  		<ion-list>
+  			<ion-item ng-repeat="student in studentsOfBatch | filter: data.searchQuery" ng-click="clickItem($event,student,student.RollNo)" class="row">	
+         <div class="col padding">
+            <h3 class="energized">{{student.Name}}</br></h3>
+           {{student.RollNo}}
+         </div>
+         <div class="col col-20 padding">
+             <label class="checkbox">
+              <input type="checkbox" ng-checked="1"/>
+             </label>
+         </div>
+  			</ion-item>
+      </ion-list>
+     </ion-scroll>
 
     </ion-content>
     

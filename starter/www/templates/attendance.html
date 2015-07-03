@@ -16,8 +16,8 @@
 	<ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
     <ion-list>
       <ion-item ng-repeat="absentlist in absentlists" ng-click="goToAbsentDaysDetail(absentlist)">
-        {{absentlist.title}}</br>
-		{{absentlist.data}}
+       {{absentlist.title}}</br> 
+		   <b class="dark">{{absentlist.data}} </b>
       </ion-item>
     </ion-list>
    </ion-scroll>

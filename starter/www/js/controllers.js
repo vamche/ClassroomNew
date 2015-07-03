@@ -422,12 +422,12 @@ angular.module('starter.controllers', ['pickadate'])
      $scope.LeftMenu = [];
 	 $scope.ScreenID = "";
 	 
-	 $scope.LeftMenu = [{  id: "HOME", title:"Home" },
-	                    {  id: "ATTENDANCE", title:"Attendance"},
-						{  id: "HOMEWORK", title:"Homework" },
-						{  id: "TAKE_ATTENDANCE", title:"Take Attendance" },
-						{  id: "RESULTS", title:"Results" },
-						{  id: "ADD_RESULT", title:"Add Result"}];
+	 $scope.LeftMenu = [{  id: "HOME", title:"Home", icon:"ion-ios-home-outline"},
+	                    {  id: "ATTENDANCE", title:"Attendance", icon:"ion-ios-calendar-outline"},
+						{  id: "HOMEWORK", title:"Homework", icon:"ion-ios-book-outline" },
+						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline" },
+						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline" },
+						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline"}];
 						
 						
 							

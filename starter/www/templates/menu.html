@@ -15,7 +15,7 @@
     <ion-header-bar class="bar-dark">
       
     </ion-header-bar>
-    <ion-content>
+    <ion-content class="leftMenu">
       <ion-list>
         <!--ion-item menu-close href="#/app/search">
           Search
@@ -35,8 +35,9 @@
 		<ion-item menu-close href="#/app/addResult">
           Result
         </ion-item-->
-		  <ion-item menu-close ng-repeat="item in LeftMenu" ng-click="routeToScreen(item)">
-			{{item.title}}
+		  <ion-item class="item-icon-right item-dark leftMenu" menu-close ng-repeat="item in LeftMenu" ng-click="routeToScreen(item)">
+			<i class="icon {{item.icon}} energized"></i>
+      {{item.title}}
 		  </ion-item>
 		
 
@@ -44,19 +45,19 @@
     </ion-content>
   </ion-side-menu>
   <ion-side-menu side="right">
-    <ion-header-bar class="bar-dark">
+    <ion-header-bar class="bar-positive">
       
     </ion-header-bar>
-    <ion-content>
+    <ion-content class="rightMenu">
       <ion-list>
          <div ng-repeat="group in RightMenu">
-          <ion-item class="item-stable item-icon-right"
+          <ion-item class="item-positive item-icon-right rightMenu"
                     ng-click="toggleGroup(group)"
                     ng-class="{active: isGroupShown(group)}">
               
            
              {{group.name}}  &nbsp; <a class=""> <b>{{group.selectedItem}}</b> </a>
-             <i class="icon" ng-class="isGroupShown(group) ? 'ion-arrow-up-b' : 'ion-arrow-down-b'"></i>
+             <i class="icon" ng-class="isGroupShown(group) ? 'ion-arrow-up-b dark' : 'ion-arrow-down-b dark'"></i>
           </ion-item>
           <ion-item class="item-accordion"
                     ng-repeat="item in group.items"
