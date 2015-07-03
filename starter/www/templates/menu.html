@@ -20,7 +20,7 @@
         <!--ion-item menu-close href="#/app/search">
           Search
         </ion-item-->
-        <ion-item menu-close href="#/app/dashboard">
+        <!--ion-item menu-close href="#/app/dashboard">
           Home
         </ion-item>
         <ion-item menu-close href="#/app/attendance">
@@ -32,9 +32,41 @@
 		<ion-item menu-close href="#/app/takeAttendance">
           Take Attendance
         </ion-item>
+		<ion-item menu-close href="#/app/addResult">
+          Result
+        </ion-item-->
+		  <ion-item menu-close ng-repeat="item in LeftMenu" ng-click="routeToScreen(item)">
+			{{item.title}}
+		  </ion-item>
 		
 
       </ion-list>
     </ion-content>
   </ion-side-menu>
+  <ion-side-menu side="right">
+    <ion-header-bar class="bar-dark">
+      
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+         <div ng-repeat="group in RightMenu">
+          <ion-item class="item-stable item-icon-right"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              
+           
+             {{group.name}}  &nbsp; <a class=""> <b>{{group.selectedItem}}</b> </a>
+             <i class="icon" ng-class="isGroupShown(group) ? 'ion-arrow-up-b' : 'ion-arrow-down-b'"></i>
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)"
+                    ng-click="selectItem(group,item)">
+            {{item}}
+          </ion-item>
+          </div>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+
 </ion-side-menus>

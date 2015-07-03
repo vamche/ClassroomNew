@@ -414,4 +414,140 @@ angular.module('starter.controllers', ['pickadate'])
 				]}];
 
   
+})
+
+
+.controller('MenuCtrl', function($scope, $stateParams,$state) {
+
+     $scope.LeftMenu = [];
+	 $scope.ScreenID = "";
+	 
+	 $scope.LeftMenu = [{  id: "HOME", title:"Home" },
+	                    {  id: "ATTENDANCE", title:"Attendance"},
+						{  id: "HOMEWORK", title:"Homework" },
+						{  id: "TAKE_ATTENDANCE", title:"Take Attendance" },
+						{  id: "RESULTS", title:"Results" },
+						{  id: "ADD_RESULT", title:"Add Result"}];
+						
+						
+							
+	$scope.routeToScreen = function(item){
+	            var id = item.id;
+				$scope.ScreenID = id;
+				console.log(id);
+				
+				if(id == "HOME"){
+					$state.go('app.dashboard');				
+				}else if(id == "ATTENDANCE"){
+					$state.go('app.attendance');
+				}else if(id == "HOMEWORK"){
+					$state.go('app.HomeworkScreen');
+				}else if(id == "TAKE_ATTENDANCE"){
+					$state.go('app.takeAttendance');
+				}else if(id == "RESULTS"){
+					$state.go('app.addResult');
+				}else if(id == "ADD_RESULT"){
+					$state.go('app.addResult');
+				}
+    };
+	 console.log($scope.ScreenID);					
+	 $scope.RightMenu = [];
+
+	 $scope.RightMenu = [{  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" },
+							 {  name: "Select Division", items: ["DivA","DivB","DivC","DivD"], selectedItem : ""},
+							 {  name: "Select Subject", items: ["Maths","Science","English","Hindi","Social"], selectedItem : "" }];	
+      $scope.toggleGroup = function(group) {
+			if ($scope.isGroupShown(group)) {
+			  $scope.shownGroup = null;
+			} else {
+			  $scope.shownGroup = group;
+			}
+		  };
+		  $scope.selectItem = function(group,item) {
+			$scope.shownGroup.selectedItem = item;
+			$scope.toggleGroup(group);
+		  };
+		  $scope.isGroupShown = function(group) {
+			return $scope.shownGroup === group;
+		  };                   							 
+})
+
+.controller('ResultCtrl', function($scope,$state) {
+			$scope.groups = [];
+
+			$scope.groups = [{  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" },
+							 {  name: "Select Division", items: ["DivA","DivB","DivC","DivD"], selectedItem : ""},
+							 {  name: "Select Subject", items: ["Maths","Science","English","Hindi","Social"], selectedItem : "" },
+							 {  name: "Select Student", items: ["Pooja","Narender","Rajesh","Vamsi","Padma","Rahul","Gokul","Ramki","Arun","Madhu"], selectedItem : ""}];
+		  
+		  /*
+		   * if given group is the selected group, deselect it
+		   * else, select the given group
+		   */
+		  $scope.toggleGroup = function(group) {
+			if ($scope.isGroupShown(group)) {
+			  $scope.shownGroup = null;
+			} else {
+			  $scope.shownGroup = group;
+			}
+		  };
+		  $scope.selectItem = function(group,item) {
+			$scope.shownGroup.selectedItem = item;
+			$scope.toggleGroup(group);
+		  };
+		  $scope.isGroupShown = function(group) {
+			return $scope.shownGroup === group;
+		  };
+		   $scope.resetResult = function(){
+			for(var i=0;i<$scope.groups.length;i++){
+			  $scope.groups[i].selectedItem = "";
+			}
+			$scope.resultVal = "";
+			$scope.shownGroup = null;
+		  };
+		  
+		$scope.addItems=function(){
+		  if($scope.groups[0].selectedItem != "" && $scope.groups[1].selectedItem != "" && $scope.resultVal != ""){
+				$scope.items.push({
+					id: Math.floor((Math.random() * 100) + 1),
+					title: $scope.resultVal,
+					subject: $scope.groups[1].selectedItem,
+					batch: $scope.groups[0].selectedItem
+				});			  
+			  $state.go('app.ResultScreen');
+		   }
+   }
+   
+   
+   $scope.data = {
+    showDelete: false
+  };
+  
+  $scope.edit = function(item) {
+    alert('Edit Item: ' + item.id);
+  };
+ 
+  $scope.delete = function(item) {
+    $scope.items.splice($scope.items.indexOf(item), 1);
+  };
+  
+   $scope.addResult = function() {
+	  
+      $state.go('app.addResult'); 
+    };
+  
+  $scope.items = [
+    { id: 0, title: "Read chapter 9", subject: "English", batch: "X" },
+    { id: 1, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 2, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 3, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 4, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 5, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 6, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 7, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 8, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 9, title: "Read chapter 9", subject: "English", batch: "X"  }
+  ];
+  
 });
+

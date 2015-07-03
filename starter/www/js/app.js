@@ -37,7 +37,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   .state('app', {
     url: "/app",
     abstract: true,
-    templateUrl: "templates/menu.html"
+    templateUrl: "templates/menu.html",
+    controller: 'MenuCtrl'
   })
 
   .state('app.search', {
@@ -116,6 +117,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       'menuContent': {
         templateUrl: "templates/addAttendanceComment.html",
 		controller: 'takeAttendance'
+      }
+    }
+  })
+  .state('app.addResult', {
+    url: "/addResult",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/addResult.html",
+		controller: 'ResultCtrl'
       }
     }
   })
