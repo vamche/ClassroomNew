@@ -69,11 +69,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 	
-	.state('app.absentListAttendance', {
-      url: "/absentListAttendance",
+	.state('app.absentDaysDetail', {
+      url: "/absentDaysDetail",
       views: {
         'menuContent': {
-          templateUrl: "templates/absentListAttendance.html",
+          templateUrl: "templates/absentDaysDetail.html",
           controller: 'attendanceCtrl'
         }
       }
@@ -105,6 +105,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: "templates/takeAttendance.html",
+		controller: 'takeAttendance'
+      }
+    }
+  })
+  
+   .state('app.addAttendanceComment', {
+    url: "/addAttendanceComment",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/addAttendanceComment.html",
 		controller: 'takeAttendance'
       }
     }

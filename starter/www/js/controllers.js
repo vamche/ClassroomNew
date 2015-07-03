@@ -59,9 +59,9 @@ angular.module('starter.controllers', ['pickadate'])
     { title: 'Total No of Working days',data: '24', id: 3 }
   ];
   
-   $scope.edit = function(absentlist) {
+   $scope.goToAbsentDaysDetail = function(absentlist) {
     if(absentlist.id == "2"){
-		$state.go('app.absentListAttendance');
+		$state.go('app.absentDaysDetail');
 	}
   };
   $scope.goBack = function(){
@@ -202,26 +202,39 @@ angular.module('starter.controllers', ['pickadate'])
 			return $scope.shownGroup === group;
 		  };
 		   $scope.absentList = [];
+		   $scope.studentAttendanceComments =[];
           $scope.clickItem = function($event,student,rollNo){
-				
 			    var checkbox = $event.target;
-				var action = (checkbox.checked ? 'remove' : 'add');
-				if (action == 'add') {
-					 $scope.absentList.push({
-						RollNo: rollNo
-					});
-					console.log($scope.absentList);	
+				if(checkbox.checked == true || checkbox.checked == false){
+					var action = (checkbox.checked ? 'remove' : 'add');
+					if (action == 'add') {
+						 $scope.absentList.push({
+							RollNo: rollNo
+						});	
+					}
+					if (action == 'remove') {
+						$scope.absentList.splice($scope.absentList.indexOf(rollNo), 1);
+					}
+				}else{				
+					$state.go('app.addAttendanceComment');
 				}
-				if (action == 'remove') {
-					$scope.absentList.splice($scope.absentList.indexOf(rollNo), 1);
-				}	
                 			
 		  };
 			$scope.saveAttendance = function(){
 				console.log($scope.absentList);
 			};
 			
-		  
+		    $scope.goBackToTakeAttendance = function(){			
+				$state.go('app.takeAttendance');
+			}
+			 $scope.addCommentsAttendance = function(){	
+				$state.go('app.takeAttendance');
+			}	
+			
+			  $scope.clearSearch = function() {
+				$scope.data.searchQuery = '';
+			  };
+			
 		    $scope.listOfStudents =[{
 			"X":[
 				{

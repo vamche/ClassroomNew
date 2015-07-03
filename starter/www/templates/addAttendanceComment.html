@@ -1,0 +1,20 @@
+<ion-view hide-nav-bar="true">
+    <ion-pane>
+    <ion-header-bar class="bar-dark" >
+		  <div class="h1 title" ng-bind="addCommentTitle"></div>
+		 <a class="button button-assertive button-clear  icon-right ion-android-close" ng-click="goBackToTakeAttendance()"></a>
+        <!--h1 class="title">Add Homework</h1>
+            <a href="#/app/dashboard" class="button button-assertive button-clear  icon-right ion-android-close"></a-->
+    </ion-header-bar>
+      <ion-content>           
+           <label class="item item-input item-floating-label">
+            <span class="input-label">Add Comment</span>
+            <input type="text" placeholder="Add Comment" ng-model="homeworkVal">
+          </label>
+          <a class="button button-full button-balanced" ng-click="addCommentsAttendance()">
+            Add Comment
+          </a>     
+    </ion-content>
+    
+    </ion-pane>
+</ion-view>
