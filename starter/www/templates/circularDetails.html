@@ -1,0 +1,44 @@
+<ion-view hide-nav-bar="true">
+     <ion-pane>
+      <ion-header-bar class="bar-dark" >
+	      <button class="button-icon ion-chevron-left button-clear" ng-click="goBack()"></button>
+		  <div class="h1 title">Circular Details</div>
+	  </ion-header-bar>
+ <ion-content scroll="false" ng-controller="circular">
+    <div class="containerAttendance">
+	 <ion-list>
+       <!-- <div ng-repeat="group in classInfo">
+          <ion-item class="item-stable item-icon-right"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              
+           
+             {{group.name}}  &nbsp; <a class=""> <b>{{group.selectedItem}}</b> </a>
+             <i class="icon" ng-class="isGroupShown(group) ? 'ion-arrow-up-b' : 'ion-arrow-down-b'"></i>
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)"
+                    ng-click="selectItem(group,item)">
+            {{item}}
+          </ion-item>
+          </div> 
+		  <br>-->
+          <button class="button button-outline button-positive" ng-click="">
+            I am attending 
+          </button>
+		  <button class="button button-clear button-positive"  ng-click="changeCircularStatus()">
+            change status
+          </button>
+		  
+      </ion-list>
+	  
+	  <!--   <ion-list>
+      <ion-item ng-repeat="MeetingInfo in CircularStatus" ng-click="">
+      <!-- {{MeetingInfo.Name}}</br>
+		   <b class="dark">{{MeetingInfo.name}} </b>
+      </ion-item>
+    </ion-list>-->
+	  
+  </ion-content>
+</ion-view>

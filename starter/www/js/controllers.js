@@ -72,6 +72,52 @@ angular.module('starter.controllers', ['pickadate'])
 
 
 
+
+.controller('circular', function($scope,dateFilter,$state) {
+   $scope.date = dateFilter(new Date(), 'yyyy-MM-dd');//'2013-11-26';
+   $scope.minDate = '2010-1-1';
+   $scope.maxDate = '2050-12-30';
+   $scope.disabledDates = [];
+   $scope.classInfo = [ {  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" }
+						]; 
+						
+	$scope.CircularStatus = [ {  name: "I am attending",id :1},
+	{  name: "May attend", id : 2},
+	{  name: "I am not attending", id : 3 }
+						]; 
+						
+	$scope.circularInfo = [ { data: 'Parent - Teacher Meeting',date: '2015-07-15',id : 1},
+							{ data: 'Fun Day',date: '2015-07-25' ,id :2}
+						]; 
+  $scope.PTMeetingInfo = [
+    { Name: 'Student1',Status: 'Parent atttending', StudentId: 1 },
+	{ Name: 'Student2',Status: 'Parent not atttending', StudentId: 2 },
+    { Name: 'Student3',Status: 'May attend', StudentId: 3 }
+  ];
+  
+   $scope.goToCircularDetail = function(MeetingInfo) {
+	   if(MeetingInfo.id == "2"){
+			$state.go('app.circularDetailsForTeacher');
+	   }
+	   else{
+		   $state.go('app.circularDetails');
+	   }
+  };
+  $scope.changeCircularStatus = function(){
+	/**    <ion-list>
+      <ion-item ng-repeat="MeetingInfo in CircularStatus" ng-click="">
+		   <b class="dark">{{MeetingInfo.name}} </b>
+      </ion-item>
+    </ion-list> */
+  }
+  $scope.goBack = function(){
+	$state.go('app.circular');
+  }
+  
+})
+
+
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 .controller('HomeworkCtrl', function($scope,$state) {
@@ -427,6 +473,7 @@ angular.module('starter.controllers', ['pickadate'])
 						{  id: "HOMEWORK", title:"Homework", icon:"ion-ios-book-outline" },
 						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline" },
 						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline" },
+						{  id: "CIRCULAR", title:"Circular", icon:"ion-ios-analytics-outline"},
 						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline"}];
 						
 						
@@ -448,6 +495,8 @@ angular.module('starter.controllers', ['pickadate'])
 					$state.go('app.addResult');
 				}else if(id == "ADD_RESULT"){
 					$state.go('app.addResult');
+				}else if(id == "CIRCULAR"){
+					$state.go('app.circular');
 				}
     };
 	 console.log($scope.ScreenID);					
