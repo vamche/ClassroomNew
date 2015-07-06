@@ -130,6 +130,37 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
   
+  .state('app.circular', {
+    url: "/circular",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/circular.html",
+		controller: 'circular'
+      }
+    }
+  })
+  
+  .state('app.circularDetails', {
+      url: "/circularDetails",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/circularDetails.html",
+          controller: 'circular'
+        }
+      }
+    })
+	
+	.state('app.circularDetailsForTeacher', {
+      url: "/circularDetailsForTeacher",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/circularDetailsForTeacher.html",
+          controller: 'circular'
+        }
+      }
+    })
+	
+  
   .state('app.single', {
     url: "/playlists/:playlistId",
     views: {
