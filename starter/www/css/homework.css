@@ -14,7 +14,8 @@
 
 .leftMenu{
 	background-color: #444444;
-    border-top: 0px;
+  color: #ffffff;
+  border-top: 0px;
 	border-left: 0px;
 	border-right: 0px;
 	border-bottom: 0px;
@@ -34,4 +35,30 @@
 
 .loginBackground{
 	background:linear-gradient(180deg, #00d2ff 10%, #3a7bd5 90%);
+}
+
+.profileImage{
+    float: center;
+    border-radius: 50%;
+    
+}
+
+.profileImageBG{
+   padding: 25% 0% 25% 25%;
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(
+      to bottom, 
+      #444444,
+      #444444 50%,
+      #ffffff 50%,
+      #ffffff 100%
+    );
+
+}
+
+.bar-header {
+  top: 0;
+  border-top-width: 0;
+  border-bottom-width: 0px;
 }
