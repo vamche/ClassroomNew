@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['pickadate'])
+angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   
