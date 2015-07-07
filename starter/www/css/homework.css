@@ -34,7 +34,13 @@
 }
 
 .loginBackground{
-	background:linear-gradient(180deg, #00d2ff 10%, #3a7bd5 90%);
+	
+  background: -webkit-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* W3C */
+        
 }
 
 .profileImage{
@@ -44,7 +50,7 @@
 }
 
 .profileImageBG{
-   padding: 25% 0% 25% 25%;
+  padding: 25% 0% 25% 25%;
   background-color: #ffffff;
   background-image:
     linear-gradient(
@@ -55,10 +61,60 @@
       #ffffff 100%
     );
 
+    /* Fallback (could use .jpg/.png alternatively) */
+  background-color: #ffffff;
+
+  /* Safari 4, Chrome 1-9, iOS 3.2-4.3, Android 2.1-3.0 */
+  background-image:
+    -webkit-gradient(linear, top, bottom, from(#444444), to(#ffffff));
+  
+  /* Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3 */
+  background-image:
+    -webkit-linear-gradient(top,#444444,#444444 50%,#ffffff 50%,#ffffff 100%);
+
+  /* Firefox 3.6 - 15*/
+  background-image:
+    -moz-linear-gradient(top, 
+      #444444,
+      #444444 50%,
+      #ffffff 50%,
+      #ffffff 100%
+    );
+
+  /* Opera 11.1 - 12 */
+  background-image:
+    -o-linear-gradient(top, 
+      #444444,
+      #444444 50%,
+      #ffffff 50%,
+      #ffffff 100%
+    );
+
+  /* Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+ */
+  background-image:
+    linear-gradient(to bottom, 
+      #444444,
+      #444444 50%,
+      #ffffff 50%,
+      #ffffff 100%,
+      );
+      
+
 }
 
 .bar-header {
   top: 0;
   border-top-width: 0;
   border-bottom-width: 0px;
+}
+
+.col-15 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 15%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 15%;
+  -ms-flex: 0 0 15%;
+  flex: 0 0 15%;
+  max-width: 15%;
+}
 }
