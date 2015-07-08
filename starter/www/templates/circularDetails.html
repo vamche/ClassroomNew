@@ -24,21 +24,22 @@
           </ion-item>
           </div> 
 		  <br>-->
-          <button class="button button-outline button-positive" ng-click="">
-            I am attending 
-          </button>
+          <input class="button button-outline button-positive"  ng-click="" value="{{model}}">
+          </input> <br>
 		  <button class="button button-clear button-positive"  ng-click="changeCircularStatus()">
             change status
           </button>
 		  
       </ion-list>
-	  
-	  <!--   <ion-list>
-      <ion-item ng-repeat="MeetingInfo in CircularStatus" ng-click="">
-      <!-- {{MeetingInfo.Name}}</br>
+	<div ng-hide="ISCHANGESTATUSCLCKED" class="ng-hide">
+	     <ion-list>
+      <ion-item ng-repeat="MeetingInfo in CircularStatus" ng-click="updateCircularStatus(MeetingInfo)">
+      <!-- {{MeetingInfo.Name}}</br>-->
 		   <b class="dark">{{MeetingInfo.name}} </b>
       </ion-item>
-    </ion-list>-->
+	  
+    </ion-list>
+	</div>
 	  
   </ion-content>
 </ion-view>
