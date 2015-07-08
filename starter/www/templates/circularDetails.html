@@ -5,7 +5,8 @@
 		  <div class="h1 title">Circular Details</div>
 	  </ion-header-bar>
  <ion-content scroll="false" ng-controller="circular">
-    <div class="containerAttendance">
+   <!-- <div class="containerAttendance"> -->
+	 <div class="col text-center">
 	 <ion-list>
        <!-- <div ng-repeat="group in classInfo">
           <ion-item class="item-stable item-icon-right"
@@ -22,9 +23,24 @@
                     ng-click="selectItem(group,item)">
             {{item}}
           </ion-item>
-          </div> 
-		  <br>-->
-          <input class="button button-outline button-positive"  ng-click="" value="{{model}}">
+          </div> -->
+		  <div class="list card">
+			<div class="item item-image" >
+				<img src="img/circular.jpg">
+			</div>
+			<a class="item item-Event-left positive" href="#">
+			<!-- <i class="icon ion-music-note"></i> -->
+				<b> Event </b> <br> July 17 <br>
+				Parent - Teacher Conference
+			</a>
+		</div>
+	
+		<!--<div class="card">
+			<div class="item item-text-wrap">
+				This is a basic Card which contains an item that has wrapping text.
+			</div>
+		</div> -->
+          <input class="button button button-balanced"  ng-click="" value="{{model}}">
           </input> <br>
 		  <button class="button button-clear button-positive"  ng-click="changeCircularStatus()">
             change status

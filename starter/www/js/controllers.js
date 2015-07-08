@@ -77,6 +77,8 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
    $scope.date = dateFilter(new Date(), 'yyyy-MM-dd');//'2013-11-26';
    $scope.minDate = '2010-1-1';
    $scope.maxDate = '2050-12-30';
+   $scope.ISCHANGESTATUSCLCKED = true;
+   $scope.model = "I am attending";
    $scope.disabledDates = [];
    $scope.classInfo = [ {  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" }
 						]; 
@@ -86,7 +88,7 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 	{  name: "I am not attending", id : 3 }
 						]; 
 						
-	$scope.circularInfo = [ { data: 'Parent - Teacher Meeting',date: '2015-07-15',id : 1},
+	$scope.circularInfo = [ { data: 'Parent - Teacher Conference',date: '2015-07-15',id : 1},
 							{ data: 'Fun Day',date: '2015-07-25' ,id :2}
 						]; 
   $scope.PTMeetingInfo = [
@@ -104,11 +106,19 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 	   }
   };
   $scope.changeCircularStatus = function(){
-	/**    <ion-list>
-      <ion-item ng-repeat="MeetingInfo in CircularStatus" ng-click="">
-		   <b class="dark">{{MeetingInfo.name}} </b>
-      </ion-item>
-    </ion-list> */
+	  $scope.ISCHANGESTATUSCLCKED = false;
+  }
+  $scope.updateCircularStatus = function(MeetingInfo){
+	  $scope.ISCHANGESTATUSCLCKED = true;
+	  if(MeetingInfo.id== "1"){
+	    $scope.model = "I am attending";
+	  }
+	  else if(MeetingInfo.id== "2"){
+	   $scope.model = "May attend";
+	  }
+	  else{
+	   $scope.model = "I am not attending";
+	  }
   }
   $scope.goBack = function(){
 	$state.go('app.circular');

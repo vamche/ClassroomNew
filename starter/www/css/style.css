@@ -6,3 +6,7 @@ body {
 .clear-search {
   font-size: 18px;
 }
+
+.card .item{
+  background: Gainsboro;
+}
