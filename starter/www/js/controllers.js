@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['pickadate'])
+angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   
@@ -598,5 +598,26 @@ angular.module('starter.controllers', ['pickadate'])
     { id: 9, title: "Read chapter 9", subject: "English", batch: "X"  }
   ];
   
-});
+})
+
+.controller('LoginCtrl', function($scope,$stateParams,$timeout,$state) {
+  $scope.loginText = "Login";
+  $scope.onLogin = function(){
+    var btnElement;
+    var spinnerElement;
+    
+	  spinnerElement = angular.element( document.querySelector( "#loginSpinner" ) );
+	  btnElement = angular.element( document.querySelector( "#boxes" ) );
+	  btnElement.removeClass('.box');
+	  //btnElement.addClass('box-change');
+	  btnElement.addClass('box-change');
+	   $scope.loginText = "";
+	  spinnerElement.removeClass('ng-hide');
+	$timeout(function(){ btnElement.addClass('box-animate');},6000);
+	$timeout($scope.showDashboard,4000);
+	};
+$scope.showDashboard = function(){
+	$state.go('app.dashboard');
+	};
+ });
 

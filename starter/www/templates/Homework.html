@@ -10,7 +10,8 @@
 
         <ion-item ng-repeat="item in items" 
                   item="item"
-                  href="#/item/{{item.id}}">
+                  href="#/item/{{item.id}}"
+                  class="my-animation item-remove-animate">
            <h3 class="energized">#{{ item.id }} {{ item.title }} </h3>
             Subject : {{ item.subject }} </br>
             Batch : {{ item.batch }}
