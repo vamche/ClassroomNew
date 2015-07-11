@@ -21,90 +21,54 @@ body {
   opacity: 1;
 }
 
-
-.subjectColor0{
-background-color: #00ff00;
-    top: 7% !important;
+.imageTimetable{
+	left: 0px !important;
+	top: 7% !important;
 	bottom: 7% !important;
-    width: 10px !important;
+    width: 13px !important;
     height: 100% !important;
 	max-height: 86% !important;
-	border-radius: 0% !important;
+	border-radius: 0% !important;  
+	 border: 0px solid !important;
+}
+.subjectColor0{
+background-color: #ffb409;
+   
 }
 .subjectColor1{
-background-color: #D2527F;
-    top: 7% !important;
-	bottom: 7% !important;
-    width: 10px !important;
-    height: 100% !important;
-	max-height: 86% !important;
-	border-radius: 0% !important;
+background-color: #58d8f1;
+  
 }
 .subjectColor2{
-background-color: #663399;
-    top: 7% !important;
-	bottom: 7% !important;
-    width: 10px !important;
-    height: 100% !important;
-	max-height: 86% !important;
-	border-radius: 0% !important;
+background-color: #05e7bf;
+  
 }
 .subjectColor3{
-background-color: #F62459;
-    top: 7% !important;
-	bottom: 7% !important;
-    width: 10px !important;
-    height: 100% !important;
-	max-height: 86% !important;
-	border-radius: 0% !important;
+background-color: #ff7a06;
+  
 }
 .subjectColor4{
-background-color: #EB974E;
-    top: 7% !important;
-	bottom: 7% !important;
-    width: 10px !important;
-    height: 100% !important;
-	max-height: 86% !important;
-	border-radius: 0% !important;
+background-color: #9eea4d;
+   
 }
 
 .subjectColor5{
-background-color: #1F3A93;
-    top: 7% !important;
-	bottom: 7% !important;
-    width: 10px !important;
-    height: 100% !important;
-	max-height: 86% !important;
-	border-radius: 0% !important;
+background-color: #ff72b9;
+    
 }
 .subjectColor6{
-background-color: #4ECDC4;
-    top: 7% !important;
-	bottom: 7% !important;
-    width: 10px !important;
-    height: 100% !important;
-	max-height: 86% !important;
-	border-radius: 0% !important;
+background-color: #ffe343;
+  
 }
 .subjectColor7{
-background-color: #26A65B;
-    top: 7% !important;
-	bottom: 7% !important;
-    width: 10px !important;
-    height: 100% !important;
-	max-height: 86% !important;
-	border-radius: 0% !important;
+background-color: #653457;
+  
 }
 
 
 .subjectColorDefault{
-background-color: #3498DB;
-    top: 7% !important;
-	bottom: 7% !important;
-    width: 10px !important;
-    height: 100% !important;
-	max-height: 86% !important;
-	border-radius: 0% !important;
+background-color: #ff4a00;
+  
 }
 
 .timetable1{
@@ -115,4 +79,8 @@ background-color: #3498DB;
 
 .selectedDay {
  text-align: center;
+}
+
+.paddinLeftItem{
+ padding-left : 10% !important;
 }
