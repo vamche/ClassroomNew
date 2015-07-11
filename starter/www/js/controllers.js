@@ -1,5 +1,56 @@
 angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 
+.factory('myFactoryService',function($state){
+
+
+    var homeworkData =[
+    { id: 0, title: "Read chapter 9", subject: "English", batch: "X" },
+    { id: 1, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 2, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 3, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 4, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 5, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 6, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 7, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 8, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 9, title: "Read chapter 9", subject: "English", batch: "X"  }
+  ];
+	var homework = { id: "", title: "sda", subject: "", batch: ""  };
+
+    return{
+        setData:function(str){	
+            console.log("1");	    
+            homeworkData.push(str);
+			$state.go('app.HomeworkScreen');
+        },
+
+        getData:function(){
+		    console.log("2");
+            return homeworkData;
+        },
+		
+		setHomeworkSelectedData:function(homeworkTable){	
+            	    
+			if(homeworkTable == null){
+				console.log("1");
+				homework = { id: "", title: "sda", subject: "", batch: ""  };
+			}else{
+				console.log("2");
+				homework = homeworkTable;
+			}            
+			
+        },
+
+        getSelectedHoweworkData:function(){
+		    console.log("2");
+            return homework;
+        }
+    }
+
+
+})
+
+
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   
   // With the new view caching in Ionic, Controllers are only called
@@ -127,19 +178,39 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 })
 
 
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('HomeworkCtrl', function($scope,$state,myFactoryService) {
+   console.log("called homework");
+   $scope.addHomeworkScreen = function() {
+	  console.log("+ click");
+      $state.go('app.addHomework'); 
+    };
+  
+  $scope.items = myFactoryService.getData();
+  
 })
-.controller('HomeworkCtrl', function($scope,$state) {
-			$scope.groups = [];
 
-			$scope.groups = [{  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" },
-							 {  name: "Select Subject", items: ["Maths","Science","English"], selectedItem : "" }];
+
+
+.controller('AddHomeworkCtrl', function($scope,$state,myFactoryService) {	
+			            
+			
+			
 		  
 		  /*
 		   * if given group is the selected group, deselect it
 		   * else, select the given group
+		   
+		   
 		   */
+		  $scope.$on('$ionicView.enter', function() {
+			 $scope.groups = [];
+			 $scope.homework = myFactoryService.getSelectedHoweworkData();			
+			 console.log("called addhomework" + $scope.homework.title);
+			 $scope.groups = [{  name: "Select Class", items: ["X","IX","IIX"], selectedItem : $scope.homework.batch },
+							  {  name: "Select Subject", items: ["Maths","Science","English"], selectedItem : $scope.homework.subject }];
+			 
+		  });
+		   
 		  $scope.toggleGroup = function(group) {
 			if ($scope.isGroupShown(group)) {
 			  $scope.shownGroup = null;
@@ -155,59 +226,34 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 			return $scope.shownGroup === group;
 		  };
 		   $scope.resetHomework = function(){
-			for(var i=0;i<$scope.groups.length;i++){
-			  $scope.groups[i].selectedItem = "";
+		    for(var i=0;i<$scope.groups.length;i++){
+				$scope.groups[i]["selectedItem"] = "";
 			}
-			$scope.homeworkVal = "";
-			$scope.shownGroup = null;
+			$scope.homework = { id: "", title: "", subject: "", batch: ""  };
+			myFactoryService.setHomeworkSelectedData(null);
 		  };
-		  
-		$scope.addItems=function(){
-		  if($scope.groups[0].selectedItem != "" && $scope.groups[1].selectedItem != "" && $scope.homeworkVal != ""){
-				$scope.items.push({
-					id: Math.floor((Math.random() * 100) + 1),
-					title: $scope.homeworkVal,
-					subject: $scope.groups[1].selectedItem,
-					batch: $scope.groups[0].selectedItem
-				});			  
-			  $state.go('app.HomeworkScreen');
-		   }
-   }
-   
-   
-   $scope.data = {
-    showDelete: false
-  };
-  
-  $scope.edit = function(item) {
-    alert('Edit Item: ' + item.id);
-  };
+		  $scope.newItem = {};
+		  $scope.addHomework=function(){
+			  			 
+			 console.log("add homework"+$scope.homework.title);
+			  if($scope.groups[0].selectedItem != "" && $scope.groups[1].selectedItem != "" && $scope.homework.title != ""){
+					//myFactoryService.setHomeworkSelectedData($scope.homework.title);
+					$scope.newItem = {
+						id: Math.floor((Math.random() * 100) + 1),
+						title: $scope.homework.title,
+						subject: $scope.groups[1].selectedItem,
+						batch: $scope.groups[0].selectedItem
+					};	
+				
+				   myFactoryService.setData($scope.newItem);
+				   myFactoryService.setHomeworkSelectedData(null);
+				   $state.go('app.HomeworkScreen');
+			   }
+		   
+		   
+		}
  
-  $scope.delete = function(item) {
-    $scope.items.splice($scope.items.indexOf(item), 1);
-  };
-  
-   $scope.addHomework = function() {
-	  
-      $state.go('app.addHomework'); 
-    };
-  
-  $scope.items = [
-    { id: 0, title: "Read chapter 9", subject: "English", batch: "X" },
-    { id: 1, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 2, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 3, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 4, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 5, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 6, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 7, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 8, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 9, title: "Read chapter 9", subject: "English", batch: "X"  }
-  ];
-  
 })
-
-
 
 
 

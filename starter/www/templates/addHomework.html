@@ -7,7 +7,7 @@
             <a href="#/app/dashboard" class="button button-assertive button-clear  icon-right ion-android-close"></a-->
     </ion-header-bar>
       <ion-content>
-      <ion-list>
+
         <div ng-repeat="group in groups">
           <ion-item class="item-stable item-icon-right"
                     ng-click="toggleGroup(group)"
@@ -27,15 +27,15 @@
             
            <label class="item item-input item-floating-label">
             <span class="input-label">Homework</span>
-            <input type="text" placeholder="Homework" ng-model="homeworkVal">
+            <input type="text" placeholder="Homework" value= "{{ homework.title }}"/>
           </label>
-          <button class="button button-full button-balanced"  ng-click="addItems()">
+          <button class="button button-full button-balanced"  ng-click="addHomework()">
             Add
           </button>
            <button class="button button-full button-clear button-energized" ng-click="resetHomework()">
             Reset
           </button>     
-      </ion-list>
+     
       
     </ion-content>
     
