@@ -530,7 +530,9 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline" },
 						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline" },
 						{  id: "CIRCULAR", title:"Circular", icon:"ion-ios-analytics-outline"},
-						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline"}];
+						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline"},
+						{  id: "TIME_TABLE", title:"Time Table", icon:"ion-ios-list-outline"}
+						];
 						
 						
 							
@@ -553,6 +555,8 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 					$state.go('app.addResult');
 				}else if(id == "CIRCULAR"){
 					$state.go('app.circular');
+				}else if(id == "TIME_TABLE"){
+					$state.go('app.todayTimetable');
 				}
     };
 	 console.log($scope.ScreenID);					

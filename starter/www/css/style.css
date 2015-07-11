@@ -10,3 +10,109 @@ body {
 .card .item{
   background: Gainsboro;
 }
+
+.phone-enter {
+  opacity:0;
+  -webkit-transition-property: all;
+  -webkit-transition-timing-function: ease-out-cubic;
+  -webkit-transition-duration: 400ms;
+}
+.phone-enter.phone-enter-active {
+  opacity: 1;
+}
+
+
+.subjectColor0{
+background-color: #00ff00;
+    top: 7% !important;
+	bottom: 7% !important;
+    width: 10px !important;
+    height: 100% !important;
+	max-height: 86% !important;
+	border-radius: 0% !important;
+}
+.subjectColor1{
+background-color: #D2527F;
+    top: 7% !important;
+	bottom: 7% !important;
+    width: 10px !important;
+    height: 100% !important;
+	max-height: 86% !important;
+	border-radius: 0% !important;
+}
+.subjectColor2{
+background-color: #663399;
+    top: 7% !important;
+	bottom: 7% !important;
+    width: 10px !important;
+    height: 100% !important;
+	max-height: 86% !important;
+	border-radius: 0% !important;
+}
+.subjectColor3{
+background-color: #F62459;
+    top: 7% !important;
+	bottom: 7% !important;
+    width: 10px !important;
+    height: 100% !important;
+	max-height: 86% !important;
+	border-radius: 0% !important;
+}
+.subjectColor4{
+background-color: #EB974E;
+    top: 7% !important;
+	bottom: 7% !important;
+    width: 10px !important;
+    height: 100% !important;
+	max-height: 86% !important;
+	border-radius: 0% !important;
+}
+
+.subjectColor5{
+background-color: #1F3A93;
+    top: 7% !important;
+	bottom: 7% !important;
+    width: 10px !important;
+    height: 100% !important;
+	max-height: 86% !important;
+	border-radius: 0% !important;
+}
+.subjectColor6{
+background-color: #4ECDC4;
+    top: 7% !important;
+	bottom: 7% !important;
+    width: 10px !important;
+    height: 100% !important;
+	max-height: 86% !important;
+	border-radius: 0% !important;
+}
+.subjectColor7{
+background-color: #26A65B;
+    top: 7% !important;
+	bottom: 7% !important;
+    width: 10px !important;
+    height: 100% !important;
+	max-height: 86% !important;
+	border-radius: 0% !important;
+}
+
+
+.subjectColorDefault{
+background-color: #3498DB;
+    top: 7% !important;
+	bottom: 7% !important;
+    width: 10px !important;
+    height: 100% !important;
+	max-height: 86% !important;
+	border-radius: 0% !important;
+}
+
+.timetable1{
+	margin-left: 5% !important;
+	margin-top: 2% !important;
+	margin-bottom: 2% !important;
+}
+
+.selectedDay {
+ text-align: center;
+}
