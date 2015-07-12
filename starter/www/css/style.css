@@ -23,13 +23,13 @@ body {
 
 .imageTimetable{
 	left: 0px !important;
-	top: 7% !important;
-	bottom: 7% !important;
-    width: 13px !important;
-    height: 100% !important;
-	max-height: 86% !important;
+	top: 0% !important;
+	bottom: 0% !important;
+  width: 2% !important;
+  height: 100% !important;
+	max-height: 100% !important;
 	border-radius: 0% !important;  
-	 border: 0px solid !important;
+	border: 0px solid !important;
 }
 .subjectColor0{
 background-color: #ffb409;
