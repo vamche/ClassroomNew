@@ -104,7 +104,16 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
       }
     }
   })
-  
+
+    .state('app.weekTimetable', {
+    url: "/weekTimetable",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/weekTimetable.html",
+		controller: 'TimetableCtrl'
+      }
+    }
+  })
   
  .state('app.takeAttendance', {
     url: "/takeAttendance",
