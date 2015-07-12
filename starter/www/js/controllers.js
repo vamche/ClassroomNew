@@ -531,7 +531,8 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline" },
 						{  id: "CIRCULAR", title:"Circular", icon:"ion-ios-analytics-outline"},
 						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline"},
-						{  id: "TIME_TABLE", title:"Time Table", icon:"ion-ios-list-outline"}
+						{  id: "TIME_TABLE", title:"Time Table", icon:"ion-ios-list-outline"},
+						{  id: "TIME_WEEKTABLE", title:"Week Time Table", icon:"ion-ios-list-outline"}
 						];
 						
 						
@@ -557,6 +558,8 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 					$state.go('app.circular');
 				}else if(id == "TIME_TABLE"){
 					$state.go('app.todayTimetable');
+				}else if(id == "TIME_WEEKTABLE"){
+					$state.go('app.weekTimetable');
 				}
     };
 	 console.log($scope.ScreenID);					

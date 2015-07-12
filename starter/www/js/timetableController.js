@@ -104,6 +104,14 @@ angular.module('timetable.controllers', [])
 	  .controller('TimetableCtrl', function($scope,timetableFactory,$ionicSlideBoxDelegate) {
          
 			$scope.timeTableForTodayList = timetableFactory.getTodayTimetableData();
+			
+			$scope.data = [{
+				name: 'Shidhin',
+				info: 'I am from Dubai'
+			}, {
+				name: 'Someone',
+				info: 'I am from New york'
+			}];
 
       });
 	  
