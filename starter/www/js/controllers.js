@@ -552,15 +552,15 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
      $scope.LeftMenu = [];
 	 $scope.ScreenID = "";
 	 
-	 $scope.LeftMenu = [{  id: "HOME", title:"Home", icon:"ion-ios-home-outline"},
-	                    {  id: "ATTENDANCE", title:"Attendance", icon:"ion-ios-calendar-outline"},
-						{  id: "HOMEWORK", title:"Homework", icon:"ion-ios-book-outline" },
-						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline" },
-						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline" },
-						{  id: "CIRCULAR", title:"Circular", icon:"ion-ios-analytics-outline"},
-						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline"},
-						{  id: "TIME_TABLE", title:"Time Table", icon:"ion-ios-list-outline"},
-						{  id: "TIME_WEEKTABLE", title:"Week Time Table", icon:"ion-ios-list-outline"}
+	 $scope.LeftMenu = [{  id: "HOME", title:"Home", icon:"ion-ios-home-outline", color:"energized"},
+	                    {  id: "ATTENDANCE", title:"Attendance", icon:"ion-ios-calendar-outline",color:"calm"},
+						{  id: "HOMEWORK", title:"Homework", icon:"ion-ios-book-outline", color:"assertive" },
+						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline", color:"positive" },
+						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline", color:"balanced" },
+						{  id: "CIRCULAR", title:"Circular", icon:"ion-ios-analytics-outline", color:"royal"},
+						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline", color:"positive"},
+						{  id: "TIME_TABLE", title:"Timetable", icon:"ion-ios-list-outline", color:"light"},
+						{  id: "TIME_WEEKTABLE", title:"Week Timetable", icon:"ion-ios-list-outline", color:"energized"}
 						];
 						
 						

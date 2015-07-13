@@ -1,4 +1,4 @@
-.list .item.item-accordion {
+m.list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;
   padding-bottom: 0;
@@ -19,6 +19,13 @@
 	border-left: 0px;
 	border-right: 0px;
 	border-bottom: 0px;
+}
+
+.noBorders{
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
 }
 
 .rightMenu{

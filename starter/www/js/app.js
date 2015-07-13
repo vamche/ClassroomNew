@@ -20,6 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
   });
 })
 
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -88,7 +89,7 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
     views: {
       'menuContent': {
         templateUrl: "templates/addHomework.html",
-		controller: 'AddHomeworkCtrl'
+		    controller: 'AddHomeworkCtrl'
       }
     }
   })

@@ -74,7 +74,7 @@
 		  attendanceInfo: '=',
         },
         template:
-          '<div class="pickadate">' +
+          '<div class="pickadate" on-swipe-left="changeMonth(1)" on-swipe-right="changeMonth(-1)">' +
             '<div class="pickadate-header">' +
               '<div class="pickadate-controls">' +
                 /*'<a href="" class="pickadate-prevY" ng-click="changeMonth(-12)" ng-show="allowPrevMonth">{{t("prevY")}}</a>' +*/
@@ -82,7 +82,7 @@
                 '<button class="button-icon icon ion-android-arrow-dropright pickadate-nextM" ng-click="changeMonth(1)"   ng-show="allowNextMonth"></button>' +                
                 /*'<a href="" class="pickadate-nextY" ng-click="changeMonth(12)"  ng-show="allowNextMonth">{{t("nextY")}}</a>' +*/
               '</div>' +
-              '<h3 class="pickadate-centered-heading padding no-margin">' +
+              '<h3 class="pickadate-centered-heading padding no-margin animated bounceIn">' +
                 '<strong>{{currentDate | date:"MMMM - yyyy"}}</strong>' +
               '</h3>' +
             '</div>' +
@@ -97,7 +97,7 @@
                   '<li ng-repeat="d in dates.slice(0,7)" ng-click="setDate(d,1)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row1" class="checkCard ng-hide card padding selected-date">'+
+					'<div id="Row1" class="checkCard ng-hide card padding selected-date animated fadeIn">'+
 						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
 						'{{ date.type }} </br>'+
 						'Comments : {{ date.data }}'+
