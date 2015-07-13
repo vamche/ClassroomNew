@@ -130,7 +130,10 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
    $scope.maxDate = '2050-12-30';
    $scope.ISCHANGESTATUSCLCKED = true;
    $scope.model = "I am attending";
+   $scope.modelStudent = "Parent attending";
    $scope.disabledDates = [];
+    $scope.selectedCircularData  = "sss";
+	$scope.selectedCircularDate = "";
    $scope.classInfo = [ {  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" }
 						]; 
 						
@@ -140,7 +143,8 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 						]; 
 						
 	$scope.circularInfo = [ { data: 'Parent - Teacher Conference',date: '2015-07-15',id : 1},
-							{ data: 'Fun Day',date: '2015-07-25' ,id :2}
+							{ data: 'Fun Day',date: '2015-07-25' ,id :2},
+							{ data: 'Annual Day',date: '2015-07-15' ,id :3}
 						]; 
   $scope.PTMeetingInfo = [
     { Name: 'Student1',Status: 'Parent atttending', StudentId: 1 },
@@ -152,8 +156,18 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 	   if(MeetingInfo.id == "2"){
 			$state.go('app.circularDetailsForTeacher');
 	   }
-	   else{
+	   else if(MeetingInfo.id == "1"){
+		/* $scope.selectedCircular.push({
+					data: MeetingInfo.data,
+					date: MeetingInfo.date,
+					id: MeetingInfo.id
+				});			 */ 
 		   $state.go('app.circularDetails');
+	   }
+	   else{
+		 selectedCircularData =  MeetingInfo.id;
+		  $scope.selectedCircularDate =  MeetingInfo.date;
+		   $state.go('app.circularDetailsForStudent');
 	   }
   };
   $scope.changeCircularStatus = function(){
@@ -163,17 +177,31 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 	  $scope.ISCHANGESTATUSCLCKED = true;
 	  if(MeetingInfo.id== "1"){
 	    $scope.model = "I am attending";
+		$scope.modelStudent = "Parent attending";
 	  }
 	  else if(MeetingInfo.id== "2"){
 	   $scope.model = "May attend";
+	   $scope.modelStudent = "Parent may attend";
 	  }
 	  else{
 	   $scope.model = "I am not attending";
+	   $scope.modelStudent = "Parent not attending";
 	  }
   }
   $scope.goBack = function(){
 	$state.go('app.circular');
   }
+  
+})
+
+// feeCntrl
+.controller('feeCntrl', function($scope,$state) {
+  
+  $scope.items = [
+    { id: 0, title: "Term 1", month: "June",fee: "7000/-", status: "Paid" ,src:"img/fee.jpg"},
+    { id: 1, title: "Term 2", month: "October", fee: "7000/-",status: "Not Paid",src:"img/fee.jpg"  },
+    { id: 2, title: "Term 3", month: "January",fee: "7000/-", status: "Not Paid" ,src:"img/fee.jpg" }
+  ];
   
 })
 

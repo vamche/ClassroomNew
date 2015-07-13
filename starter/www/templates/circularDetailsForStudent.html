@@ -1,0 +1,27 @@
+<ion-view hide-nav-bar="true">
+     <ion-pane>
+      <ion-header-bar class="bar-dark" >
+	      <button class="button-icon ion-chevron-left button-clear" ng-click="goBack()"></button>
+		  <div class="h1 title">Circular Details For Student</div>
+	  </ion-header-bar>
+ <ion-content scroll="false" ng-controller="circular">
+	<div class="col text-center">
+	 <ion-list>
+        
+		<div class="list card">
+			<div class="item item-image" >
+				<img src="img/circular.jpg">
+			</div>
+			<a class="item item-Event-left positive" href="#">
+			
+			<!-- <i class="icon ion-music-note"></i> -->
+				<b> Event </b> <br>{{selectedCircularData}}  July 17 <br>
+				Parent - Teacher Conference
+			</a>
+		</div>
+          <input class="button button button-balanced"  ng-click="" value="{{modelStudent}}">
+          </input> <br>
+      </ion-list>
+	    </div> 
+  </ion-content>
+</ion-view>

@@ -73,7 +73,15 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
         }
       }
     })
-	
+	.state('app.fee', {
+    url: "/fee",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/fee.html",
+		controller: 'feeCntrl'
+      }
+    }
+  })
 	
   .state('app.addHomework', {
     url: "/addHomework",
@@ -174,7 +182,15 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
       }
     })
 	
-  
+  .state('app.circularDetailsForStudent', {
+      url: "/circularDetailsForStudent",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/circularDetailsForStudent.html",
+          controller: 'circular'
+        }
+      }
+    })
 
   
   // if none of the above states are matched, use this as the fallback

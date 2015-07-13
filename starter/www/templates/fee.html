@@ -1,0 +1,83 @@
+<ion-view hide-nav-bar="true">
+     <ion-pane>
+      <ion-header-bar class="bar-dark">
+	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+        <h1 class="title">Fee</h1>
+      </ion-header-bar>
+      <ion-content>
+        <ion-list>
+
+      <!--  <ion-item ng-repeat="item in items" 
+                  item="item"
+                  href="#/item/{{item.id}}"
+           <h3 class="energized">#{{ item.id }} {{ item.title }}   </h3></br>
+			subhect :{{ item.month }} </br>
+            Batch : {{ item.status }}
+        </ion-item>
+      </ion-list> -->
+	  
+	  <ion-item ng-repeat="item in items" 
+                  item="item"
+                  href="#/item/{{item.id}}"
+			<a href="#" class="image">
+			{{ item.title }}
+			 {{ item.month }} 
+				<img src="img/fee.jpg" />  {{ item.fee }} {{ item.status }}
+        </ion-item>
+	  </a>
+	  
+	  
+	  <div class="row">
+  <div class="col"><img src="img/fee.jpg"></div>
+  <div class="col col-previous">Caption left</div>
+  <div class="col col-bottom">Caption right</div>
+</div>
+	  
+	<div class="row">
+	  </a>
+		<div class="col">
+			<a>Term 1 <br> test</a>
+		</div>
+		<div class="col">
+			<img src="img/fee.jpg" />
+		</div>
+		<div class="col">
+			<a>7000/-</a>
+		</div>
+		<div class="col">
+			<a>Paid</a>
+		</div>
+	</div>
+	<div class="row">
+	  </a>
+		<div class="col">
+			<a>Term 2 <br> test</a>
+		</div>
+		<div class="col">
+			<img src="img/fee.jpg" />
+		</div>
+		<div class="col">
+			<a>7000/-</a>
+		</div>
+		<div class="col">
+			<a>Paid</a>
+		</div>
+	</div>
+	<div class="row">
+	  </a>
+		<div class="col">
+			<a>Term 3 <br> test</a>
+		</div>
+		<div class="col">
+			<img src="img/fee.jpg" />
+		</div>
+		<div class="col">
+			<a>7000/-</a>
+		</div>
+		<div class="col">
+			<a>Paid</a>
+		</div>
+	</div>
+      </ion-content>
+    </ion-pane>
+</ion-view>
