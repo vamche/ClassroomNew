@@ -35,10 +35,14 @@
 		<ion-item menu-close href="#/app/addResult">
           Result
         </ion-item-->
-		  <ion-item class="item-icon-left item-dark leftMenu" menu-close ng-repeat="item in LeftMenu" ng-click="routeToScreen(item)">
-			<i class="icon {{item.icon}} {{item.color}}"></i>
-      {{item.title}}
+		  <ion-item class="item item-icon-left item-dark leftMenu animated wobble" menu-close ng-repeat="item in LeftMenu" 
+                      ng-click="routeToScreen(item)">
+      
+  			<i class="icon {{item.icon}} {{item.color}}">  </i>
+        {{item.title}}     
+       
 		  </ion-item>
+
 		
 
       </ion-list>

@@ -72,9 +72,7 @@ background-color: #ff4a00;
 }
 
 .timetable1{
-	margin-left: 5% !important;
-	margin-top: 2% !important;
-	margin-bottom: 2% !important;
+	background-color: #f8f8f8;
 }
 
 .selectedDay {
@@ -84,3 +82,4 @@ background-color: #ff4a00;
 .paddinLeftItem{
  padding-left : 10% !important;
 }
+
