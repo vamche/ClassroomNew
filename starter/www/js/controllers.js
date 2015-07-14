@@ -132,7 +132,7 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
    $scope.model = "I am attending";
    $scope.modelStudent = "Parent attending";
    $scope.disabledDates = [];
-    $scope.selectedCircularData  = "sss";
+    $scope.selectedCircularData  = "";
 	$scope.selectedCircularDate = "";
    $scope.classInfo = [ {  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" }
 						]; 
@@ -557,6 +557,7 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 						{  id: "HOMEWORK", title:"Homework", icon:"ion-ios-book-outline", color:"assertive" },
 						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline", color:"positive" },
 						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline", color:"balanced" },
+						{  id: "FEE", title:"Fee", icon:"ion-social-usd-outline", color:"royal"},
 						{  id: "CIRCULAR", title:"Circular", icon:"ion-ios-analytics-outline", color:"royal"},
 						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline", color:"positive"},
 						{  id: "TIME_TABLE", title:"Timetable", icon:"ion-ios-list-outline", color:"light"},
@@ -588,6 +589,8 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 					$state.go('app.todayTimetable');
 				}else if(id == "TIME_WEEKTABLE"){
 					$state.go('app.weekTimetable');
+				}else if(id == "FEE"){
+					$state.go('app.fee');
 				}
     };
 	 console.log($scope.ScreenID);					
