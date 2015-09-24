@@ -1,10 +1,13 @@
 <ion-view hide-nav-bar="true">
      <ion-pane>
-      <ion-header-bar class="bar-dark">
-	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+      <ion-header-bar class="bar-positive">
+	      <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
         <h1 class="title">Circular</h1>
       </ion-header-bar>
  <ion-content scroll="false" ng-controller="circular">
+    <div id="DateHeader" class="item item-positive selected-date animated fadeIn">
+            <a class="dateHeader">{{date.date}} </a>            
+    </div>
     <div class="containerAttendances">
       <div pickadate ng-model="date" min-date="minDate" max-date="maxDate" disabled-dates='disabledDates'   attendances-Info='classInfo'></div>
 	  <!--div class="card padding selected-date">
@@ -15,7 +18,7 @@
     </div>
 	<ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
     <ion-list>
-      <ion-item ng-repeat="MeetingInfo in circularInfo" ng-click=goToCircularDetail(MeetingInfo)>
+      <ion-item ng-repeat="MeetingInfo in circularInfo | filter by {date = date}" ng-click=goToCircularDetail(MeetingInfo)>
        {{MeetingInfo.date}}</br> 
 		   <b class="dark">{{MeetingInfo.data}} </b>
       </ion-item>

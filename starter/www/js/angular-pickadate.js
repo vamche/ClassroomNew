@@ -78,11 +78,11 @@
             '<div class="pickadate-header">' +
               '<div class="pickadate-controls">' +
                 /*'<a href="" class="pickadate-prevY" ng-click="changeMonth(-12)" ng-show="allowPrevMonth">{{t("prevY")}}</a>' +*/
-                '<button class="button-icon icon ion-android-arrow-dropleft pickadate-prevM" ng-click="changeMonth(-1)"  ng-show="allowPrevMonth"></button>' +
-                '<button class="button-icon icon ion-android-arrow-dropright pickadate-nextM" ng-click="changeMonth(1)"   ng-show="allowNextMonth"></button>' +                
+                '<button class="button-icon icon ion-ios-arrow-back button-light pickadate-prevM" ng-click="changeMonth(-1)"  ng-show="allowPrevMonth"></button>' +
+                '<button class="button-icon icon ion-ios-arrow-forward button-light pickadate-nextM" ng-click="changeMonth(1)"   ng-show="allowNextMonth"></button>' +                
                 /*'<a href="" class="pickadate-nextY" ng-click="changeMonth(12)"  ng-show="allowNextMonth">{{t("nextY")}}</a>' +*/
               '</div>' +
-              '<h3 class="pickadate-centered-heading padding no-margin animated bounceIn">' +
+              '<h3 class="pickadate-centered-heading padding no-margin animated fadeIn">' +
                 '<strong>{{currentDate | date:"MMMM - yyyy"}}</strong>' +
               '</h3>' +
             '</div>' +
@@ -96,52 +96,28 @@
                 '<ul class="pickadate-cell">' +
                   '<li ng-repeat="d in dates.slice(0,7)" ng-click="setDate(d,1)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
-					'</li>' +
-					'<div id="Row1" class="checkCard ng-hide card padding selected-date animated fadeIn">'+
-						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
-						'{{ date.type }} </br>'+
-						'Comments : {{ date.data }}'+
-					'</div>'+
+					       '</li>' +
+					
                   '<li ng-repeat="d in dates.slice(7,14)" ng-click="setDate(d,2)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row2" class="checkCard ng-hide card padding selected-date" >'+
-						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
-						'{{ date.type }} </br>'+
-						'Comments : {{ date.data }}'+
-					'</div>'+
+				
                   '<li ng-repeat="d in dates.slice(14,21)" ng-click="setDate(d,3)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row3" class="checkCard ng-hide card padding selected-date" >'+
-						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
-						'{{ date.type }} </br>'+
-						'Comments : {{ date.data }}'+
-					'</div>'+
+					
                   '<li ng-repeat="d in dates.slice(21,28)" ng-click="setDate(d,4)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row4" class="checkCard ng-hide card padding selected-date">'+
-						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
-						'{{ date.type }} </br>'+
-						'Comments : {{ date.data }}'+
-					'</div>'+	
+				
                   '<li ng-repeat="d in dates.slice(28,35)" ng-click="setDate(d,5)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row5" class="checkCard ng-hide card padding selected-date">'+
-						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
-						'{{ date.type }} </br>'+
-						'Comments : {{ date.data }}'+
-					'</div>'+
+				
 				'<li ng-repeat="d in dates.slice(35,42)" ng-click="setDate(d,6)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
 					'</li>' +
-					'<div id="Row6" class="checkCard ng-hide card padding selected-date">'+
-						'<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
-						'{{ date.type }} </br>'+
-						'Comments : {{ date.data }}'+
-					'</div>'+					
+						
                 '</ul>' +
               '</div>' +
             '</div>' +
@@ -155,6 +131,9 @@
               currentDate   = (scope.defaultDate && dateUtils.stringToDate(scope.defaultDate)) || new Date();
 
           scope.dayNames    = $locale.DATETIME_FORMATS['SHORTDAY'];
+          for(var i=0;i++;i<scope.dayNames.length){
+            scope.dayNames[i] = scope.dayNames[i].charAt(0);
+          }
           scope.currentDate = currentDate;
           scope.t           = i18n.t;
 
@@ -254,45 +233,10 @@
           };
             scope.setDate = function(dateObj,value) {
             if (isDateDisabled(dateObj)) return;
+            console.log(JSON.stringify(dateObj));
             ngModel.$setViewValue(dateObj);
-			if(this.d.className != "pickadate-disabled"){
-			    var dataDisplay = false;
-				var k ="";
-				for(var t = 1; t < 7 ; t++){
-					var rowVal = '#Row'+t;
-					var myE1 = "";
-					myE1 = angular.element( document.querySelector( rowVal ) );
-					myE1.addClass('ng-hide');
-					if(value == t){	
-						if(myE1.hasClass('ng-hide')){
-						    dataDisplay = true;
-							myE1.removeClass('ng-hide');
-							k = t;
-						}else{						
-							myE1.addClass('ng-hide');
-						}
-					}else{
-						myE1.addClass('ng-hide'); 
-					}
-				
-				}
-			}
-			    if(dataDisplay){
-				   var rowVal1 = '#Row'+k;
-				   var myE3 = angular.element( document.querySelector( rowVal1 ) );
-			       $timeout(function(){
-						myE3.addClass('ng-hide');
-					}, 2000);
-				}
-			
           };
 
- 
- 
- 
- 
- 
- 
           ngModel.$render = function () {
             if ((date = ngModel.$modelValue) && (indexOf.call(disabledDates, date) === -1)) {
               scope.currentDate = currentDate = dateUtils.stringToDate(date);

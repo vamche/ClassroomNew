@@ -1,30 +1,40 @@
 <ion-view hide-nav-bar="true">
      <ion-pane>
-      <ion-header-bar class="bar-dark">
+      <ion-header-bar class="bar-energized">
 	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
         <h1 class="title">Homework</h1>
-        <button class="button icon ion-android-add positive" ng-click="addHomeworkScreen()"></button>
+       
       </ion-header-bar>
-      <ion-content>
-        <ion-list>
-
-        <ion-item ng-repeat="item in items" 
-                  item="item"
-                  href="#/item/{{item.id}}"
-                  class="item-avatar list-card animated bounce">
-           <h3 class="energized">#{{ item.id }} {{ item.title }} </h3>
-            Subject : {{ item.subject }} </br>
-            Batch : {{ item.batch }}
-         
-          <ion-option-button class="button-icon icon ion-edit dark padding"
-                             ng-click="edit(item)">
-          </ion-option-button>
-          <ion-option-button class="button-icon icon ion-android-delete assertive padding"
-                             ng-click="delete(item)">
-          </ion-option-button>
+      <ion-content> 
+        <ion-item class="item item-energized"> <!-- add ng-if=isTeacher() -->
+            <a class="button button-block icon-left ion-android-add-circle button-energized">ADD NEW HOME WORK</a>
+        </ion-item>    
+        <ion-list>        
           
-        </ion-item>
+          <ion-item  class="item-divider">
+              Today
+          </ion-item > 
+        
+          <ion-item ng-repeat="item in items"                   
+                    ng-click="onFocus($index)"
+                    class="animated fadeInUp"
+                    ng-class="selectedClass($index)">
+             
+             <h3 >#{{ item.id }} {{ item.title }} </h3>
+             <h5 > {{ item.subject }} | Batch : {{ item.batch }} </h5>           
+             <h5 class="topBottomPadding animated fadeInDown" ng-show="showDesc($index)"> {{ item.title }}  </h5> 
 
+            <ion-option-button class="button-icon icon ion-edit dark padding"
+                               ng-if="isTeacher()"
+                               ng-click="edit(item)">
+            </ion-option-button>
+            <ion-option-button class="button-icon icon ion-android-delete assertive padding"
+                               ng-if="isTeacher()"
+                               ng-click="delete(item)">
+            </ion-option-button>
+            
+          </ion-item>
+         
       </ion-list>
       </ion-content>
     </ion-pane>

@@ -9,33 +9,25 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
     { id: 2, title: "Read chapter 9", subject: "English", batch: "X"  },
     { id: 3, title: "Read chapter 9", subject: "English", batch: "X"  },
     { id: 4, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 5, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 6, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 7, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 8, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 9, title: "Read chapter 9", subject: "English", batch: "X"  }
+    { id: 5, title: "Read chapter 9", subject: "English", batch: "X"  }
   ];
 	var homework = { id: "", title: "sda", subject: "", batch: ""  };
 
     return{
-        setData:function(str){	
-            console.log("1");	    
+        setData:function(str){	           
             homeworkData.push(str);
 			$state.go('app.HomeworkScreen');
         },
 
-        getData:function(){
-		    console.log("2");
+        getData:function(){		    
             return homeworkData;
         },
 		
 		setHomeworkSelectedData:function(homeworkTable){	
             	    
-			if(homeworkTable == null){
-				console.log("1");
+			if(homeworkTable == null){				
 				homework = { id: "", title: "sda", subject: "", batch: ""  };
-			}else{
-				console.log("2");
+			}else{				
 				homework = homeworkTable;
 			}            
 			
@@ -49,6 +41,44 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 
 
 })
+
+.factory('menuListService',function($state){
+
+
+    var leftMenuList = [{  id: "HOME", title:"Home", icon:"ion-ios-home-outline", color:"energized", user:"parent,student,teacher"},
+	                    {  id: "ATTENDANCE", title:"Attendance", icon:"ion-ios-calendar-outline",color:"calm", user:"parent,student,teacher"},
+						{  id: "HOMEWORK", title:"Homework", icon:"ion-ios-book-outline", color:"assertive", user:"parent,student,teacher" },						
+						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline", color:"balanced", user:"parent,student,teacher" },
+						{  id: "FEE", title:"Fee", icon:"ion-social-usd-outline", color:"royal", user:"parent,student"},
+						{  id: "CIRCULAR", title:"Circular", icon:"ion-ios-analytics-outline", color:"royal", user:"parent,student,teacher"},
+						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline", color:"positive", user:"teacher"},
+						{  id: "TIME_TABLE", title:"Timetable", icon:"ion-ios-list-outline", color:"light", user:"parent,student,teacher"},
+						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline", color:"positive", user:"teacher" },
+						{  id: "TIME_WEEKTABLE", title:"Week Timetable", icon:"ion-ios-list-outline", color:"energized", user:"parent,student,teacher"}
+						];		
+
+	var rightMenuList = [];
+
+    return{
+
+        getLeftMenuList:function(){	
+            return {"leftMenuList": leftMenuList};
+        },
+        setLeftMenuList:function(list){	
+            leftMenuList = list;
+        },
+        getRightMenuList:function(){	
+            return {"rightMenuList": rightMenuList};
+        },
+        setRightMenuList:function(list){	
+            rightMenuList = list;
+        }
+    }
+
+
+})
+
+
 
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
@@ -92,7 +122,9 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 })
 
 .controller('attendanceCtrl', function($scope,dateFilter,$state) {
-   $scope.date = dateFilter(new Date(), 'yyyy-MM-dd');//'2013-11-26';
+   var newDate = new Date();
+   $scope.date = dateFilter(newDate, 'yyyy-MM-dd');//'2013-11-26';
+   $scope.day = dateFilter(newDate,'dd');
    $scope.minDate = '2010-1-1';
    $scope.maxDate = '2050-12-30';
    $scope.disabledDates = [];
@@ -120,12 +152,10 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
   }
   
 })
-
-
-
-
 .controller('circular', function($scope,dateFilter,$state) {
-   $scope.date = dateFilter(new Date(), 'yyyy-MM-dd');//'2013-11-26';
+   var newDate = new Date();
+   $scope.date = dateFilter(newDate, 'yyyy-MM-dd');//'2013-11-26';
+   $scope.day = dateFilter(newDate,'dd');
    $scope.minDate = '2010-1-1';
    $scope.maxDate = '2050-12-30';
    $scope.ISCHANGESTATUSCLCKED = true;
@@ -141,8 +171,8 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 	{  name: "May attend", id : 2},
 	{  name: "I am not attending", id : 3 }
 						]; 
-						
-	$scope.circularInfo = [ { data: 'Parent - Teacher Conference',date: '2015-07-15',id : 1},
+	console.log("$scope.date " + $scope.date);			
+	$scope.circularInfo = [ { data: 'Parent - Teacher Conference',date: $scope.date ,id : 1},
 							{ data: 'Fun Day',date: '2015-07-25' ,id :2},
 							{ data: 'Annual Day',date: '2015-07-15' ,id :3}
 						]; 
@@ -206,24 +236,69 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 })
 
 
-.controller('HomeworkCtrl', function($scope,$state,myFactoryService) {
+.controller('HomeworkCtrl', function($scope,$state,myFactoryService,USER_DETAILS) {
    console.log("called homework");
+
+   $scope.activeIndex = -1;
+
+
+
    $scope.addHomeworkScreen = function() {
 	  console.log("+ click");
       $state.go('app.addHomework'); 
     };
-  
-  $scope.items = myFactoryService.getData();
+
+    $scope.isTeacher = function() {
+	 	var isTeacher = false;
+	 	if(USER_DETAILS.userRole == "teacher"){
+	 		isTeacher = true;
+	 	}
+	 	return isTeacher;
+    };
+
+    $scope.onFocus = function(index) {
+
+    	console.log("index  " + index);
+	 	//var itemElement = angular.element(document.querySelectorAll(".homeworkList"));
+	 	$scope.activeIndex = index;
+	 	//itemElement[index].addClass(".homeworkBG");
+    };
+
+    $scope.selectedClass = function(index){
+    	var selectedClass = "";
+    	if($scope.activeIndex == index){
+    		selectedClass = "item-energized";
+    	} 
+    	return selectedClass;   	
+    }
+
+    $scope.showDesc = function(index) {
+	 	var isActive = false;
+	 	if($scope.activeIndex == index){
+	 		isActive = true;
+	 	}
+	 	return isActive;
+    };
+
+
+
+  	$scope.$on('$ionicView.beforeEnter', function(){
+    	$scope.items = myFactoryService.getData();
+    	$scope.activeIndex = -1;
+  	});
+
   
 })
 
-
+.controller('DashboardCtrl', function($scope,$state,USER_DETAILS) {
+   console.log("USER_DETAILS.userName ---> " + USER_DETAILS.userName); 
+    $scope.username = "";
+    $scope.$on('$ionicView.beforeEnter', function(){
+    	 $scope.username  = USER_DETAILS.userName;
+  	});
+})
 
 .controller('AddHomeworkCtrl', function($scope,$state,myFactoryService) {	
-			            
-			
-			
-		  
 		  /*
 		   * if given group is the selected group, deselect it
 		   * else, select the given group
@@ -283,7 +358,203 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
  
 })
 
+.controller('MenuCtrl', function($scope, $stateParams,$state,USER_DETAILS,menuListService) {
 
+     $scope.LeftMenu = [];
+     $scope.RightMenu = [];
+	 $scope.ScreenID = "";
+
+	 $scope.$on('$ionicView.beforeEnter', function(){
+    	$scope.userRole = USER_DETAILS.userRole;
+    	$scope.LeftMenu = menuListService.getLeftMenuList().leftMenuList;    	
+	 	$scope.RightMenu = menuListService.getRightMenuList().rightMenuList;	 	
+	 });	
+
+
+
+	 $scope.routeToScreen = function(item){
+	            var id = item.id;
+				$scope.ScreenID = id;
+				console.log(id);
+				menuListService.setRightMenuList([]);
+				if(id == "HOME"){
+					$state.go('app.dashboard');				
+				}else if(id == "ATTENDANCE"){
+					$state.go('app.attendance');
+				}else if(id == "HOMEWORK"){
+					menuListService.setRightMenuList([{  id: "HOME", title:"Home", icon:"ion-ios-home-outline", color:"energized", user:"parent,student,teacher"},
+	                    {  id: "ATTENDANCE", title:"Attendance", icon:"ion-ios-calendar-outline",color:"calm", user:"parent,student,teacher"},
+						{  id: "HOMEWORK", title:"Homework", icon:"ion-ios-book-outline", color:"assertive", user:"parent,student,teacher" }						
+						]);
+					$state.go('app.HomeworkScreen');
+				}else if(id == "TAKE_ATTENDANCE"){
+					$state.go('app.takeAttendance');
+				}else if(id == "RESULTS"){
+					$state.go('app.addResult');
+				}else if(id == "ADD_RESULT"){
+					$state.go('app.addResult');
+				}else if(id == "CIRCULAR"){
+					$state.go('app.circular');
+				}else if(id == "TIME_TABLE"){
+					$state.go('app.todayTimetable');
+				}else if(id == "TIME_WEEKTABLE"){
+					$state.go('app.weekTimetable');
+				}else if(id == "FEE"){
+					$state.go('app.fee');
+				}
+    		};	
+    	$scope.showRightMenu = function(){
+    		var show = true;
+    		if($scope.RightMenu.length == 0){
+    			show = false;
+    		}
+	 		return show;
+		 };					
+	
+	 console.log($scope.ScreenID);					
+	                  							 
+})
+
+.controller('ResultCtrl', function($scope,$state) {
+			$scope.groups = [];
+
+			$scope.groups = [{  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" },
+							 {  name: "Select Division", items: ["DivA","DivB","DivC","DivD"], selectedItem : ""},
+							 {  name: "Select Subject", items: ["Maths","Science","English","Hindi","Social"], selectedItem : "" },
+							 {  name: "Select Student", items: ["Pooja","Narender","Rajesh","Vamsi","Padma","Rahul","Gokul","Ramki","Arun","Madhu"], selectedItem : ""}];
+		  
+		  /*
+		   * if given group is the selected group, deselect it
+		   * else, select the given group
+		   */
+		  $scope.toggleGroup = function(group) {
+			if ($scope.isGroupShown(group)) {
+			  $scope.shownGroup = null;
+			} else {
+			  $scope.shownGroup = group;
+			}
+		  };
+		  $scope.selectItem = function(group,item) {
+			$scope.shownGroup.selectedItem = item;
+			$scope.toggleGroup(group);
+		  };
+		  $scope.isGroupShown = function(group) {
+			return $scope.shownGroup === group;
+		  };
+		   $scope.resetResult = function(){
+			for(var i=0;i<$scope.groups.length;i++){
+			  $scope.groups[i].selectedItem = "";
+			}
+			$scope.resultVal = "";
+			$scope.shownGroup = null;
+		  };
+		  
+		$scope.addItems=function(){
+		  if($scope.groups[0].selectedItem != "" && $scope.groups[1].selectedItem != "" && $scope.resultVal != ""){
+				$scope.items.push({
+					id: Math.floor((Math.random() * 100) + 1),
+					title: $scope.resultVal,
+					subject: $scope.groups[1].selectedItem,
+					batch: $scope.groups[0].selectedItem
+				});			  
+			  $state.go('app.ResultScreen');
+		   }
+   }
+   
+   
+  $scope.data = {
+    showDelete: false
+  };
+  
+  $scope.edit = function(item) {
+    alert('Edit Item: ' + item.id);
+  };
+ 
+  $scope.delete = function(item) {
+    $scope.items.splice($scope.items.indexOf(item), 1);
+  };
+  
+   $scope.addResult = function() {	  
+      $state.go('app.addResult'); 
+    };
+  
+  $scope.items = [
+    { id: 0, title: "Read chapter 9", subject: "English", batch: "X" },
+    { id: 1, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 2, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 3, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 4, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 5, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 6, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 7, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 8, title: "Read chapter 9", subject: "English", batch: "X"  },
+    { id: 9, title: "Read chapter 9", subject: "English", batch: "X"  }
+  ];
+  
+})
+
+
+.controller('LoginCtrl', function($scope,$stateParams,$timeout,$state,$ionicPopup,USER_DETAILS) {
+	  $scope.login = {username: "", password : ""};
+	  $scope.loginText = "Login";
+	  $scope.$on('$ionicView.beforeEnter', function(){
+    	var btnElement;
+	    var spinnerElement;
+	      $scope.login = {username: "", password : ""};
+		  spinnerElement = angular.element( document.querySelector( "#loginSpinner" ) );
+		  btnElement = angular.element( document.querySelector( "#boxes" ) );
+		  btnElement.addClass('.box');	
+		  btnElement.removeClass('box-change');
+		  $scope.loginText = "Login";
+		  btnElement.removeClass('box-animate');
+		  spinnerElement.addClass('ng-hide');
+  	   });
+
+	  $scope.showAlert = function() {
+			    var alertPopup = $ionicPopup.alert({
+			    	title: "Login Error!",
+ 					template: "Please enter valid credentials",
+			    });
+			}
+	 
+	  $scope.onLogin = function(){
+	    var btnElement;
+	    var spinnerElement;
+	    USER_DETAILS.userName = $scope.login.username; 
+	    
+	    if($scope.login.username && $scope.login.password){
+	    	if(USER_DETAILS.userName == 'parent'){
+			    USER_DETAILS.userRole = 'parent';
+	 		}else if(USER_DETAILS.userName == 'teacher')	{
+	 			USER_DETAILS.userRole = 'teacher';
+	 		}else if (USER_DETAILS.userName == 'student') {
+	 			USER_DETAILS.userRole = 'student';
+	 		}else{
+	 			 $scope.showAlert();
+	 			return;	
+	 		}
+ 		}else{
+ 			 $scope.showAlert();
+ 			return;
+	    }
+	    console.log("USER_DETAILS" + JSON.stringify(USER_DETAILS));	
+
+		spinnerElement = angular.element( document.querySelector( "#loginSpinner" ) );
+		btnElement = angular.element( document.querySelector( "#boxes" ) );
+		btnElement.removeClass('.box');
+		  //btnElement.addClass('box-change');
+		btnElement.addClass('box-change');
+		   $scope.loginText = "";
+		  spinnerElement.removeClass('ng-hide');
+		$timeout(function(){ btnElement.addClass('box-animate');},6000);
+		$timeout($scope.showDashboard,2000);
+
+		};
+	$scope.showDashboard = function(){
+		$state.go('app.dashboard');
+		};
+
+ })
 
 .controller('takeAttendance', function($scope,$state) {
 			$scope.studentsOfBatch = [];
@@ -544,174 +815,5 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 				]}];
 
   
-})
-
-
-.controller('MenuCtrl', function($scope, $stateParams,$state) {
-
-     $scope.LeftMenu = [];
-	 $scope.ScreenID = "";
-	 
-	 $scope.LeftMenu = [{  id: "HOME", title:"Home", icon:"ion-ios-home-outline", color:"energized"},
-	                    {  id: "ATTENDANCE", title:"Attendance", icon:"ion-ios-calendar-outline",color:"calm"},
-						{  id: "HOMEWORK", title:"Homework", icon:"ion-ios-book-outline", color:"assertive" },
-						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline", color:"positive" },
-						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline", color:"balanced" },
-						{  id: "FEE", title:"Fee", icon:"ion-social-usd-outline", color:"royal"},
-						{  id: "CIRCULAR", title:"Circular", icon:"ion-ios-analytics-outline", color:"royal"},
-						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline", color:"positive"},
-						{  id: "TIME_TABLE", title:"Timetable", icon:"ion-ios-list-outline", color:"light"},
-						{  id: "TIME_WEEKTABLE", title:"Week Timetable", icon:"ion-ios-list-outline", color:"energized"}
-						];
-						
-						
-							
-	$scope.routeToScreen = function(item){
-	            var id = item.id;
-				$scope.ScreenID = id;
-				console.log(id);
-				
-				if(id == "HOME"){
-					$state.go('app.dashboard');				
-				}else if(id == "ATTENDANCE"){
-					$state.go('app.attendance');
-				}else if(id == "HOMEWORK"){
-					$state.go('app.HomeworkScreen');
-				}else if(id == "TAKE_ATTENDANCE"){
-					$state.go('app.takeAttendance');
-				}else if(id == "RESULTS"){
-					$state.go('app.addResult');
-				}else if(id == "ADD_RESULT"){
-					$state.go('app.addResult');
-				}else if(id == "CIRCULAR"){
-					$state.go('app.circular');
-				}else if(id == "TIME_TABLE"){
-					$state.go('app.todayTimetable');
-				}else if(id == "TIME_WEEKTABLE"){
-					$state.go('app.weekTimetable');
-				}else if(id == "FEE"){
-					$state.go('app.fee');
-				}
-    };
-	 console.log($scope.ScreenID);					
-	 $scope.RightMenu = [];
-
-	 $scope.RightMenu = [{  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" },
-							 {  name: "Select Division", items: ["DivA","DivB","DivC","DivD"], selectedItem : ""},
-							 {  name: "Select Subject", items: ["Maths","Science","English","Hindi","Social"], selectedItem : "" }];	
-      $scope.toggleGroup = function(group) {
-			if ($scope.isGroupShown(group)) {
-			  $scope.shownGroup = null;
-			} else {
-			  $scope.shownGroup = group;
-			}
-		  };
-		  $scope.selectItem = function(group,item) {
-			$scope.shownGroup.selectedItem = item;
-			$scope.toggleGroup(group);
-		  };
-		  $scope.isGroupShown = function(group) {
-			return $scope.shownGroup === group;
-		  };                   							 
-})
-
-.controller('ResultCtrl', function($scope,$state) {
-			$scope.groups = [];
-
-			$scope.groups = [{  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" },
-							 {  name: "Select Division", items: ["DivA","DivB","DivC","DivD"], selectedItem : ""},
-							 {  name: "Select Subject", items: ["Maths","Science","English","Hindi","Social"], selectedItem : "" },
-							 {  name: "Select Student", items: ["Pooja","Narender","Rajesh","Vamsi","Padma","Rahul","Gokul","Ramki","Arun","Madhu"], selectedItem : ""}];
-		  
-		  /*
-		   * if given group is the selected group, deselect it
-		   * else, select the given group
-		   */
-		  $scope.toggleGroup = function(group) {
-			if ($scope.isGroupShown(group)) {
-			  $scope.shownGroup = null;
-			} else {
-			  $scope.shownGroup = group;
-			}
-		  };
-		  $scope.selectItem = function(group,item) {
-			$scope.shownGroup.selectedItem = item;
-			$scope.toggleGroup(group);
-		  };
-		  $scope.isGroupShown = function(group) {
-			return $scope.shownGroup === group;
-		  };
-		   $scope.resetResult = function(){
-			for(var i=0;i<$scope.groups.length;i++){
-			  $scope.groups[i].selectedItem = "";
-			}
-			$scope.resultVal = "";
-			$scope.shownGroup = null;
-		  };
-		  
-		$scope.addItems=function(){
-		  if($scope.groups[0].selectedItem != "" && $scope.groups[1].selectedItem != "" && $scope.resultVal != ""){
-				$scope.items.push({
-					id: Math.floor((Math.random() * 100) + 1),
-					title: $scope.resultVal,
-					subject: $scope.groups[1].selectedItem,
-					batch: $scope.groups[0].selectedItem
-				});			  
-			  $state.go('app.ResultScreen');
-		   }
-   }
-   
-   
-   $scope.data = {
-    showDelete: false
-  };
-  
-  $scope.edit = function(item) {
-    alert('Edit Item: ' + item.id);
-  };
- 
-  $scope.delete = function(item) {
-    $scope.items.splice($scope.items.indexOf(item), 1);
-  };
-  
-   $scope.addResult = function() {
-	  
-      $state.go('app.addResult'); 
-    };
-  
-  $scope.items = [
-    { id: 0, title: "Read chapter 9", subject: "English", batch: "X" },
-    { id: 1, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 2, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 3, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 4, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 5, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 6, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 7, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 8, title: "Read chapter 9", subject: "English", batch: "X"  },
-    { id: 9, title: "Read chapter 9", subject: "English", batch: "X"  }
-  ];
-  
-})
-
-.controller('LoginCtrl', function($scope,$stateParams,$timeout,$state) {
-  $scope.loginText = "Login";
-  $scope.onLogin = function(){
-    var btnElement;
-    var spinnerElement;
-    
-	  spinnerElement = angular.element( document.querySelector( "#loginSpinner" ) );
-	  btnElement = angular.element( document.querySelector( "#boxes" ) );
-	  btnElement.removeClass('.box');
-	  //btnElement.addClass('box-change');
-	  btnElement.addClass('box-change');
-	   $scope.loginText = "";
-	  spinnerElement.removeClass('ng-hide');
-	$timeout(function(){ btnElement.addClass('box-animate');},6000);
-	$timeout($scope.showDashboard,4000);
-	};
-$scope.showDashboard = function(){
-	$state.go('app.dashboard');
-	};
- });
+});
 

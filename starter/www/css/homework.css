@@ -59,11 +59,24 @@ m.list .item.item-accordion {
 .profileImage{
     float: center;
     border-radius: 50%;
+    height: 125px;
+    width: 125px;
+    display : block;
+    margin : auto;
+    border: 2px solid #fff;
     
 }
 
+.iCenter{
+  display : block;
+  margin : auto;
+
+}
+
+
 .profileImageBG{
-  padding: 25% 0% 25% 25%;
+  padding: 20% 0% 20% 0%;
+  position: center;
   background-color: #ffffff;
   background-image:
     linear-gradient(

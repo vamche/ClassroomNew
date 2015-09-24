@@ -83,3 +83,29 @@ background-color: #ff4a00;
  padding-left : 10% !important;
 }
 
+.homeworkBG{
+  background-color: #FFD500;  
+}
+
+.whiteBG{
+  background-color: #fff;  
+}
+
+.item .item-content {
+  background-color: transparent; !important;
+}
+
+.topBottomPadding{
+  padding-top: 3%;
+  padding-top: 3%;
+}
+
+.dateHeader{
+  color: #fff;
+  font-size: 4em;
+  text-align: center;;
+}
+
+
+
+

@@ -12,11 +12,11 @@
 		</div>
 		 <ion-item class="bar bar-dark noBorders padding selectedDay">Today</ion-item>
 	     <ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
-			<ion-list >		
+			<ion-list>		
 			   
 				<ion-item ng-repeat="item in timeTableForTodayList" 
 						  item="item"
-						  class="item-avatar list-card animated bounce paddinLeftItem">
+						  class="item-avatar list-card paddinLeftItem animated fadeInUp">
 						  
 						   <img class="imageTimetable {{ item.subjectColor }}">
 						   <h3 class="energized">{{ item.subject }} {{ item.time }}</h3>

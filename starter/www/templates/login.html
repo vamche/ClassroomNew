@@ -1,35 +1,27 @@
-
 <ion-view hide-nav-bar="true" class="login">
     <ion-content padding="false" class="has-header">
-        <form >
+        <form>
+          <div class="spacer" style="width: 300px; height: 130px;"></div>
 
+          <div class="list animated bounceInDown">
+            <label class="item item-input item-floating-label label.item">
+              <span class="input-label positive">Username</span>
+              <input type="text" placeholder="Username" ng-model="login.username">
+            </label>
+            <label class="item item-input item-floating-label label.item">
+              <span class="input-label positive">Password</span>
+              <input type="password" placeholder="Password" ng-model="login.password">
+            </label>
 
-            <div class="spacer" style="width: 300px; height: 230px;"></div>
-        <div class="list-border">
-            <ion-list >
+          </div>
 
-                <label class="item item-input-inset  " name="username"  >
-                  <i class="icon icon-left ion-android-person padding"></i>
-
-                    <input type="text" class="input-text-color" placeholder="Username" >
-                </label>
-                <label1 class="item item-input-inset " name="password">
-                      <i class="icon icon-left ion-locked padding"></i>
-                    <input type="password" class="input-text-color" placeholder="Password">
-                </label1>
-
-
-                    </ion-list>
-                  <div class="col text-center">
+          <div class="col text-center animated bounceInUp _2">
                       <!--button class="button button-energized button-block  button-full" type="submit">Log in</button-->
-                    <button class="button box button-energized button-small  " id='boxes' ng-click="onLogin()">{{loginText}}
-                    <ion-spinner id="loginSpinner" class="spinner-light ng-hide"></ion-spinner>
-                    </button>
-                    
+                    <button class="button box button-positive button-small " id='boxes' ng-click="onLogin()">{{loginText}}
+                    <ion-spinner id="loginSpinner" class="spinner-light"></ion-spinner>
+                    </button>                    
                       <!-- a href="#/app/dashboard" >Log in</a -->
-                  </div>
-
-</div>
+          </div>
 
         </form>
     </ion-content>

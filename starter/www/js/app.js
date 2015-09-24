@@ -6,6 +6,23 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers'])
 
+.constant('AUTH_EVENTS', {
+  notAuthenticated: 'auth-not-authenticated',
+  notAuthorized: 'auth-not-authorized'
+})
+ 
+.constant('USER_ROLES', {
+  admin: 'admin_role',
+  teacher: 'teacher_role',
+  parent: 'parent_role',
+  student: 'student_role'
+})
+
+.value('USER_DETAILS',{
+  userName: '',
+  userRole: ''
+})
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -24,37 +41,30 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-     .state('app.login', {
+  .state('login', {
       url: "/login",
-      
-	  views: {
-      'menuContent': {
-        templateUrl: "templates/login.html",
-        controller: "LoginCtrl"
-      }
-    }
+      templateUrl: "templates/login.html",
+      controller: 'LoginCtrl'
     })
-  
   
   .state('app', {
     url: "/app",
     abstract: true,
+    cache : false,
     templateUrl: "templates/menu.html",
     controller: 'MenuCtrl'
   })
-
-
 
   .state('app.dashboard', {
     url: "/dashboard",
     views: {
       'menuContent': {
-        templateUrl: "templates/dashboard.html"
+        templateUrl: "templates/dashboard.html",
+        controller: 'DashboardCtrl'
       }
     }
   })
-	
-	
+
     .state('app.attendance', {
       url: "/attendance",
       views: {
@@ -99,7 +109,7 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
     views: {
       'menuContent': {
         templateUrl: "templates/Homework.html",
-		controller: 'HomeworkCtrl'
+		    controller: 'HomeworkCtrl'
       }
     }
   })
@@ -195,5 +205,5 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
 
   
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/login');
+  $urlRouterProvider.otherwise('/login');
 });
