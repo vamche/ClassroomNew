@@ -1,41 +1,92 @@
 <ion-view hide-nav-bar="true">
-     <ion-pane>
-      <ion-header-bar class="bar-dark">
-        <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-        <h1 class="title animated slideInDown">Hello {{username}}!</h1>
-        
-      </ion-header-bar>
-        <ion-content padding="false" scroll="true" class="has-header" add-animation>
-           
-            <div class="profileImageBG row row-center" has-bouncing="false">              
-                <img class="profileImage animated zoomInDown" src="img/parent.jpg"> </img>            
-            </div>
-            
-            <ion-list zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="false">
-                <ion-item class="row row-center noBorders">
-                   <a href="#/login" class="round-button positive"> 
-                        <i class="icon ion-android-done-all positive iCenter"></i>
-                   </a>
-                   <a href="http://example.com" class="round-button"> 
-                        <i class="icon ion-android-done-all positive iCenter"></i>
-                   </a>
-                   <a href="http://example.com" class="round-button"> 
-                        <i class="icon ion-android-done-all positive iCenter"></i>
-                   </a>
+  <ion-header-bar class="bar-dark">
+          
+        </ion-header-bar>
+        <ion-content padding="false" scroll="false" class="has-header" add-animation>
+
+            <div class="profileImageBG">
+
+              <div class="col text-center">
+              <div class="row row-center">
+                 <div class="col">
+
+                   <a class="icon-circle" style="background:#FF8106">
                     
+                       <i class="ion-android-notifications"></i>
+
+
+                       </a>
+
+
+                </div>
+
+     <img class="profileImage animated zoomInDown" src="img/parent.jpg"></img>
+ <div class="col">
+   <a class="icon-circle" style="background:#62CF38">
+       <i class="ion-chatbubbles"></i>
+       </a>
+          </div>
+         </div>
+              </div>
+
+              <div class="col text-center">
+             <h3 class="animated slideInRight"><b>WELCOME</b> <br>John!</br></h3>
+</div>
+
+        <!--    <ion-list zooming="false" style="width: 100%; height: 500px ;" has-bouncing="false">
+                <ion-item class="item-icon-right animated slideInUp" href="#/modal">Fee last date 28/10/2015
+                <i class="icon ion-android-alert assertive"></i>
                 </ion-item>
-                <ion-item class="row row-center noBorders">
-                    <a href="http://example.com" class="round-button"> 
-                        <i class="icon ion-android-done-all positive iCenter"></i>
-                   </a>
-                   <a href="http://example.com" class="round-button"> 
-                        <i class="icon ion-android-done-all positive iCenter"></i>
-                   </a>
-                   <a href="http://example.com" class="round-button"> 
-                        <i class="icon ion-android-done-all positive iCenter"></i>
-                   </a>                   
+                <ion-item class="item-icon-right animated slideInUp">New homework
+                <i class="icon ion-android-done-all balanced"></i>
                 </ion-item>
-                
-            </ion-list>
+                <ion-item class="animated slideInUp">Exam scheduled next week
+                </ion-item>
+            </ion-list> -->
+
+            <div class="row row-center">
+              <div class="col col-offset-10">
+                <a href="#/login" class="icon-circle-large" style="background:#21D3D7">
+                    <i class="ion-person-add"></i>
+                  </a>
+         <h5>Attendance</h5>
+      </div>
+              <div class="col">
+                <a class="icon-circle-large" style="background:#FFAA01">
+                    <i class="ion-clipboard"></i>
+                    </a>
+                    <h5>Home work</h5>
+      </div>
+              <div class="col">
+                <a class="icon-circle-large" style="background:#61D397">
+                    <i class="ion-podium"></i>
+                    </a>
+  <h5>Exam results</h5>
+    </div>
+
+            </div>
+
+            <div class="row row-center" style="margin-top:10%">
+              <div class="col col-offset-10">
+                <a class="icon-circle-large" style="background:#CCB14A">
+                    <i class="ion-chatbox-working"></i>
+                    </a>
+                    <h5>Feedback</h5>
+      </div>
+              <div class="col">
+                <a class="icon-circle-large" style="background:#FE8F84">
+                    <i class="ion-clock"></i>
+                    </a>
+ <h5>Time Table</h5>
+      </div>
+              <div class="col">
+                <a class="icon-circle-large" style="background:#1877AF">
+                    <i class="ion-earth"></i>
+                    </a>
+                    <h5>Circulars</h5>
+      </div>
+
+            </div>
+</div>
         </ion-content>
 </ion-view>

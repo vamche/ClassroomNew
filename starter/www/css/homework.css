@@ -46,26 +46,7 @@ m.list .item.item-accordion {
 	padding: 0px;	
 }
 
-.loginBackground{
-	
-  background: -webkit-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* FF3.6+ */
-  background:     -ms-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* IE10 */
-  background:      -o-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* Opera 11.10+ */
-  background:         linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* W3C */
-        
-}
 
-.profileImage{
-    float: center;
-    border-radius: 50%;
-    height: 125px;
-    width: 125px;
-    display : block;
-    margin : auto;
-    border: 2px solid #fff;
-    
-}
 
 .iCenter{
   display : block;
@@ -73,17 +54,32 @@ m.list .item.item-accordion {
 
 }
 
+.loginBackground{
+
+  background: -webkit-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #00c6ff 10%, #0072ff 90%); /* W3C */
+
+}
+
+.profileImage{
+    float: center;
+    border-radius: 50%;
+    
+
+}
 
 .profileImageBG{
-  padding: 20% 0% 20% 0%;
-  position: center;
+
   background-color: #ffffff;
   background-image:
     linear-gradient(
-      to bottom, 
+      to bottom,
       #444444,
-      #444444 50%,
-      #ffffff 50%,
+      #444444 20%,
+      #ffffff 20%,
       #ffffff 100%
     );
 
@@ -93,38 +89,38 @@ m.list .item.item-accordion {
   /* Safari 4, Chrome 1-9, iOS 3.2-4.3, Android 2.1-3.0 */
   background-image:
     -webkit-gradient(linear, top, bottom, from(#444444), to(#ffffff));
-  
+
   /* Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3 */
   background-image:
-    -webkit-linear-gradient(top,#444444,#444444 50%,#ffffff 50%,#ffffff 100%);
+    -webkit-linear-gradient(top,#444444,#444444 20%,#ffffff 20%,#ffffff 100%);
 
   /* Firefox 3.6 - 15*/
   background-image:
-    -moz-linear-gradient(top, 
+    -moz-linear-gradient(top,
       #444444,
-      #444444 50%,
-      #ffffff 50%,
+      #444444 20%,
+      #ffffff 20%,
       #ffffff 100%
     );
 
   /* Opera 11.1 - 12 */
   background-image:
-    -o-linear-gradient(top, 
+    -o-linear-gradient(top,
       #444444,
-      #444444 50%,
-      #ffffff 50%,
+      #444444 20%,
+      #ffffff 20%,
       #ffffff 100%
     );
 
   /* Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+ */
   background-image:
-    linear-gradient(to bottom, 
+    linear-gradient(to bottom,
       #444444,
-      #444444 50%,
-      #ffffff 50%,
+      #444444 20%,
+      #ffffff 20%,
       #ffffff 100%,
       );
-      
+
 
 }
 
@@ -142,5 +138,4 @@ m.list .item.item-accordion {
   -ms-flex: 0 0 15%;
   flex: 0 0 15%;
   max-width: 15%;
-}
 }
