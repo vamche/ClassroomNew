@@ -5,8 +5,10 @@
         <h1 class="title">Circular</h1>
       </ion-header-bar>
  <ion-content scroll="false" ng-controller="circular">
-    <div id="DateHeader" class="item item-positive selected-date animated fadeIn">
-            <a class="dateHeader">{{date.date}} </a>            
+
+	<div id="DateHeader" class="item item-positive animated fadeIn">
+            <a class="padding">
+				{{date != undefined ? (date).split('-')[2] : day	}} </a> 
     </div>
     <div class="containerAttendances">
       <div pickadate ng-model="date" min-date="minDate" max-date="maxDate" disabled-dates='disabledDates'   attendances-Info='classInfo'></div>
@@ -15,10 +17,10 @@
 		{{ date.type }} </br>
 		Comments : {{ date.data }}
       </div-->
-    </div>
+    </div>   
 	<ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
     <ion-list>
-      <ion-item ng-repeat="MeetingInfo in circularInfo | filter by {date = date}" ng-click=goToCircularDetail(MeetingInfo)>
+      <ion-item ng-repeat="MeetingInfo in circularInfo | filter : {date:date}" ng-click=goToCircularDetail(MeetingInfo)>
        {{MeetingInfo.date}}</br> 
 		   <b class="dark">{{MeetingInfo.data}} </b>
       </ion-item>

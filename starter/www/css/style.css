@@ -100,11 +100,29 @@ background-color: #ff4a00;
   padding-top: 3%;
 }
 
-.dateHeader{
+#DateHeader{
   color: #fff;
   font-size: 4em;
-  text-align: center;;
+  text-align: center;
 }
+
+#DateHeader1{
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+}
+
+.fRight{	
+ float : right;
+}
+
+.fLeft{	
+ float : left;
+}
+
+
+
+
 
 
 

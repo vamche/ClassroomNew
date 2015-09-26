@@ -74,9 +74,14 @@
 		  attendanceInfo: '=',
         },
         template:
+			/* '<div class="pickadate" " style="height: 30px;">' +
+              '<h1 class="pickadate-centered-heading padding no-margin">' +
+                '<strong>{{currentDate | date:"dd"}}</strong>' +
+              '</h1>' +
+            '</div>' +*/
           '<div class="pickadate" on-swipe-left="changeMonth(1)" on-swipe-right="changeMonth(-1)">' +
             '<div class="pickadate-header">' +
-              '<div class="pickadate-controls">' +
+              '<div class="pickadate-controls">' +					
                 /*'<a href="" class="pickadate-prevY" ng-click="changeMonth(-12)" ng-show="allowPrevMonth">{{t("prevY")}}</a>' +*/
                 '<button class="button-icon icon ion-ios-arrow-back button-light pickadate-prevM" ng-click="changeMonth(-1)"  ng-show="allowPrevMonth"></button>' +
                 '<button class="button-icon icon ion-ios-arrow-forward button-light pickadate-nextM" ng-click="changeMonth(1)"   ng-show="allowNextMonth"></button>' +                
@@ -85,7 +90,7 @@
               '<h3 class="pickadate-centered-heading padding no-margin animated fadeIn">' +
                 '<strong>{{currentDate | date:"MMMM - yyyy"}}</strong>' +
               '</h3>' +
-            '</div>' +
+            '</div>' +			
             '<div class="pickadate-body">' +
               '<div class="pickadate-main">' +
                 '<ul class="pickadate-cell">' +
@@ -233,8 +238,10 @@
           };
             scope.setDate = function(dateObj,value) {
             if (isDateDisabled(dateObj)) return;
-            console.log(JSON.stringify(dateObj));
-            ngModel.$setViewValue(dateObj);
+			console.log("day : "+(dateObj.date).split('-')[2]);
+            console.log(JSON.stringify(dateObj.date));
+			
+            ngModel.$setViewValue(dateObj.date);
           };
 
           ngModel.$render = function () {
