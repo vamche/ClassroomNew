@@ -67,9 +67,15 @@ m.list .item.item-accordion {
 .profileImage{
     float: center;
     border-radius: 50%;
-    
-
 }
+
+.sidemenuImage{
+    width: 50%;
+    height: 50%;
+    float: center;
+    border-radius: 50%;
+}
+
 
 .profileImageBG{
 

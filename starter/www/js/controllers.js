@@ -358,7 +358,7 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
  
 })
 
-.controller('MenuCtrl', function($scope, $stateParams,$state,USER_DETAILS,menuListService) {
+.controller('MenuCtrl', function($scope, $stateParams,$state, $ionicSlideBoxDelegate,USER_DETAILS,menuListService) {
 
      $scope.LeftMenu = [];
      $scope.RightMenu = [];
@@ -370,7 +370,28 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 	 	$scope.RightMenu = menuListService.getRightMenuList().rightMenuList;	 	
 	 });	
 
+	 $scope.showLeftArrow = function(){
+	 	var show = true;
+	 	if($ionicSlideBoxDelegate.currentIndex() == 0){
+	 		show = false;
+	 	}
+	 	return show;
+	 }
+	 $scope.showRightArrow = function(){
+	 	var show = true;
+	 	if($ionicSlideBoxDelegate.currentIndex() == $ionicSlideBoxDelegate.slidesCount()-1){
+	 		show = false;
+	 	}
+	 	return show;
+	 }
 
+	 $scope.nextSlide = function(){
+	 	$ionicSlideBoxDelegate.next();	 	
+	 }
+
+	 $scope.previousSlide = function(){
+	 	$ionicSlideBoxDelegate.previous();	 	
+	 }
 
 	 $scope.routeToScreen = function(item){
 	            var id = item.id;
