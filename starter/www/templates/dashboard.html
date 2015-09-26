@@ -1,8 +1,7 @@
-<ion-view hide-nav-bar="true">
+<ion-view hide-nav-bar="false">
   <ion-header-bar class="bar-dark">
-      <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-        
-      </ion-header-bar>
+
+        </ion-header-bar>
         <ion-content padding="false" scroll="false" class="has-header" add-animation>
 
             <div class="profileImageBG">
@@ -11,8 +10,8 @@
               <div class="row row-center">
                  <div class="col">
 
-                   <a class="icon-circle" style="background:#FF8106">
-                    
+                   <a href="#/login" class="icon-circle" style="background:#FF8106">
+
                        <i class="ion-android-notifications"></i>
 
 
@@ -47,13 +46,13 @@
 
             <div class="row row-center">
               <div class="col col-offset-10">
-                <a href="#/login" class="icon-circle-large" style="background:#21D3D7">
+                <a  class="icon-circle-large" style="background:#21D3D7" ng-click="showPopup()">
                     <i class="ion-person-add"></i>
                   </a>
          <h5>Attendance</h5>
       </div>
               <div class="col">
-                <a class="icon-circle-large" style="background:#FFAA01">
+                <a class="icon-circle-large" style="background:#FFAA01" ng-click="showPopup()">
                     <i class="ion-clipboard"></i>
                     </a>
                     <h5>Home work</h5>
@@ -91,3 +90,42 @@
 </div>
         </ion-content>
 </ion-view>
+
+<script id="homeworkpopup.html" type="text/ng-template">
+<label class="item item-input item-select">
+    <div class="input-label">
+      Lightsaber
+    </div>
+    <select ng-model="data.classname">
+      <option>Blue</option>
+      <option selected>Green</option>
+      <option>Red</option>
+    </select>
+  </label>
+
+
+
+<div class="row">
+    <div class="col">
+  <ion-checkbox>A</ion-checkbox>
+     </div>
+     <div class="col">
+    <ion-checkbox>B</ion-checkbox>
+      </div>
+      <div class="col">
+      <ion-checkbox>C</ion-checkbox>
+     </div>
+</div>
+<label class="item item-input item-select">
+    <div class="input-label">
+      Lightsaber
+    </div>
+    <select ng-model="data.classData">
+      <option>Blue</option>
+      <option selected>Green</option>
+      <option>Red</option>
+    </select>
+  </label>
+
+
+</script>
