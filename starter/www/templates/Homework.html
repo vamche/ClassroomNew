@@ -3,26 +3,26 @@
       <ion-header-bar class="bar-energized">
 	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
         <h1 class="title">Homework</h1>
-       
+
       </ion-header-bar>
-      <ion-content> 
+      <ion-content>
         <ion-item class="item item-energized" ng-if="isTeacher()"> <!-- add ng-if=isTeacher() -->
-            <a class="button button-block icon-left ion-android-add-circle button-energized">ADD NEW HOME WORK</a>
-        </ion-item>    
-        <ion-list>        
-          
+            <a class="button button-block icon-left ion-android-add-circle button-energized" ng-click="showPopup()">ADD NEW HOME WORK</a>
+        </ion-item>
+        <ion-list>
+
           <ion-item  class="item-divider">
               Today
-          </ion-item > 
-        
-          <ion-item ng-repeat="item in items"                   
+          </ion-item >
+
+          <ion-item ng-repeat="item in items"
                     ng-click="onFocus($index)"
                     class="animated fadeInUp"
                     ng-class="selectedClass($index)">
-             
+
              <h3 >#{{ item.id }} {{ item.title }} </h3>
-             <h5 > {{ item.subject }} | Batch : {{ item.batch }} </h5>           
-             <h5 class="topBottomPadding animated fadeInDown" ng-show="showDesc($index)"> {{ item.title }}  </h5> 
+             <h5 > {{ item.subject }} | Batch : {{ item.batch }} </h5>
+             <h5 class="topBottomPadding animated fadeInDown" ng-show="showDesc($index)"> {{ item.title }}  </h5>
 
             <ion-option-button class="button-icon icon ion-edit dark padding"
                                ng-if="isTeacher()"
@@ -32,10 +32,40 @@
                                ng-if="isTeacher()"
                                ng-click="delete(item)">
             </ion-option-button>
-            
+
           </ion-item>
-         
+
       </ion-list>
       </ion-content>
     </ion-pane>
 </ion-view>
+
+
+<script id="addHomework.html" type="text/ng-template">
+<label class="item item-input item-select">
+    <div class="input-label">
+      Lightsaber
+    </div>
+    <select ng-model="data.classname">
+      <option>Blue</option>
+      <option selected>Green</option>
+      <option>Red</option>
+    </select>
+  </label>
+
+
+
+<div class="row">
+    <div class="col">
+    <ion-checkbox>A</ion-checkbox>
+     </div>
+     <div class="col">
+     <ion-checkbox>B</ion-checkbox>
+      </div>
+      <div class="col">
+    <ion-checkbox>C</ion-checkbox>
+     </div>
+</div>
+<label class="item item-input">
+  <input type="text" placeholder="Topic">
+</label>
