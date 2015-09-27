@@ -164,7 +164,7 @@ i.changeIcon.ion-alert-circled{
     /* border-radius: 2px; */
 
     margin-right: 0px;
-    }
+  }
 
   .popup-container .popup {
         width: 300px;
@@ -175,19 +175,19 @@ i.changeIcon.ion-alert-circled{
     }
 
 .popupDetails.popup-container .popup{
-  background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 80%, #33cd5f 80%) !important; /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.9) 80%,#33cd5f 80%) !important; /* FF3.6+ */
-  background:     -ms-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 80%, #33cd5f 80%) !important; /* IE10 */
-  background:      -o-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 80%, #33cd5f 80%) !important; /* Opera 11.10+ */
-  background:         linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 80%, #33cd5f 80%) !important; /* W3C */
+  background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, #33cd5f 78%) !important; /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.9) 78%,#33cd5f 78%) !important; /* FF3.6+ */
+  background:     -ms-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, #33cd5f 78%) !important; /* IE10 */
+  background:      -o-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, #33cd5f 78%) !important; /* Opera 11.10+ */
+  background:         linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, #33cd5f 78%) !important; /* W3C */
 
 }
 .popupHome.popup-container .popup{
-  background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 80%, #FFD500 80%) !important; /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.9) 80%,#FFD500 80%) !important; /* FF3.6+ */
-  background:     -ms-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 80%, #FFD500 80%) !important; /* IE10 */
-  background:      -o-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 80%, #FFD500 80%) !important; /* Opera 11.10+ */
-  background:         linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 80%, #FFD500 80%) !important; /* W3C */
+  background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 81%, #FFD500 81%) !important; /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.9) 81%,#FFD500 81%) !important; /* FF3.6+ */
+  background:     -ms-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 81%, #FFD500 81%) !important; /* IE10 */
+  background:      -o-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 81%, #FFD500 81%) !important; /* Opera 11.10+ */
+  background:         linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 81%, #FFD500 81%) !important; /* W3C */
 
 }
   .button.button-full {
@@ -201,8 +201,41 @@ label.item.item-checkbox{
   padding-left:50px;
   border-style: hidden;
 }
-.popupDetails.button.button-stable.button-outline{
+.button.button-stable.button-clear,
+.button.button-clear{
   color: #fff;
   border-color:#fff;
+  border-spacing: 10px;
+  height: 20%;
+
+
+}
+.button.button-stable.button-clear{
   border-style:hidden solid hidden hidden !important;
+}
+
+.button.button-clear{
+  border-style:hidden hidden hidden solid !important;
+}
+
+.popupDetails .popup-title,
+.popupHome .popup-title{
+display: none;
+
+}
+.popupDetails .popup-head,
+.popupHome .popup-head{
+  padding:5px;
+}
+
+.popupDetails .popup-buttons{
+  padding-top: 18px;
+}
+
+.popupHome .popup-buttons{
+  padding-top: 20px;
+}
+
+textarea{
+  height: 100px;
 }

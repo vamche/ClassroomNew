@@ -297,10 +297,10 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
       scope:$scope,
       buttons:[{
         text: 'Cancel',
-        type:'button-stable button-outline'
+        type:'button-stable button-clear'
       },{
         text: 'Submit',
-        type:'button-stable button-outline',
+        type:'button-clear',
         onTap: function(e){
           if(!$scope.data.classData || !$scope.data.classname){
             e.preventDefault();
@@ -330,16 +330,16 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
     $scope.showPopup=function(){
     $scope.data={};
     var popupShow=$ionicPopup.show({
-      title:'Enter Class Details',
+
       cssClass:'popupDetails',
       templateUrl:'homeworkpopup.html',
       scope:$scope,
       buttons:[{
         text: 'Cancel',
-        type:'button-stable button-outline'
+        type:'button-stable button-clear'
       },{
         text: 'Next',
-        type:'button-stable button-outline',
+        type:'button-clear',
         onTap: function(e){
           if(!$scope.data.classData || !$scope.data.classname){
             e.preventDefault();
