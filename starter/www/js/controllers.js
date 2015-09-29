@@ -274,7 +274,7 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 
     $scope.showDesc = function(index) {
 	 	var isActive = false;
-	 	if($scope.activeIndex == index){
+	 	if($scope.activeIndex == index){ 
 	 		isActive = true;
 	 	}
 	 	return isActive;
@@ -323,37 +323,112 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 .controller('DashboardCtrl', function($scope,$state,USER_DETAILS, $ionicPopup) {
    console.log("USER_DETAILS.userName ---> " + USER_DETAILS.userName);
     $scope.username = "";
+    $scope.selectedClassInfo = {class:"",sections:["A","B","C"],subjects:""};
+    $scope.selectedDetails = {class:"",section:"",subject:""};
+    $scope.userDetails = {};
+    $scope.selectedModule = {};
+    $scope.modules = [{module: "ATTENDANCE", moduleTitle: "Attendance", bgColor: "#21D3D7"},
+                      {module: "HOMEWORK", moduleTitle: "Homework", bgColor: "#FFAA01"},
+                      {module: "RESULTS", moduleTitle: "Exam results", bgColor: "#61D397"},
+                      {module: "FEEDBACK", moduleTitle: "Feedback", bgColor: "#CCB14A"}
+                      ];
+
+
+
+
     $scope.$on('$ionicView.beforeEnter', function(){
     	 $scope.username  = USER_DETAILS.userName;
+       $scope.userDetails = USER_DETAILS;
+       $scope.selectedDetails = {class:"",section:"",subject:""};
+       $scope.selectedClassInfo = {class:"",sections:["A","B","C"],subjects:""};
   	});
 
-    $scope.showPopup=function(){
-    $scope.data={};
-    var popupShow=$ionicPopup.show({
-
-      cssClass:'popupDetails',
-      templateUrl:'homeworkpopup.html',
-      scope:$scope,
-      buttons:[{
-        text: 'Cancel',
-        type:'button-stable button-clear'
-      },{
-        text: 'Next',
-        type:'button-clear',
-        onTap: function(e){
-          if(!$scope.data.classData || !$scope.data.classname){
-            e.preventDefault();
-          }else{
-            $state.go('app.HomeworkScreen');
-          }
+    $scope.onSelectClass = function(){
+      console.log($scope.userDetails.classesInfo.length);
+      
+      for(var i=0; i < $scope.userDetails.classesInfo.length; i++){
+        console.log($scope.selectedDetails.class + " i " + i);
+        console.log("i >> " + $scope.userDetails.classesInfo[i]["class"]);
+        if($scope.selectedDetails.class == $scope.userDetails.classesInfo[i]["class"]){
+            $scope.selectedClassInfo = $scope.userDetails.classesInfo[i];
+            console.log(JSON.stringify($scope.selectedClassInfo));
+            return $scope.selectedClassInfo;
         }
-      }]
+      }
+    }
 
-    });
-    popupShow.then(function(res) {
-  console.log('Tapped!', res);
-});
-  };
+    $scope.goTo = function(module){
+          if(module == "ATTENDANCE"){
+              $state.go('app.attendance');
+             }else if(module == "CIRCULAR"){         
+              $state.go('app.circular');
+             }else if(module == "TIME_TABLE"){
+               $state.go('app.todayTimeTable');
+             }else if(module == "NOTIFICATION"){
+               $state.go('app.addResult');
+             }else if(module == "CHAT"){
+               $state.go('app.addResult');
+             }
+    }
+
+    $scope.showPopup=function(module){
+      if($scope.userDetails.userRole == "teacher"){
+
+        $scope.selectedDetails = {class:"",section:"",subject:""};
+
+        for(var i=0; i < $scope.modules.length; i++){
+          if(module == $scope.modules[i]["module"]){
+              $scope.selectedModule = $scope.modules[i];
+              break;
+          }
+
+        }
+
+
+
+        var popupShow=$ionicPopup.show({
+
+                                      cssClass:'popupDetails',
+                                      templateUrl:'homeworkpopup.html',
+                                      scope:$scope,
+                                      buttons:[{
+                                        text: 'Cancel',
+                                        type:'button-stable button-clear'
+                                      },{
+                                        text: 'Next',
+                                        type:'button-clear',
+                                        onTap: function(e){
+                                                            if(!$scope.selectedDetails.class && !$scope.selectedDetails.section && !$scope.selectedDetails.subject){
+                                                              e.preventDefault();
+                                                            }else{
+                                                               if(module == "ATTENDANCE"){
+                                                                  $state.go('app.attendance');
+                                                                }else if(module == "HOMEWORK"){         
+                                                                  $state.go('app.HomeworkScreen');
+                                                                }else if(module == "RESULTS"){
+                                                                  $state.go('app.addResult');
+                                                                }
+                                                            }
+                                                          }
+                                          }]
+
+          });
+        popupShow.then(function(res) {
+                                      console.log('Tapped!', res);
+                                      });
+      }else{
+          if(module == "ATTENDANCE"){
+            $state.go('app.attendance');
+          }else if(module == "HOMEWORK"){         
+            $state.go('app.HomeworkScreen');
+          }else if(module == "RESULTS"){
+            $state.go('app.addResult');
+          }
+      }   
+
+
+    
+    };
 })
 
 .controller('AddHomeworkCtrl', function($scope,$state,myFactoryService) {
@@ -416,7 +491,7 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 
 })
 
-.controller('MenuCtrl', function($scope, $stateParams,$state,USER_DETAILS,menuListService) {
+.controller('MenuCtrl', function($scope, $stateParams,$state,$ionicSlideBoxDelegate,USER_DETAILS,menuListService) {
 
      $scope.LeftMenu = [];
      $scope.RightMenu = [];
@@ -428,7 +503,30 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 	 	$scope.RightMenu = menuListService.getRightMenuList().rightMenuList;
 	 });
 
+   $scope.nextSlide = function(){
+      $ionicSlideBoxDelegate.next();
+   }
 
+
+   $scope.previousSlide = function(){
+      $ionicSlideBoxDelegate.previous();
+   }
+
+   $scope.showLeftArrow = function(){
+      var show = true;
+      if($ionicSlideBoxDelegate.currentIndex() == 0){
+        show = false;
+      }
+      return show;
+   }
+
+   $scope.showRightArrow = function(){
+      var show = true;
+      if($ionicSlideBoxDelegate.currentIndex() == $ionicSlideBoxDelegate.slidesCount()-1){
+        show = false;
+      }
+      return show;
+   }
 
 	 $scope.routeToScreen = function(item){
 	            var id = item.id;

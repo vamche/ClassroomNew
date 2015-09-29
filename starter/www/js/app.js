@@ -19,8 +19,14 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
 })
 
 .value('USER_DETAILS',{
-  userName: '',
-  userRole: ''
+  userName : '',
+  userRole : '',
+  classesInfo : [{class: "X", sections : ["A","B","C"], subjects: ["English", "Maths", "Science"]},
+                 {class: "IX", sections : ["B"], subjects: ["Social"]}
+                ],
+  wardsInfo : [{id : "1", rollNo : "1", name : "Jessie", class : "X", subjects : ["English", "Maths", "Science"], img:""},
+              {id : "2", rollNo : "10", name : "John", class : "IX", subjects : ["English", "Social"], img:""}
+             ]
 })
 
 .run(function($ionicPlatform) {

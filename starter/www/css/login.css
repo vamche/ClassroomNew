@@ -174,23 +174,15 @@ i.changeIcon.ion-alert-circled{
 
     }
 
-.popupDetails.popup-container .popup{
-  background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, #33cd5f 78%) !important; /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.9) 78%,#33cd5f 78%) !important; /* FF3.6+ */
-  background:     -ms-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, #33cd5f 78%) !important; /* IE10 */
-  background:      -o-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, #33cd5f 78%) !important; /* Opera 11.10+ */
-  background:         linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, #33cd5f 78%) !important; /* W3C */
-
-}
 .popupHome.popup-container .popup{
   background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 81%, #FFD500 81%) !important; /* Chrome 10+, Saf5.1+ */
-  background:    -moz-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.9) 81%,#FFD500 81%) !important; /* FF3.6+ */
+  background:    -moz-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 81%, #FFD500 81%) !important; /* FF3.6+ */
   background:     -ms-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 81%, #FFD500 81%) !important; /* IE10 */
   background:      -o-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 81%, #FFD500 81%) !important; /* Opera 11.10+ */
   background:         linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 81%, #FFD500 81%) !important; /* W3C */
 
 }
-  .button.button-full {
+.button.button-full {
     margin-top: 10px;
      margin-bottom: 0px;
 
@@ -220,8 +212,7 @@ label.item.item-checkbox{
 
 .popupDetails .popup-title,
 .popupHome .popup-title{
-display: none;
-
+  display: none;
 }
 .popupDetails .popup-head,
 .popupHome .popup-head{

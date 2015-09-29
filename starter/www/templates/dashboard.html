@@ -4,34 +4,29 @@
         </ion-header-bar>
         <ion-content padding="false" scroll="false" class="has-header" add-animation>
 
-            <div class="profileImageBG">
+        <div class="profileImageBG">
+
+        <div class="col text-center">
+        <div class="row row-center">
+        <div class="col">
+
+        <a href="#/login" class="icon-circle animated slideInLeft" style="background:#FF8106">
+          <i class="ion-android-notifications"></i>
+        </a>
+        </div>
+
+        <img class="profileImage animated zoomInDown" src="img/parent.jpg"></img>
+        <div class="col">
+        <a class="icon-circle animated slideInRight" style="background:#62CF38" ng-click="goTo('CHAT')">
+          <i class="ion-chatbubbles"></i>
+        </a>
+        </div>
+        </div>
+        </div>
 
               <div class="col text-center">
-              <div class="row row-center">
-                 <div class="col">
-
-                   <a href="#/login" class="icon-circle" style="background:#FF8106">
-
-                       <i class="ion-android-notifications"></i>
-
-
-                       </a>
-
-
-                </div>
-
-     <img class="profileImage animated zoomInDown" src="img/parent.jpg"></img>
- <div class="col">
-   <a class="icon-circle" style="background:#62CF38">
-       <i class="ion-chatbubbles"></i>
-       </a>
-          </div>
-         </div>
+                  <h3 class="animated slideInUp"><b>WELCOME</b> <br>{{username || "User!"}}</br></h3>
               </div>
-
-              <div class="col text-center">
-             <h3 class="animated slideInRight"><b>WELCOME</b> <br>John!</br></h3>
-</div>
 
         <!--    <ion-list zooming="false" style="width: 100%; height: 500px ;" has-bouncing="false">
                 <ion-item class="item-icon-right animated slideInUp" href="#/modal">Fee last date 28/10/2015
@@ -46,41 +41,41 @@
 
             <div class="row row-center">
               <div class="col col-offset-10">
-                <a  class="icon-circle-large" style="background:#21D3D7" ng-click="showPopup()">
+                <a  class="icon-circle-large" style="background:#21D3D7" ng-click="showPopup('ATTENDANCE')">
                     <i class="ion-person-add"></i>
                   </a>
-         <h5>Attendance</h5>
-      </div>
+                <h5>Attendance</h5>
+              </div>
               <div class="col">
-                <a class="icon-circle-large" style="background:#FFAA01" ng-click="showPopup()">
+                <a class="icon-circle-large" style="background:#FFAA01" ng-click="goTo('HOMEWORK')">
                     <i class="ion-clipboard"></i>
                     </a>
                     <h5>Home work</h5>
-      </div>
+               </div>
               <div class="col">
-                <a class="icon-circle-large" style="background:#61D397">
+                <a class="icon-circle-large" style="background:#61D397" ng-click="showPopup('RESULTS')">
                     <i class="ion-podium"></i>
                     </a>
-  <h5>Exam results</h5>
-    </div>
+                <h5>Exam results</h5>
+              </div>
 
             </div>
 
             <div class="row row-center" style="margin-top:10%">
               <div class="col col-offset-10">
-                <a class="icon-circle-large" style="background:#CCB14A">
+                <a class="icon-circle-large" style="background:#CCB14A" ng-click="showPopup('FEEDBACK')">
                     <i class="ion-chatbox-working"></i>
                     </a>
                     <h5>Feedback</h5>
       </div>
               <div class="col">
-                <a class="icon-circle-large" style="background:#FE8F84">
+                    <a class="icon-circle-large" style="background:#FE8F84" ng-click="goTo('TIME_TABLE')">
                     <i class="ion-clock"></i>
                     </a>
- <h5>Time Table</h5>
+                    <h5>Time Table</h5>
       </div>
               <div class="col">
-                <a class="icon-circle-large" style="background:#1877AF">
+                <a class="icon-circle-large" style="background:#1877AF" ng-click="goTo('CIRCULAR')">
                     <i class="ion-earth"></i>
                     </a>
                     <h5>Circulars</h5>
@@ -92,40 +87,37 @@
 </ion-view>
 
 <script id="homeworkpopup.html" type="text/ng-template">
-<label class="item item-input item-select">
-    <div class="input-label">
-      Lightsaber
-    </div>
-    <select ng-model="data.classname">
-      <option>Blue</option>
-      <option selected>Green</option>
-      <option>Red</option>
-    </select>
-  </label>
+  <style>
+    .popupDetails.popup-container .popup{
+      background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, {{selectedModule.bgColor}} 78%) !important; /* Chrome 10+, Saf5.1+ */
+      background:    -moz-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.9) 78%,{{selectedModule.bgColor}} 78%) !important; /* FF3.6+ */
+      background:     -ms-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, {{selectedModule.bgColor}} 78%) !important; /* IE10 */
+      background:      -o-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, {{selectedModule.bgColor}} 78%) !important; /* Opera 11.10+ */
+      background:         linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.9) 78%, {{selectedModule.bgColor}} 78%) !important; /* W3C */
 
+    }
+  </style>
 
-
-<div class="row">
-    <div class="col">
-  <ion-checkbox>A</ion-checkbox>
-     </div>
-     <div class="col">
-    <ion-checkbox>B</ion-checkbox>
+  <label class="item item-input item-select">
+      <div class="input-label">
+        Select Class
       </div>
-      <div class="col">
-      <ion-checkbox>C</ion-checkbox>
-     </div>
-</div>
-<label class="item item-input item-select">
-    <div class="input-label">
-      Lightsaber
-    </div>
-    <select ng-model="data.classData">
-      <option>Blue</option>
-      <option selected>Green</option>
-      <option>Red</option>
-    </select>
+      <select ng-model="selectedDetails.class" ng-change="onSelectClass()">
+        <option ng-repeat="classInfo in userDetails.classesInfo" >{{classInfo.class}}</option>
+      </select>
   </label>
 
-
+  <div class="row">
+      <div ng-repeat="section in selectedClassInfo.sections" class="col col-33">
+          <ion-radio ng-model="selectedDetails.section">{{section}}</ion-radio>
+       </div>     
+  </div>
+  <label class="item item-input item-select">
+      <div class="input-label">
+        Select Subject
+      </div>
+      <select ng-model="selectedDetails.subject">
+        <option ng-repeat="subject in selectedClassInfo.subjects">{{subject}}</option>
+      </select>
+  </label>
 </script>
