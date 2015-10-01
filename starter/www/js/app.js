@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers'])
+angular.module('starter', ['ionic', 'ngSanitize','btford.socket-io','starter.controllers','timetable.controllers','socket.controller','Chat.Controller','ngEnter-Directive'])
 
 .constant('AUTH_EVENTS', {
   notAuthenticated: 'auth-not-authenticated',
@@ -33,6 +33,7 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
@@ -60,6 +61,15 @@ angular.module('starter', ['ionic', 'starter.controllers','timetable.controllers
     templateUrl: "templates/menu.html",
     controller: 'MenuCtrl'
   })
+ .state('chat', {
+		url: "/chat/:userName&:groupName",
+		templateUrl: "templates/chat.html"
+	})
+	
+	.state('listOfGroupChat', {
+		url: "/listOfGroupChat/:userName",
+		templateUrl: "templates/listOfGroupChat.html"
+	})
 
   .state('app.dashboard', {
     url: "/dashboard",

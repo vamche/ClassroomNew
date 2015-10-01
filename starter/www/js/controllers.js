@@ -367,7 +367,7 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
              }else if(module == "NOTIFICATION"){
                $state.go('app.addResult');
              }else if(module == "CHAT"){
-               $state.go('app.addResult');
+              $state.go('listOfGroupChat',{userName:$scope.username});
              }
     }
 
@@ -674,27 +674,30 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 			    });
 			}
 
-	  $scope.onLogin = function(){
+	   $scope.onLogin = function(){
 	    var btnElement;
 	    var spinnerElement;
-	    USER_DETAILS.userName = $scope.login.username;
-
+	    USER_DETAILS.userName = $scope.login.username; 
+	    var parents = ["parent","aish","aditi"];
+		  var teachers = ["teacher","vamsi","pooja"];	
+      var students = ["student","abhay","gokul"];
+		
 	    if($scope.login.username && $scope.login.password){
-	    	if(USER_DETAILS.userName == 'parent'){
+	    	if(parents.indexOf(USER_DETAILS.userName) != -1){
 			    USER_DETAILS.userRole = 'parent';
-	 		}else if(USER_DETAILS.userName == 'teacher')	{
+	 		}else if(teachers.indexOf(USER_DETAILS.userName) != -1)	{
 	 			USER_DETAILS.userRole = 'teacher';
-	 		}else if (USER_DETAILS.userName == 'student') {
+	 		}else if (students.indexOf(USER_DETAILS.userName) != -1) {
 	 			USER_DETAILS.userRole = 'student';
 	 		}else{
 	 			 $scope.showAlert();
-	 			return;
+	 			return;	
 	 		}
  		}else{
  			 $scope.showAlert();
  			return;
 	    }
-	    console.log("USER_DETAILS" + JSON.stringify(USER_DETAILS));
+	    console.log("USER_DETAILS" + JSON.stringify(USER_DETAILS));	
 
 		spinnerElement = angular.element( document.querySelector( "#loginSpinner" ) );
 		btnElement = angular.element( document.querySelector( "#boxes" ) );

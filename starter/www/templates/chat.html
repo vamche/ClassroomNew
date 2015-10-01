@@ -1,0 +1,40 @@
+<ion-view hide-nav-bar="true" ng-controller="ChatController as chatCtrl">
+     <ion-pane class="chatBG" >
+      <ion-header-bar class="bar-balanced">
+	     <button class="button-icon ion-chevron-left button-clear" ng-click="goBack()"></button>
+        <h1 class="title">Chat</h1>       
+      </ion-header-bar>
+	 <ion-content class="padding" start-y="120">
+        <ol>
+			<li class="animated fadeInUp chatLineBG" 
+				ng-repeat="message in chatCtrl.messages" 
+
+				ng-class="chatCtrl.getClassforUser($index)"				
+				>
+        		<span ng-show="message.style"        		
+				ng-style="{color:message.color,float:message.align}" >
+				{{message.username === "Me" ? "" : message.username + "-"}} {{message.content}}</span > </br>
+			</li>
+        </ol>
+      </ion-content>
+	  <ion-footer-bar class="bar-assertive">
+		  <!--div class="list light-grey bottommsg">
+			<div class="item item-input-inset light-grey">
+			  <label  class="item-input-wrapper line-light-grey nopadtop">
+				<input class="line-light-grey" ng-change="chatCtrl.updateTyping()" type="text"  placeholder="Message" ng-enter="chatCtrl.sendMessage()" ng-model="chatCtrl.message"> 
+			  </label>
+			  <div class="divsend">
+					<button class="button button-clear ion-android-send iconsend" ng-click="chatCtrl.sendMessage()"></button>
+			  </div>
+			</div>
+		</div--> 
+		 <label class="row item-input-wrapper line-light-grey nopadtop">
+			<input class="col" ng-change= "chatCtrl.updateTyping()" type="text"  placeholder="Message" ng-enter="chatCtrl.sendMessage()" ng-model="chatCtrl.message">
+		</label>
+		<div class="divsend">
+			<button class="button button-clear ion-android-send iconsend" ng-click="chatCtrl.sendMessage()"></button>
+		</div>
+		
+	</ion-footer-bar>
+	</ion-pane>
+ </ion-view>
