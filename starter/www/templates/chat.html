@@ -6,14 +6,18 @@
       </ion-header-bar>
 	 <ion-content class="padding" start-y="120">
         <ol>
-			<li class="animated fadeInUp chatLineBG" 
+			<li class="animated slideInUp padding chatLineBG" 
 				ng-repeat="message in chatCtrl.messages" 
-
 				ng-class="chatCtrl.getClassforUser($index)"				
 				>
-        		<span ng-show="message.style"        		
+        		<span ng-show="message.style"        		 		
 				ng-style="{color:message.color,float:message.align}" >
-				{{message.username === "Me" ? "" : message.username + "-"}} {{message.content}}</span > </br>
+
+				{{message.username === "Me" ? "" : message.username + "-"}} </br>
+				{{message.content}}				
+				</span > </br>
+				
+
 			</li>
         </ol>
       </ion-content>
@@ -31,7 +35,7 @@
 		 <label class="row item-input-wrapper line-light-grey nopadtop">
 			<input class="col" ng-change= "chatCtrl.updateTyping()" type="text"  placeholder="Message" ng-enter="chatCtrl.sendMessage()" ng-model="chatCtrl.message">
 		</label>
-		<div class="divsend">
+		<div class="col col-20 divsend">
 			<button class="button button-clear ion-android-send iconsend" ng-click="chatCtrl.sendMessage()"></button>
 		</div>
 		
