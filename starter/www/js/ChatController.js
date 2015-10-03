@@ -96,6 +96,7 @@ angular.module('Chat.Controller', [])
   		//socket.emit('new message', self.message)
   		if(flag){
   			console.log("individual chat");
+  			addMessageToList($stateParams.userName,true,self.message);
   			var TwoUsers = $stateParams.userName + ":" + $stateParams.messageTo;
   			socket.emit("send", new Date().getTime(), self.message,TwoUsers,flag);
   		}else{
