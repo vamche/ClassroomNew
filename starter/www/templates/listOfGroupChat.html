@@ -13,6 +13,12 @@
 				<h3 class="dark">{{group.name}}</br></h3>
 			 </div>
 				</ion-item>
+			<ion-item ng-repeat="people in chatCtrl.peopleWithHistory" ng-click="clickGroup(people.name,false)" class="row my-animation item-remove-animate item-avatar item-icon-left">	
+			 
+			 <div class="col padding">
+				<h3 class="dark">{{people.name}}</br></h3>
+			 </div>
+				</ion-item>
 		  </ion-list>
 		 </ion-scroll>
 

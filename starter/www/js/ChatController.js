@@ -18,6 +18,7 @@ angular.module('Chat.Controller', [])
 	self.messages=[];
     self.Groups={};
     self.listOfPeople = {};
+    self.peopleWithHistory = {};
   	socket.on('connect',function(){
   	  
   	  connected = true
@@ -25,9 +26,10 @@ angular.module('Chat.Controller', [])
 	    socket.emit("joinserver", $stateParams.userName ,"desktop");
 	    socket.emit("getOnlinePeople", function(data) {
 		     console.log("room");
-			 console.log(data.listOfGroups);
+			 self.peopleWithHistory = data.peopleWithHistory;
+
 			 self.Groups = data.listOfGroups;
-			 console.log(self.Groups);
+			 console.log(self.peopleWithHistory);
 			 //var chatMessage = data.chatMessages;
 			 //for(var j=0; j< chatMessage.length;j++){
 			//	addMessageToList(chatMessage[j].name,true,chatMessage[j].Message);
