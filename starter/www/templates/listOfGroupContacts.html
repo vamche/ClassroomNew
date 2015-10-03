@@ -1,0 +1,22 @@
+<ion-view hide-nav-bar="true" ng-controller="ChatController as chatCtrl">
+     <ion-pane>
+      <ion-header-bar class="bar-balanced">
+	     <button class="button-icon ion-chevron-left button-clear" ng-click="goBack()"></button>
+        <h1 class="title">Chat</h1>       
+      </ion-header-bar>
+      <ion-content scroll="false" start-y="50">	  
+		<ion-scroll zooming="false" direction="y" style="width: 100%; height: 50%" has-bouncing="true">
+			<ion-list>
+				<ion-item ng-repeat="people in chatCtrl.listOfPeople" ng-click="clickGroup(people.name,false)" class="row my-animation item-remove-animate item-avatar item-icon-left">	
+			 
+			 <div class="col padding">
+				<h3 class="dark">{{people.name}}</br></h3>
+			 </div>
+				</ion-item>
+		  </ion-list>
+		 </ion-scroll>
+
+    </ion-content>
+    
+    </ion-pane>
+</ion-view>

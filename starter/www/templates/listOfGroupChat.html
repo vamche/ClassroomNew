@@ -1,13 +1,13 @@
 <ion-view hide-nav-bar="true" ng-controller="ChatController as chatCtrl">
      <ion-pane>
       <ion-header-bar class="bar-balanced">
-	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-        <h1 class="title">Chat Groups</h1>      
+	     <button class="button-icon ion-chevron-left button-clear" ng-click="goBackDashBoard()"></button>
+        <h1 class="title">Chat</h1>       
       </ion-header-bar>
       <ion-content scroll="false" start-y="50">	  
-		<ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
+		<ion-scroll zooming="false" direction="y" style="width: 100%; height: 50%" has-bouncing="true">
 			<ion-list>
-				<ion-item ng-repeat="group in chatCtrl.Groups" ng-click="clickGroup(group.name,group.listGroups)" class="row my-animation item-remove-animate item-avatar item-icon-left">	
+				<ion-item ng-repeat="group in chatCtrl.Groups" ng-click="clickGroup(group.name,true)" class="row my-animation item-remove-animate item-avatar item-icon-left">	
 			 
 			 <div class="col padding">
 				<h3 class="dark">{{group.name}}</br></h3>
@@ -17,6 +17,13 @@
 		 </ion-scroll>
 
     </ion-content>
+    <ion-footer-bar class="bar-stable">
+		<div class="col-center">
+			<div><button class="button padding button-stable ion-android-contact iconContact" ng-click="listOfContact()"></button></div>
+			<label>Contacts</label>
+		</div>
+		
+	</ion-footer-bar>
     
     </ion-pane>
 </ion-view>

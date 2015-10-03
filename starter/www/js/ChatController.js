@@ -6,7 +6,7 @@ angular.module('Chat.Controller', [])
   	var lastTypingTime;
   	var TYPING_TIMER_LENGTH = 400;
 	var Rooms = {};
-  	
+
   	//Add colors
   	var COLORS = [
 	    '#e21400', '#91580f', '#f8a700', '#f78b00',
@@ -17,20 +17,21 @@ angular.module('Chat.Controller', [])
 	 //initializing messages array
 	self.messages=[];
     self.Groups={};
+    self.listOfPeople = {};
   	socket.on('connect',function(){
   	  
   	  connected = true
   	  var peopleOnline = [];
 	    socket.emit("joinserver", $stateParams.userName ,"desktop");
 	    socket.emit("getOnlinePeople", function(data) {
-		    //console.log("room");
+		     console.log("room");
 			 console.log(data.listOfGroups);
 			 self.Groups = data.listOfGroups;
-			 //console.log(data.chatMessages);
-			 var chatMessage = data.chatMessages;
-			 for(var j=0; j< chatMessage.length;j++){
-				addMessageToList(chatMessage[j].name,true,chatMessage[j].Message);
-			 }
+			 console.log(self.Groups);
+			 //var chatMessage = data.chatMessages;
+			 //for(var j=0; j< chatMessage.length;j++){
+			//	addMessageToList(chatMessage[j].name,true,chatMessage[j].Message);
+			 //}
 			var inRoom;
 			for(var i = 1 ; i <= data.sizeOnlinePeople ; i++){
 				 //console.log(data.onlinePeople[i]);
@@ -91,9 +92,15 @@ angular.module('Chat.Controller', [])
   	})
 
   	//function called when user hits the send button
-  	self.sendMessage=function(){
+  	self.sendMessage=function(flag){
   		//socket.emit('new message', self.message)
-		socket.emit("send", new Date().getTime(), self.message,$stateParams.groupName);
+  		if(flag){
+  			console.log("individual chat");
+  			var TwoUsers = $stateParams.userName + ":" + $stateParams.messageTo;
+  			socket.emit("send", new Date().getTime(), self.message,TwoUsers,flag);
+  		}else{
+			socket.emit("send", new Date().getTime(), self.message,$stateParams.groupName,flag);
+		}
   		//addMessageToList($stateParams.userName,true,self.message);
   		socket.emit("typing", false);
   		self.message = ""
@@ -191,17 +198,35 @@ angular.module('Chat.Controller', [])
   		return number_of_users === 1 ? "there's 1 participant":"there are " + number_of_users + " participants"
   	}
 	
-	$scope.clickGroup = function(name,listGroups){
+  	$scope.listOfContact = function(){
+  		$state.go('listOfGroupContacts',{userName:$stateParams.userName});
+  		socket.emit('getContact',$stateParams.userName);
+
+			//console.log(self.listOfPeople);
+  	}
+
+	$scope.clickGroup = function(name,flag){
 		console.log(name);
-    	$state.go('chat',{userName:$stateParams.userName,groupName:name});	
-		socket.emit('switchRoom',name);
+		if(flag){
+    		$state.go('groupChat',{userName:$stateParams.userName,groupName:name});	
+			socket.emit('switchRoom',name);
+		}else{
+			$state.go('chat',{userName:$stateParams.userName,messageTo:name});	
+			socket.emit('chatHistoryForTwoUser',$stateParams.userName,name);
+		}
   	}
 	$scope.goBack = function(){
 		console.log(name);
     	$state.go('listOfGroupChat',{userName:$stateParams.userName});	
   	}
-	
-	
+	$scope.goBackToGroupOfContacts = function(){
+    	$state.go('listOfGroupContacts',{userName:$stateParams.userName});	
+  	}
+
+
+	$scope.goBackDashBoard = function(){
+    	$state.go('app.dashboard');	
+  	}
 	socket.on('updatechat', function (username, data) {
 		console.log("update chat");
 	});
@@ -227,6 +252,40 @@ angular.module('Chat.Controller', [])
 			addMessageToList(data[i].name,true,data[i].message);
 		}
 	});
+
+	socket.on("returnListOfContact", function(getlistOfContacts,peopleOnlineFlag) {	
+		var p = 0;
+
+  		var people = [];
+  		var contacts = [];
+  		var flag;
+			for(var i in getlistOfContacts){
+				if(getlistOfContacts[i].listGroups){
+					people = getlistOfContacts[i].listGroups
+					for(var j = 0 ; j< people.length ; j ++){
+						if(contacts.indexOf(people[j]) < 0 && people[j].toLowerCase() != $stateParams.userName.toLowerCase()){
+							contacts[p] = people[j];
+							flag = false;
+							if(peopleOnlineFlag.indexOf(contacts[p]) >= 0){
+								flag = true;
+							}
+							self.listOfPeople[p] = {"name" : contacts[p] , "online" : flag};
+							p++;
+						}
+
+					
+					}
+				}
+			}			
+
+	});
+
+socket.on("whisper", function(msTime, person, msg) {
+    //$("#msgs").append("<li><strong><span class='text-muted'>" + timeFormat(msTime) + person.name + "</span></strong> "+s+": " + msg + "</li>");
+    console.log(" person "+person.name +"  msg "+msg);
+    if(person.name ==  $stateParams.userName || person.name == $stateParams.messageTo)
+    	addMessageToList(person.name,true,msg);
+  });
 	
 });
 

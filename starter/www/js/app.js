@@ -61,11 +61,23 @@ angular.module('starter', ['ionic', 'ngSanitize','btford.socket-io','starter.con
     templateUrl: "templates/menu.html",
     controller: 'MenuCtrl'
   })
- .state('chat', {
-		url: "/chat/:userName&:groupName",
-		templateUrl: "templates/chat.html"
+ .state('groupChat', {
+		url: "/groupChat/:userName&:groupName",
+		templateUrl: "templates/groupChat.html"
 	})
 	
+
+  .state('chat', {
+    url: "/chat/:userName&:messageTo",
+    templateUrl: "templates/chat.html"
+  })
+
+
+  .state('listOfGroupContacts', {
+    url: "/listOfGroupContacts/:userName",
+    templateUrl: "templates/listOfGroupContacts.html"
+  })
+
 	.state('listOfGroupChat', {
 		url: "/listOfGroupChat/:userName",
 		templateUrl: "templates/listOfGroupChat.html"

@@ -1,7 +1,7 @@
 <ion-view hide-nav-bar="true" ng-controller="ChatController as chatCtrl">
      <ion-pane class="chatBG" >
       <ion-header-bar class="bar-balanced">
-	     <button class="button-icon ion-chevron-left button-clear" ng-click="goBackToGroupOfContacts()"></button>
+	     <button class="button-icon ion-chevron-left button-clear" ng-click="goBack()"></button>
         <h1 class="title">Chat</h1>       
       </ion-header-bar>
 	 <ion-content class="padding" start-y="120">
@@ -29,10 +29,10 @@
 			</div>
 		</div--> 
 		 <label class="row item-input-wrapper line-light-grey nopadtop">
-			<input class="col" ng-change= "chatCtrl.updateTyping()" type="text"  placeholder="Message" ng-enter="chatCtrl.sendMessage(true)" ng-model="chatCtrl.message">
+			<input class="col" ng-change= "chatCtrl.updateTyping()" type="text"  placeholder="Message" ng-enter="chatCtrl.sendMessage(false)" ng-model="chatCtrl.message">
 		</label>
 		<div class="divsend">
-			<button class="button button-clear ion-android-send iconsend" ng-click="chatCtrl.sendMessage(true)"></button>
+			<button class="button button-clear ion-android-send iconsend" ng-click="chatCtrl.sendMessage(false)"></button>
 		</div>
 		
 	</ion-footer-bar>
