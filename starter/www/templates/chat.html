@@ -17,24 +17,12 @@
 			</li>
         </ol>
       </ion-content>
-	  <ion-footer-bar class="bar-assertive">
-		  <!--div class="list light-grey bottommsg">
-			<div class="item item-input-inset light-grey">
-			  <label  class="item-input-wrapper line-light-grey nopadtop">
-				<input class="line-light-grey" ng-change="chatCtrl.updateTyping()" type="text"  placeholder="Message" ng-enter="chatCtrl.sendMessage()" ng-model="chatCtrl.message"> 
-			  </label>
-			  <div class="divsend">
-					<button class="button button-clear ion-android-send iconsend" ng-click="chatCtrl.sendMessage()"></button>
-			  </div>
-			</div>
-		</div--> 
-		 <label class="row item-input-wrapper line-light-grey nopadtop">
-			<input class="col" type="text"  placeholder="Message" ng-enter="chatCtrl.sendMessage(true)" ng-model="chatCtrl.message">
-		</label>
-		<div class="divsend">
-			<button class="button button-clear ion-android-send iconsend" ng-click="chatCtrl.sendMessage(true)"></button>
-		</div>
-		
-	</ion-footer-bar>
+	 	
+      <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+      	<label class="item-input-wrapper">
+        	<input type="text" placeholder="YOUR MESSAGE..." ng-enter="chatCtrl.sendMessage(true)" ng-model="chatCtrl.message" />
+      	</label>
+      	<button class="button button-clear ion-android-send iconsend" ng-click="chatCtrl.sendMessage(true)"></button>
+      </ion-footer-bar>   
 	</ion-pane>
  </ion-view>

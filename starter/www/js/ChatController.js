@@ -96,17 +96,19 @@ angular.module('Chat.Controller', [])
   	//function called when user hits the send button
   	self.sendMessage=function(flag){
   		//socket.emit('new message', self.message)
-  		if(flag){
-  			console.log("individual chat");
-  			addMessageToList($stateParams.userName,true,self.message);
-  			var TwoUsers = $stateParams.userName + ":" + $stateParams.messageTo;
-  			socket.emit("send", new Date().getTime(), self.message,TwoUsers,flag);
-  		}else{
-			socket.emit("send", new Date().getTime(), self.message,$stateParams.groupName,flag);
-		}
-  		//addMessageToList($stateParams.userName,true,self.message);
-  		socket.emit("typing", false);
-  		self.message = ""
+  		if(self.message != "" && self.message != null && self.message){
+	  		if(flag){
+	  			console.log("individual chat");
+	  			addMessageToList($stateParams.userName,true,self.message);
+	  			var TwoUsers = $stateParams.userName + ":" + $stateParams.messageTo;
+	  			socket.emit("send", new Date().getTime(), self.message,TwoUsers,flag);
+	  		}else{
+				socket.emit("send", new Date().getTime(), self.message,$stateParams.groupName,flag);
+			}
+	  		//addMessageToList($stateParams.userName,true,self.message);
+	  		socket.emit("typing", false);
+	  		self.message = ""
+  		}
   	}
     
 	socket.on("chat", function(msTime, person, msg,room) {
