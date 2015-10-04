@@ -2,23 +2,25 @@
     .pickadate-centered-heading {
         font-weight: normal;
         text-align: center;
-        font-size: 1em; 
-        background-color: #3873f5;
+        font-size: 1em;
+        background: transparent;
         color: #fff;
       }
 </style>
 
 <ion-view hide-nav-bar="true">
-     <ion-pane>
-      <ion-header-bar class="bar-positive">
-	      <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-        <h1 class="title">Circular</h1>
-      </ion-header-bar>
- <ion-content scroll="false" ng-controller="circular">
+     <ion-pane class="attendanceBG">
+       <ion-header-bar class="bar-clear" style="background:transparent">
+     <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+       <h1 class="title">CIRCULAR</h1>
+     </ion-header-bar>
 
-	<div id="DateHeader" class="item item-positive animated fadeIn">
+
+ <ion-content padding="false" scroll="false" class="has-header" ng-controller="circular">
+
+	<div id="DateHeader" class="item-positive animated fadeIn" style="padding:16px">
             <a class="padding">
-				{{date != undefined ? (date).split('-')[2] : day	}} </a> 
+				{{date != undefined ? (date).split('-')[2] : day	}} </a>
     </div>
     <div class="containerAttendances">
       <div pickadate ng-model="date" min-date="minDate" max-date="maxDate" disabled-dates='disabledDates'   attendances-Info='classInfo'></div>
@@ -27,11 +29,11 @@
 		{{ date.type }} </br>
 		Comments : {{ date.data }}
       </div-->
-    </div>   
+    </div>
 	<ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
     <ion-list>
       <ion-item ng-repeat="MeetingInfo in circularInfo | filter : {date:date}" ng-click=goToCircularDetail(MeetingInfo)>
-       {{MeetingInfo.date}}</br> 
+       {{MeetingInfo.date}}</br>
 		   <b class="dark">{{MeetingInfo.data}} </b>
       </ion-item>
     </ion-list>

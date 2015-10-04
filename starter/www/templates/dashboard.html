@@ -1,8 +1,9 @@
 <ion-view hide-nav-bar="false">
   <ion-pane class="dashboardBG">
-  <ion-header-bar class="bar-dark">
+    <ion-header-bar class="bar-clear" style="background:transparent">
 
-        </ion-header-bar>
+    </ion-header-bar>
+
         <ion-content padding="false" scroll="false" class="has-header" add-animation>
 
         <div class="profileImageBG">
@@ -112,7 +113,7 @@
   <div class="row">
       <div ng-repeat="section in selectedClassInfo.sections" class="col col-33">
           <ion-radio ng-model="selectedDetails.section">{{section}}</ion-radio>
-       </div>     
+       </div>
   </div>
   <label class="item item-input item-select">
       <div class="input-label">

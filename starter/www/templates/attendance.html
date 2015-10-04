@@ -3,8 +3,8 @@
     .pickadate-centered-heading {
         font-weight: normal;
         text-align: center;
-        font-size: 1em; 
-        background-color: #444;
+        font-size: 1em;
+        background-color: transparent;
         color: #fff;
       }
 
@@ -12,15 +12,17 @@
 
 
 <ion-view hide-nav-bar="true">
-     <ion-pane>
-      <ion-header-bar class="bar-dark">
+     <ion-pane class="attendanceBG">
+
+        <ion-header-bar class="bar-clear" style="background:transparent">
 	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-        <h1 class="title">Attendance</h1>
+        <h1 class="title">ATTENDANCE</h1>
       </ion-header-bar>
- <ion-content scroll="false" ng-controller="attendanceCtrl">
-   <div id="DateHeader" class="item item-dark selected-date animated fadeIn">
+
+ <ion-content  scroll="false" ng-controller="attendanceCtrl">
+   <div id="DateHeader" class="selected-date animated fadeIn" style="padding:16px">
             <a class="padding">
-				{{date.date != undefined ? (date.date).split('-')[2] : day	}} </a> 
+				{{date.date != undefined ? (date.date).split('-')[2] : day	}} </a>
     </div>
     <div class="containerAttendance">
       <div pickadate ng-model="date" min-date="minDate" max-date="maxDate" disabled-dates='disabledDates'   attendance-Info='attendanceInfo'></div>
@@ -33,7 +35,7 @@
 	<ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
     <ion-list>
       <ion-item ng-repeat="absentlist in absentlists" ng-click="goToAbsentDaysDetail(absentlist)">
-       {{absentlist.title}}</br> 
+       {{absentlist.title}}</br>
 		   <b class="dark">{{absentlist.data}} </b>
       </ion-item>
     </ion-list>

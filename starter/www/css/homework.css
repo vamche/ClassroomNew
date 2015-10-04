@@ -12,14 +12,7 @@ m.list .item.item-accordion {
   display: block !important;
 }
 
-.leftMenu{
-	background-color: #444444;
-  color: #ffffff;
-  border-top: 0px;
-	border-left: 0px;
-	border-right: 0px;
-	border-bottom: 0px;
-}
+
 
 .noBorders{
   border-top: 0px;
@@ -39,11 +32,11 @@ m.list .item.item-accordion {
     border-top: 0px;
 	border-left: 0px;
 	border-right: 0px;
-	border-bottom: 0px;	
+	border-bottom: 0px;
 }
 
 .no-padding{
-	padding: 0px;	
+	padding: 0px;
 }
 
 
@@ -77,58 +70,6 @@ m.list .item.item-accordion {
 }
 
 
-.profileImageBG{
-
-  background-color: #ffffff;
-  background-image:
-    linear-gradient(
-      to bottom,
-      #444444,
-      #444444 20%,
-      #ffffff 20%,
-      #ffffff 100%
-    );
-
-    /* Fallback (could use .jpg/.png alternatively) */
-  background-color: #ffffff;
-
-  /* Safari 4, Chrome 1-9, iOS 3.2-4.3, Android 2.1-3.0 */
-  background-image:
-    -webkit-gradient(linear, top, bottom, from(#444444), to(#ffffff));
-
-  /* Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3 */
-  background-image:
-    -webkit-linear-gradient(top,#444444,#444444 20%,#ffffff 20%,#ffffff 100%);
-
-  /* Firefox 3.6 - 15*/
-  background-image:
-    -moz-linear-gradient(top,
-      #444444,
-      #444444 20%,
-      #ffffff 20%,
-      #ffffff 100%
-    );
-
-  /* Opera 11.1 - 12 */
-  background-image:
-    -o-linear-gradient(top,
-      #444444,
-      #444444 20%,
-      #ffffff 20%,
-      #ffffff 100%
-    );
-
-  /* Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+ */
-  background-image:
-    linear-gradient(to bottom,
-      #444444,
-      #444444 20%,
-      #ffffff 20%,
-      #ffffff 100%,
-      );
-
-
-}
 
 .bar-header {
   top: 0;

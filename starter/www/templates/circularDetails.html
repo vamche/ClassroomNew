@@ -1,25 +1,25 @@
 <ion-view hide-nav-bar="true">
-     <ion-pane  class ="item item-positive">
-      <ion-header-bar class="bar-positive" >
+     <ion-pane class="circularBG">
+      <ion-header-bar class="bar-positive" style="background:transparent" >
 	      <button class="button-icon ion-chevron-left button-clear" ng-click="goBack()"></button>
-		  <div class="h1 title">Circular Details</div>
+		  <div class="h1 title">CIRCULAR DETAILS</div>
 	  </ion-header-bar>
  <ion-content scroll="false" ng-controller="circular">
 	 <div id="DateHeader" class="row row-center">
 		<button class="col-10 button-icon icon ion-ios-arrow-back button-light fLeft" ng-click="" ></button>
-		<a class="col padding">	{{date != undefined ? (date).split('-')[2] : day	}} </a> 
-		<button class="col-10 button-icon icon ion-ios-arrow-forward button-light fRight" ng-click="" ></button>  		
+		<a class="col padding">	{{date != undefined ? (date).split('-')[2] : day	}} </a>
+		<button class="col-10 button-icon icon ion-ios-arrow-forward button-light fRight" ng-click="" ></button>
 	 </div>
-	<div id ="DateHeader1"class="bar-positive animated fadeIn ">              
-			<a class="padding">	{{date | date:"MMMM - yyyy"}} </a> 				  
+	<div id ="DateHeader1"class="bar-positive animated fadeIn ">
+			<a class="padding">	{{date | date:"MMMM - yyyy"}} </a>
 	 </div>
-	
+
 	 <div class="col text-center">
 	 <ion-list>
 		  <div class="list card">
 			<div class="item item-image" >
 				<img src="img/circular.jpg">
-			</div>	
+			</div>
 			<a class="item item-Event-left positive" href="#">
 				sssPARENT TEACHER MEETING
 			</a>
@@ -37,10 +37,10 @@
       <!-- {{MeetingInfo.Name}}</br>-->
 		   <b class="dark">{{MeetingInfo.name}} </b>
       </ion-item>
-	  
+
     </ion-list>
 	</div>
 	</div>
-	  
+
   </ion-content>
 </ion-view>
