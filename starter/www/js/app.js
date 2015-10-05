@@ -68,7 +68,7 @@ angular.module('starter', ['ionic', 'ngSanitize','btford.socket-io','starter.con
 	
 
   .state('chat', {
-    url: "/chat/:userName&:messageTo",
+    url: "/chat/:userName&:messageTo&:flag",
     templateUrl: "templates/chat.html"
   })
 

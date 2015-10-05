@@ -1,5 +1,5 @@
 angular.module('Chat.Controller', [])
-.controller('ChatController',function($stateParams,socket,$sanitize,$ionicScrollDelegate,$timeout,$scope,$state) {
+.controller('ChatController',function($stateParams,socket,$sanitize,$ionicScrollDelegate,$timeout,$scope,$state){
   	
   	var self=this;
   	var typing = false;
@@ -19,12 +19,9 @@ angular.module('Chat.Controller', [])
     self.Groups={};
     self.listOfPeople = {};
     self.peopleWithHistory = {};
-  	socket.on('connect',function(){
-  	  
-  	  connected = true
-  	  var peopleOnline = [];
-	    socket.emit("joinserver", $stateParams.userName ,"desktop");
-	    socket.emit("getOnlinePeople", function(data) {
+     self.connected = true;
+    $scope.$on('$ionicView.beforeEnter', function(){
+    	socket.emit("getOnlinePeople", function(data) {
 		     console.log("room");
 			 self.peopleWithHistory = data.peopleWithHistory;
 
@@ -34,11 +31,11 @@ angular.module('Chat.Controller', [])
 			 //for(var j=0; j< chatMessage.length;j++){
 			//	addMessageToList(chatMessage[j].name,true,chatMessage[j].Message);
 			 //}
-			var inRoom;
+			/*var inRoom;
 			for(var i = 1 ; i <= data.sizeOnlinePeople ; i++){
 				 //console.log(data.onlinePeople[i]);
 				 inRoom = data.onlinePeople[i].inroom;
-			}
+			}*/
 			/*console.log(data.roomsSize);
 			//for(var k = 0 ; k<data.roomsSize;k++){			
 				var inRoomLength = inRoom.length;
@@ -49,6 +46,42 @@ angular.module('Chat.Controller', [])
 				
 			//}*/
       });
+  	});
+
+  	socket.on('connect',function(){
+  	  
+  	//$scope.$on('$ionicView.beforeEnter', function(){
+     
+  	  var peopleOnline = [];
+	    socket.emit("joinserver", $stateParams.userName ,"mobile");
+	    socket.emit("getOnlinePeople", function(data) {
+		     console.log("room");
+			 self.peopleWithHistory = data.peopleWithHistory;
+
+			 self.Groups = data.listOfGroups;
+			 console.log(self.peopleWithHistory);
+			 //var chatMessage = data.chatMessages;
+			 //for(var j=0; j< chatMessage.length;j++){
+			//	addMessageToList(chatMessage[j].name,true,chatMessage[j].Message);
+			 //}
+			/*var inRoom;
+			for(var i = 1 ; i <= data.sizeOnlinePeople ; i++){
+				 //console.log(data.onlinePeople[i]);
+				 inRoom = data.onlinePeople[i].inroom;
+			}*/
+			/*console.log(data.roomsSize);
+			//for(var k = 0 ; k<data.roomsSize;k++){			
+				var inRoomLength = inRoom.length;
+				 for(var j = 0 ; j<inRoomLength;j++){
+					var roomName = inRoom[j];
+					Rooms[roomName] = {People:data.rooms[roomName].peopleName};
+				 }
+				
+			//}*/
+      });
+  	//});
+
+  	
 	 
 	 
   	  //Add user
@@ -216,16 +249,27 @@ angular.module('Chat.Controller', [])
     		$state.go('groupChat',{userName:$stateParams.userName,groupName:name});	
 			socket.emit('switchRoom',name);
 		}else{
-			$state.go('chat',{userName:$stateParams.userName,messageTo:name});	
+			$state.go('chat',{userName:$stateParams.userName,messageTo:name,flag:true});	
 			socket.emit('chatHistoryForTwoUser',$stateParams.userName,name);
 		}
   	}
+  	$scope.clickContact = function(name){
+			$state.go('chat',{userName:$stateParams.userName,messageTo:name,flag:false});	
+			socket.emit('chatHistoryForTwoUser',$stateParams.userName,name);
+  	}
+
 	$scope.goBack = function(){
 		console.log(name);
     	$state.go('listOfGroupChat',{userName:$stateParams.userName});	
   	}
 	$scope.goBackToGroupOfContacts = function(){
-    	$state.go('listOfGroupContacts',{userName:$stateParams.userName});	
+		console.log($stateParams.flag);
+		if($stateParams.flag == "true"){
+			$state.go('listOfGroupChat',{userName:$stateParams.userName});
+		}else if($stateParams.flag == "false"){
+			console.log("contact");
+    		$state.go('listOfGroupContacts',{userName:$stateParams.userName});	
+    	}
   	}
 
 
