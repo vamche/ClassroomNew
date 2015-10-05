@@ -1,3 +1,12 @@
+<style>  
+
+  .pane, .view {
+      background-color: #fff;   
+  }
+
+  </style>
+
+
 <ion-view hide-nav-bar="false">
   <ion-pane class="dashboardBG">
     <ion-header-bar class="bar-clear" style="background:transparent">
@@ -111,7 +120,7 @@
   </label>
 
   <div class="row">
-      <div ng-repeat="section in selectedClassInfo.sections" class="col col-33">
+      <div ng-repeat="section in selectedClassInfo.sections" class="col">
           <ion-radio ng-model="selectedDetails.section">{{section}}</ion-radio>
        </div>
   </div>

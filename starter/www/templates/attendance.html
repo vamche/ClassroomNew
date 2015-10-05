@@ -8,11 +8,21 @@
         color: #fff;
       }
 
+    .pane, .view {
+     
+ 
+      background: -webkit-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* Chrome 10+, Saf5.1+ */
+      background:    -moz-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* FF3.6+ */
+      background:     -ms-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* IE10 */
+      background:      -o-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* Opera 11.10+ */
+      background:         linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* W3C */
+    }
+
   </style>
 
 
-<ion-view hide-nav-bar="true">
-     <ion-pane class="attendanceBG">
+<ion-view class="attn" hide-nav-bar="true">
+     <ion-pane class="headerBG">
 
         <ion-header-bar class="bar-clear" style="background:transparent">
 	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>

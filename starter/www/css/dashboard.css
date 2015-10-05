@@ -10,12 +10,14 @@
 
 }
 .attendanceBG{
-	background-image: url("../img/parent/XXH_green-bg.png"),
-linear-gradient(180deg, rgba(255, 255, 255, 0.9) 22%,rgba(255, 255, 255, 0.9) 100%) !important; /* W3C */;
-	background-repeat: no-repeat,
-	                   no-repeat;
+	background-color: #00D7D7 !important;
+}
 
-  background-size: 100% 22%,100% 100%;
+.headerBG{
+  background-image: url("../img/parent/H_icon-bg.png") !important; /* W3C */;
+  background-repeat: no-repeat,
+                     no-repeat;  
+  background-size: 100% 100%,100% 100%;  
 
 }
 

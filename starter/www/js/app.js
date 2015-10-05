@@ -21,7 +21,7 @@ angular.module('starter', ['ionic', 'ngSanitize','btford.socket-io','starter.con
 .value('USER_DETAILS',{
   userName : '',
   userRole : '',
-  classesInfo : [{class: "X", sections : ["A","B","C"], subjects: ["English", "Maths", "Science"]},
+  classesInfo : [{class: "X", sections : ["A","B","C","D","E"], subjects: ["English", "Maths", "Science"]},
                  {class: "IX", sections : ["B"], subjects: ["Social"]}
                 ],
   wardsInfo : [{id : "1", rollNo : "1", name : "Jessie", class : "X", subjects : ["English", "Maths", "Science"], img:""},
