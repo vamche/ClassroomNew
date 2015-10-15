@@ -21,6 +21,7 @@ angular.module('Chat.Controller', [])
     self.peopleWithHistory = {};
      self.connected = true;
     $scope.$on('$ionicView.beforeEnter', function(){
+    	self.messages=[];
     	socket.emit("getOnlinePeople", function(data) {
 		     console.log("room");
 			 self.peopleWithHistory = data.peopleWithHistory;
@@ -145,8 +146,8 @@ angular.module('Chat.Controller', [])
   	}
     
 	socket.on("chat", function(msTime, person, msg,room) {
-		console.log("chat "+room);
-		console.log("$stateParams.groupName "+$stateParams.groupName);
+		//console.log("chat "+room);
+		//console.log("$stateParams.groupName "+$stateParams.groupName);
 		if(room == $stateParams.groupName){
 			addMessageToList(person.name,true,msg);
 		}
@@ -163,7 +164,7 @@ angular.module('Chat.Controller', [])
   		removeChatTyping(username)
   		var color = style_type ? getUsernameColor(username) : null;
 		var side;//style_type ? "right" : "left";
-		console.log("style_type " + style_type);
+		//console.log("style_type " + style_type);
 		if(username == $stateParams.userName){
 		    side = "right";
 			self.messages.push({content:$sanitize(message),style:style_type,username:"Me",color:color,align:side});
@@ -216,11 +217,11 @@ angular.module('Chat.Controller', [])
 		var msgClass = "";
 		
 		if(!me){
-			msgClass = "msgRight";
-		}else{
 			msgClass = "msgLeft";
+		}else{
+			msgClass = "msgRight";
 		}
-		console.log(" msgClass ---> " + msgClass);
+		console.log(index + "<---- msgClass ---> " + msgClass);
 		return msgClass;
 	}
 	
@@ -297,7 +298,7 @@ angular.module('Chat.Controller', [])
 	socket.on("history", function(data) {
 	    console.log(data);
 		for(var i in data){
-			console.log(data[i].name + " "+data[i].message);
+			//console.log(data[i].name + " "+data[i].message);
 			addMessageToList(data[i].name,true,data[i].message);
 		}
 	});

@@ -6,14 +6,14 @@
       </ion-header-bar>
 	 <ion-content class="padding" start-y="120">
         <ol>
-			<li class="animated fadeInUp chatLineBG" 
-				ng-repeat="message in chatCtrl.messages" 
-
-				ng-class="chatCtrl.getClassforUser($index)"				
+			<li 
+				ng-repeat="message in chatCtrl.messages"
+				ng-class="getClassforUser($index)"				
 				>
         		<span ng-show="message.style"        		
 				ng-style="{color:message.color,float:message.align}" >
-				{{message.username === "Me" ? "" : message.username + "-"}} {{message.content}}</span > </br>
+				{{message.username === "Me" ? "" : message.username + "-"}}
+        </br> {{message.content}}</span > </br>
 			</li>
         </ol>
       </ion-content>
