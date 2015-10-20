@@ -5,10 +5,14 @@
 	                   no-repeat;
 
   background-size: 100% 24%,100% 100%;
+	-webkit-flex: 1.5 !important;
+     -webkit-align-items: center;
 
 
 
 }
+
+
 .attendanceBG{
 	background-color: #00D7D7 !important;
 }
@@ -16,8 +20,8 @@
 .headerBG{
   background-image: url("../img/parent/H_icon-bg.png") !important; /* W3C */;
   background-repeat: no-repeat,
-                     no-repeat;  
-  background-size: 100% 100%,100% 100%;  
+                     no-repeat;
+    background-size: 100% 100%,auto 24%;
 
 }
 
@@ -99,6 +103,8 @@ i.changeIcon.ion-alert-circled{
   font-size: 30px; /* 64, originally 60 */
   padding: 14px;
 }
+
+
 .popup-buttons .button {
     /* border-radius: 2px; */
 
