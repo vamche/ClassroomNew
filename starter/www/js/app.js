@@ -202,6 +202,17 @@ angular.module('starter', ['ionic', 'ngSanitize','btford.socket-io','starter.con
     }
   })
   
+  .state('app.examSchedule', {
+    url: "/examSchedule",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/examSchedule.html",
+		controller: 'examScheduleCntrl'
+      }
+    }
+  })
+  
+  
   .state('app.circularDetails', {
       url: "/circularDetails",
       views: {

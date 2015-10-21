@@ -54,6 +54,7 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline", color:"positive", user:"teacher"},
 						{  id: "TIME_TABLE", title:"Timetable", icon:"ion-ios-list-outline", color:"light", user:"parent,student,teacher"},
 						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline", color:"positive", user:"teacher" },
+						{  id: "EXAM_SCHEDULE", title:"Exam Schedule", icon:"ion-ios-compose-outline", color:"positive", user:"parent,student,teacher" },
 						{  id: "TIME_WEEKTABLE", title:"Week Timetable", icon:"ion-ios-list-outline", color:"energized", user:"parent,student,teacher"}
 						];
 
@@ -150,31 +151,35 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
   $scope.goBack = function(){
 	$state.go('app.attendance');
   }
-
 })
-.controller('circular', function($scope,dateFilter,$state) {
+.controller('examScheduleCntrl', function($scope,dateFilter,$state) {
+	var newDate = new Date();
+	$scope.date = dateFilter(newDate, 'yyyy-MM-dd');//'2013-11-26';
+	$scope.day = dateFilter(newDate,'dd');
+	$scope.minDate = '2010-1-1';
+	$scope.maxDate = '2050-12-30';
+})
+.controller('circular', function($scope,dateFilter,$state,$ionicSlideBoxDelegate) {
    var newDate = new Date();
    $scope.date = dateFilter(newDate, 'yyyy-MM-dd');//'2013-11-26';
    $scope.day = dateFilter(newDate,'dd');
    $scope.minDate = '2010-1-1';
    $scope.maxDate = '2050-12-30';
    $scope.ISCHANGESTATUSCLCKED = true;
-   $scope.model = "I am attending";
-   $scope.modelStudent = "Parent attending";
+  $scope.model = "I AM ATTENDING";
+   $scope.modelStudent = "PARENT ATTENDING";
    $scope.disabledDates = [];
     $scope.selectedCircularData  = "";
 	$scope.selectedCircularDate = "";
    $scope.classInfo = [ {  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" }
 						];
-
-	$scope.CircularStatus = [ {  name: "I am attending",id :1},
+	$scope.CircularStatus = [ {  name: "I AM ATTENDING",id :1},
 	{  name: "May attend", id : 2},
 	{  name: "I am not attending", id : 3 }
 						];
-	console.log("$scope.date " + $scope.date);
-	$scope.circularInfo = [ { data: 'Parent - Teacher Conference',date: $scope.date ,id : 1},
-							{ data: 'Fun Day',date: '2015-07-25' ,id :2},
-							{ data: 'Annual Day',date: '2015-07-15' ,id :3}
+	$scope.circularInfo = [ { data: 'Parent - Teacher Conference',image: 'img/circular.jpg',date: $scope.date ,id : 1},
+							{ data: 'Fun Day',date: '2015-07-25' ,image: 'img/circular.jpg',id :2},
+							{ data: 'Annual Day',date: '2015-08-15' ,image: 'img/circular.jpg',id :3}
 						];
   $scope.PTMeetingInfo = [
     { Name: 'Student1',Status: 'Parent atttending', StudentId: 1 },
@@ -187,11 +192,13 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 			$state.go('app.circularDetailsForTeacher');
 	   }
 	   else if(MeetingInfo.id == "1"){
-		/* $scope.selectedCircular.push({
+/* $scope.selectedCircular.push({
 					data: MeetingInfo.data,
 					date: MeetingInfo.date,
 					id: MeetingInfo.id
 				});			 */
+				$scope.date = dateFilter(newDate, 'yyyy-MM-dd');
+				//$ionicSlideBoxDelegate.slide(1);
 		   $state.go('app.circularDetails');
 	   }
 	   else{
@@ -221,7 +228,16 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
   $scope.goBack = function(){
 	$state.go('app.circular');
   }
-
+ $scope.nextSlide = function(){
+		//alert($scope.circularInfo[$ionicSlideBoxDelegate.currentIndex()].date);
+		$scope.date = dateFilter($scope.circularInfo[$ionicSlideBoxDelegate.currentIndex()].date, 'yyyy-MM-dd');
+		console.log("clc");
+		$ionicSlideBoxDelegate.next();
+   };
+   $scope.previousSlide = function(){
+		$scope.date = dateFilter($scope.circularInfo[$ionicSlideBoxDelegate.currentIndex()].date, 'yyyy-MM-dd');
+		$ionicSlideBoxDelegate.previous();
+   };  
 })
 
 // feeCntrl
@@ -551,6 +567,8 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 					$state.go('app.addResult');
 				}else if(id == "CIRCULAR"){
 					$state.go('app.circular');
+				}else if(id == "EXAM_SCHEDULE"){
+					$state.go('app.examSchedule');
 				}else if(id == "TIME_TABLE"){
 					$state.go('app.todayTimetable');
 				}else if(id == "TIME_WEEKTABLE"){
