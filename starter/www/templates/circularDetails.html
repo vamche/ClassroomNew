@@ -6,41 +6,36 @@
 	  </ion-header-bar>
  <ion-content scroll="false" ng-controller="circular">
 	 <div id="DateHeader" class="row row-center">
-		<button class="col-10 button-icon icon ion-ios-arrow-back button-light fLeft" ng-click="" ></button>
+		<button class="col-10 button-icon icon ion-ios-arrow-back button-light fLeft" ng-click="previousSlide()" ></button>
 		<a class="col padding">	{{date != undefined ? (date).split('-')[2] : day	}} </a>
-		<button class="col-10 button-icon icon ion-ios-arrow-forward button-light fRight" ng-click="" ></button>
+		<button class="col-10 button-icon icon ion-ios-arrow-forward button-light fRight" ng-click="nextSlide()" ></button>
 	 </div>
 	<div id ="DateHeader1"class="bar-positive animated fadeIn ">
 			<a class="padding">	{{date | date:"MMMM - yyyy"}} </a>
 	 </div>
-
-	 <div class="col text-center">
-	 <ion-list>
-		  <div class="list card">
-			<div class="item item-image" >
-				<img src="img/circular.jpg">
+    <ion-slide-box 
+		delegate-handle  = "flashcard"
+		show-pager		 = "false" 
+		active-slide	 = "currentIndex" 
+		on-slide-changed = "slideHasChanged(currentIndex)"
+		does-continue	 = "false"  class ="animated tada">
+        <ion-slide ng-repeat="item in circularInfo" > 
+			<div class="container">
+				<div class="flashcard" >
+					<div class="front face">
+						<div class="item item-image" >
+							<img src="{{item.image}}">
+						</div>
+						 <div class="item item-Event-left positive">
+							{{item.data}}
+						</div>
+					</div>
+				</div>
 			</div>
-			<a class="item item-Event-left positive" href="#">
-				sssPARENT TEACHER MEETING
-			</a>
-		</div>
-          <button class="button button button-balanced"  ng-click="">{{model}}
-          </button> <br>
-		<!--  <button class="button button-clear button-balanced"  ng-click="changeCircularStatus()">
-            change status
-          </button>
-		  -->
-      </ion-list>
-	<div ng-hide="ISCHANGESTATUSCLCKED" class="ng-hide">
-	     <ion-list>
-      <ion-item ng-repeat="MeetingInfo in CircularStatus" ng-click="updateCircularStatus(MeetingInfo)">
-      <!-- {{MeetingInfo.Name}}</br>-->
-		   <b class="dark">{{MeetingInfo.name}} </b>
-      </ion-item>
-
-    </ion-list>
-	</div>
-	</div>
-
+			<div class="row row-center">  <div class="col 50" ng-click=""> <button class="button button-block button-clear">I'M NOT ATTENDING</button></div>
+			 <div class="col 50" ng-click="">
+			<button class="button button-block button-clear">I'M ATTENDING</button></div></div>
+        </ion-slide>
+    </ion-slide-box>
   </ion-content>
 </ion-view>
