@@ -1,0 +1,39 @@
+<style>
+    .pickadate-centered-heading {
+        font-weight: normal;
+        text-align: center;
+        font-size: 1em;
+        background: transparent;
+        color: #fff;
+      }
+
+    .pane, .view {    
+      
+      background: -webkit-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* Chrome 10+, Saf5.1+ */
+      background:    -moz-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* FF3.6+ */
+      background:     -ms-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* IE10 */
+      background:      -o-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* Opera 11.10+ */
+      background:         linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* W3C */
+
+    }
+</style>
+
+<ion-view hide-nav-bar="true">
+     <ion-pane class="headerBG">
+       <ion-header-bar class="bar-clear" style="background:transparent">
+     <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+       <h1 class="title">EXAM SCHEDULE</h1>
+     </ion-header-bar>
+
+
+ <ion-content padding="false" scroll="false" class="has-header" ng-controller="examScheduleCntrl">
+
+	<div id="DateHeader" class="item-positive animated fadeIn" style="padding:16px">
+            <a class="padding">
+				{{date != undefined ? (date).split('-')[2] : day	}} </a>
+    </div>
+    <div class="containerAttendances">
+      <div pickadate ng-model="date" min-date="minDate" max-date="maxDate" disabled-dates='disabledDates'   attendances-Info='classInfo'></div>	 
+    </div>
+  </ion-content>
+</ion-view>
