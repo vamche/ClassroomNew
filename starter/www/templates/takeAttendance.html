@@ -1,59 +1,75 @@
+<style>
+.Right_Space {
+  margin-left: 40% !important;
+}
+.submitButton{
+
+  background-color: #21D3D7 !important;
+  border-color: #21D3D7 !important;
+  width:96%;
+  margin-left: 2%;
+  font-size: 17px !important;
+  color : #fff !important;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titleColor {
+
+  color : #fff !important;
+}
+.heightOfFooter {
+  height : 15%;
+  position: absolute;
+}
+.studentName{
+  color : #414143;
+   font-size: 15px !important;
+}
+
+.RollNo {
+  color : #B7B7B9
+   font-size: 10px !important;
+}
+</style>
+
 <ion-view hide-nav-bar="true">
-    <ion-pane>
-    <ion-header-bar class="bar-dark" >
-	     <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-		  <div class="h1 title">Attendance</div>
-		 <button class="button  button-clear  icon-right" ng-click="saveAttendance()">Save</button>
-        <!--h1 class="title">Add Homework</h1>
-            <a href="#/app/dashboard" class="button button-assertive button-clear  icon-right ion-android-close"></a-->
-    </ion-header-bar>
-      <ion-content scroll="false" start-y="50">
-      <ion-list>
-        <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              
-           
-             {{group.name}}  &nbsp; <a class=""> <b>{{group.selectedItem}}</b> </a>
-             <i class="icon" ng-class="isGroupShown(group) ? 'ion-arrow-up-b' : 'ion-arrow-down-b'"></i>
-          </ion-item>
-          <ion-item class="item-accordion"
-                    ng-repeat="item in group.items"
-                    ng-show="isGroupShown(group)"
-                    ng-click="selectItem(group,item)">
-            {{item}}
-          </ion-item>
-          </div>
-         
-      </ion-list> 
-    <div id="search-box" class="bar bar-header item-input-inset">
-        <div class="item-input-wrapper">
-          <i class="icon ion-ios7-search placeholder-icon"></i>
-          <input type="search" placeholder="Search" ng-model="data.searchQuery">
-          <i class="clear-search icon ion-ios7-close-empty" ng-click="clearSearch()"></i>
-        </div>
-        <button class="button button-clear">
-          Cancel
-        </button>
-      </div>	  
-  	<ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
+     <ion-pane>
+      <ion-header-bar class="takeattendanceBG">
+      <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+        <h1 class="title titleColor">ATTENDANCE</h1>
+
+      </ion-header-bar>
+      <ion-content>
+        <ion-item class="item  takeattendanceSubHeaderBG"> <!-- add ng-if=isTeacher() -->
+           <label>Class IX   |  Section B </label> <label class= "Right_Space">P : 04  |  A : 02</label>
+        </ion-item>  
+  	<ion-scroll zooming="false" direction="y" style="width: 100%; height: 80%" has-bouncing="true">
   		<ion-list>
-  			<ion-item ng-repeat="student in studentsOfBatch | filter: data.searchQuery" ng-click="clickItem($event,student,student.RollNo)" class="row my-animation item-remove-animate item-avatar item-icon-right">	
-         <div class="col padding">
-            <h3 class="energized">{{student.Name}}</br></h3>
-           {{student.RollNo}}
+  			<ion-item ng-repeat="student in studentsOfBatch | filter: data.searchQuery" class="my-animation item-remove-animate" ng-click="onFocus($index)">	
+        <div class= "row">
+         <div class="col">
+            <h3 class="studentName">{{student.Name}}</br></h3>
+           <h3 class="RollNo">Roll No: {{student.RollNo}}</h3>
          </div>
-         <div class="col col-15 padding">
+         <div class="col col-10">
              <label class="checkbox">
               <input type="checkbox" ng-checked="1"/>
              </label>
          </div>
+       </div>
+        <div  ng-show="showDesc($index)">
+         <label class="item item-input positive">
+            <input type="text" placeholder="Enter Comment">
+          </label>
+         </div> 
   			</ion-item>
       </ion-list>
      </ion-scroll>
 
     </ion-content>
-    
+    <ion-footer-bar keyboard-attach class="heightOfFooter">
+        <a class="button button-block submitButton " ng-click="saveAttendance()">SUBMIT</a>
+      </ion-footer-bar>  
     </ion-pane>
 </ion-view>

@@ -1,8 +1,8 @@
 <ion-view hide-nav-bar="true">
-     <ion-pane>
-      <ion-header-bar class="bar-dark">
+     <ion-pane >
+      <ion-header-bar class="bar-dark" style="background-color: #21D2D7;">
 	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-        <h1 class="title">Fee</h1>
+        <h1 class="title">FEE DETAILS</h1>
       </ion-header-bar>
       <ion-content>
         <ion-list>
@@ -19,65 +19,30 @@
 	  <ion-item ng-repeat="item in items" 
                   item="item"
                   href="#/item/{{item.id}}"
-			<a href="#" class="image">
-			{{ item.title }}
-			 {{ item.month }} 
-				<img src="img/fee.jpg" />  {{ item.fee }} {{ item.status }}
+			<a href="#" class="image" style="background-color: #21D2D7;">
+			<div style="color: #FFFFFF; margin-left:10px;">
+			<img src="img/fee.jpg" /> 
+			<type style="margin-left:15px;">{{ item.title }}</type>
+			 <type style="margin-left:25px;">{{ item.month }} </type>
+			 <type style="margin-left:55px; text-align:right;">{{item.status}}</type>
+			 </div>
+			<!--<div ng-repeat="test in current">
+    <div ng-if="test.view == null">
+        <i class="icon ion-checkmark"></i>
+    </div>-->
+</div>
         </ion-item>
 	  </a>
-	  
-	  
-	  <div class="row">
-  <div class="col"><img src="img/fee.jpg"></div>
-  <div class="col col-previous">Caption left</div>
-  <div class="col col-bottom">Caption right</div>
-</div>
-	  
-	<div class="row">
+
+	  <ion-item ng-repeat="item in details" 
+                  item="item"
+                  href="#/item/{{item.id}}"
+			<a href="#" class="image" style="background-color: #FFFFFF;">
+			<h3 style="text-align:left;">{{ item.title }}</h3>
+			<h3 style="text-align:right;">{{ item.fee }} </h3>
+        </ion-item>
 	  </a>
-		<div class="col">
-			<a>Term 1 <br> test</a>
-		</div>
-		<div class="col">
-			<img src="img/fee.jpg" />
-		</div>
-		<div class="col">
-			<a>7000/-</a>
-		</div>
-		<div class="col">
-			<a>Paid</a>
-		</div>
-	</div>
-	<div class="row">
-	  </a>
-		<div class="col">
-			<a>Term 2 <br> test</a>
-		</div>
-		<div class="col">
-			<img src="img/fee.jpg" />
-		</div>
-		<div class="col">
-			<a>7000/-</a>
-		</div>
-		<div class="col">
-			<a>Paid</a>
-		</div>
-	</div>
-	<div class="row">
-	  </a>
-		<div class="col">
-			<a>Term 3 <br> test</a>
-		</div>
-		<div class="col">
-			<img src="img/fee.jpg" />
-		</div>
-		<div class="col">
-			<a>7000/-</a>
-		</div>
-		<div class="col">
-			<a>Paid</a>
-		</div>
-	</div>
+	
       </ion-content>
     </ion-pane>
 </ion-view>

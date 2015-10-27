@@ -1,0 +1,51 @@
+<ion-view hide-nav-bar="true" class="examresults">
+     <ion-pane>
+      <ion-header-bar class="bar-dark" style="background-color:#CCB14A;width:100%; height:7%;">
+		<button class="button button-icon icon ion-navicon" menu-toggle="left"></button>      
+	   <h1 class="title"  >Results</h1>
+      </ion-header-bar>
+		<ion-content>
+	<body style="background-color:#CCB14A;">
+		<div id="canvas-holder" style="background-color:#CCB14A; width:100%; height:70%; padding-top:10%; padding-bottom:2%;">
+			<canvas id="chart-area" width="800" height="200"  />
+		</div>
+			<!--<select ng-model="doughnutData" ng-change="loaded()">-->
+      <!--</select>-->	
+		<div class="body" style="background-color:#CCB14A; color:blue; text-align:center; width:100%; height:10%">		
+		<table style="width:100%">
+		<tr>
+		<td style="width:10%"><a href=""><h3><</h3></a></td>
+		<td style="width:80%"><h3>Internals</h3></td> 
+		<td style="width:10%"><button type="button"><h3>></h3></button></td>
+  </tr>
+  </table>
+		</div>
+		</body>
+		
+<ion-list>
+<ion-scroll zooming="false" direction="y" style="width: 100%; height: 500px" has-bouncing="true">
+<h3 class="Subtitle" style="text-align:Center; background-color:#F2F2F2; color:#6F6F71; line-height:50px; ">Class Toper</h3>
+	  
+	  <ion-item ng-repeat="item in items" 
+                  item="item"
+                  href="#/item/{{item.id}}" style="background-color:#FFFFFF;"
+			<a href="#" class="image">
+	<div class="row">
+	  </a>
+		<div class="col">
+			<a>{{ item.title }} </a>
+		</div>
+		<!--<div class="col" style="margin-left:10cm;"> -->
+		<div class="list-border1"> 
+			 <a> <h3> {{ item.percentage }} </h3> </a>
+		</div>
+		<!--div class="col"-->
+		<div class="list-border2"> 
+				 <a> <h3><b>{{ item.grade }}</b> </h3> </a>
+		</div>
+	</div>
+        </ion-item>
+	  </a>
+    </ion-content>
+    </ion-pane>
+</ion-view>

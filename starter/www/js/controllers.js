@@ -244,9 +244,16 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 .controller('feeCntrl', function($scope,$state) {
 
   $scope.items = [
-    { id: 0, title: "Term 1", month: "June",fee: "7000/-", status: "Paid" ,src:"img/fee.jpg"},
-    { id: 1, title: "Term 2", month: "October", fee: "7000/-",status: "Not Paid",src:"img/fee.jpg"  },
-    { id: 2, title: "Term 3", month: "January",fee: "7000/-", status: "Not Paid" ,src:"img/fee.jpg" }
+    { id: 0, title: "Term 1", month: "Paid on Jan 11", status: "Paid" ,src:"img/fee.jpg"},
+    { id: 1, title: "Term 2", month: "Paid on Feb 05", status: "Paid",src:"img/fee.jpg"  },
+    { id: 2, title: "Term 3", month: "Paid on Mar 15", status: "Paid" ,src:"img/fee.jpg" },
+	{ id: 2, title: "Term 4", month: "Last date Jul 15", status: "" ,src:"img/fee.jpg" }
+  ];
+  
+  $scope.details = [
+    { id: 0, title: "Total term fees", fee:"$5000"},
+    {id: 1, title: "Total paid", fee:"$4000"  },
+    { id: 2, title: "Due", fee:"$1000" }
   ];
 
 })
@@ -562,6 +569,7 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 				}else if(id == "TAKE_ATTENDANCE"){
 					$state.go('app.takeAttendance');
 				}else if(id == "RESULTS"){
+					//$state.go('app.feedbackDetails');
 					$state.go('app.addResult');
 				}else if(id == "ADD_RESULT"){
 					$state.go('app.addResult');
@@ -734,52 +742,216 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 
  })
 
-.controller('takeAttendance', function($scope,$state) {
-			$scope.studentsOfBatch = [];
-			$scope.groups = [];
+.controller('takeAttendance', function($stateParams,$scope,$state) {
+			
+      $scope.activeIndex = -1;
 
-			$scope.groups = [{  name: "Select Class", items: ["X","IX","IIX"], selectedItem : "" },
-							 {  name: "Select Batch", items: ["Batch A","Batch B","Batch C"], selectedItem : "" }];
+      $scope.$on('$ionicView.beforeEnter', function(){
+          $scope.activeIndex = -1;
+      });
+
+      $scope.listOfStudents =[{
+      "X":[
+        {
+          "A":[
+            { Name : "Vamsi",
+              RollNo:"U081"
+            },
+            { Name : "Gokul",
+              RollNo:"U082"
+            },
+            { Name : "Naren",
+              RollNo:"U083"
+            },
+            { Name : "Rahul",
+              RollNo:"U084"
+            },
+            { Name : "Rajesh",
+              RollNo:"U085"
+            }
+            ]
+        },
+        {
+          "B":[
+            { Name : "Gayatree",
+              RollNo:"U086"
+            },
+            { Name : "Sita",
+              RollNo:"U087"
+            },
+            { Name : "Arun",
+              RollNo:"U088"
+            },
+            { Name : "Kiran",
+              RollNo:"U089"
+            },
+            { Name : "Amrita",
+              RollNo:"U090"
+            }
+            ]
+        },
+        {
+          "C":[
+            { Name : "Ranjitha",
+              RollNo:"U091"
+            },
+            { Name : "Karuna",
+              RollNo:"U092"
+            },
+            { Name : "Pankaj",
+              RollNo:"U093"
+            },
+            { Name : "Sandeep",
+              RollNo:"U094"
+            },
+            { Name : "Sanghu",
+              RollNo:"U095"
+            }
+            ]
+        }
+      ]},
+      {
+      "IX":[
+        {
+          "A":[
+            { Name : "Pooja",
+              RollNo:"U096"
+            },
+            { Name : "Padma",
+              RollNo:"U097"
+            },
+            { Name : "Pavitha",
+              RollNo:"U098"
+            },
+            { Name : "Ramki",
+              RollNo:"U099"
+            },
+            { Name : "Prakriti",
+              RollNo:"U100"
+            }]
+        },
+        {
+          "B":[
+            { Name : "Abhay",
+              RollNo:"U101"
+            },
+            { Name : "Abhishek",
+              RollNo:"U102"
+            },
+            { Name : "Rashu",
+              RollNo:"U103"
+            },
+            { Name : "Virendra",
+              RollNo:"U104"
+            },
+            { Name : "Mohan",
+              RollNo:"U105"
+            }]
+        },
+        {
+          "C":[
+            { Name : "Krishna",
+              RollNo:"U106"
+            },
+            { Name : "Radha",
+              RollNo:"U107"
+            },
+            { Name : "Anu",
+              RollNo:"U108"
+            },
+            { Name : "Raghu",
+              RollNo:"U109"
+            },
+            { Name : "Dilip",
+              RollNo:"U110"
+            }]
+        }
+
+      ]},
+      {
+      "IIX":[
+
+        {
+        "A":[
+          { Name : "Ram",
+            RollNo:"U081"
+          },
+          { Name : "Sita",
+            RollNo:"U082"
+          },
+          { Name : "Laxman",
+            RollNo:"U083"
+          },
+          { Name : "Ganesh",
+            RollNo:"U084"
+          },
+          { Name : "Mahesh",
+            RollNo:"U085"
+          }]
+        },
+        {
+          "B":[
+            { Name : "Ravi",
+              RollNo:"U086"
+            },
+            { Name : "Ankita",
+              RollNo:"U087"
+            },
+            { Name : "Aditi",
+              RollNo:"U088"
+            },
+            { Name : "Ruchika",
+              RollNo:"U089"
+            },
+            { Name : "Aishwariya",
+              RollNo:"U090"
+            }]
+        },
+        {
+        "C":[
+          { Name : "Neha",
+            RollNo:"U091"
+          },
+          { Name : "Meenu",
+            RollNo:"U092"
+          },
+          { Name : "Sonu",
+            RollNo:"U093"
+          },
+          { Name : "Kanhaiya",
+            RollNo:"U094"
+          },
+          { Name : "Madhu",
+            RollNo:"U095"
+          }]
+
+        }
+        ]}];
 		  /*
 		   * if given group is the selected group, deselect it
 		   * else, select the given group
 		   */
-		  $scope.toggleGroup = function(group) {
-			if ($scope.isGroupShown(group)) {
-			  $scope.shownGroup = null;
-			} else {
-			  $scope.shownGroup = group;
-			}
-
-			if($scope.groups[0].selectedItem != "" && $scope.groups[1].selectedItem != ""){
+       
 				if($scope.listOfStudents)
 				{
-					var classVal = $scope.listOfStudents;
-					var len = $scope.listOfStudents.length;
+					var classVal = $stateParams.classVal;
+          var sectionVal = "A";
+          var listOfStudents = $scope.listOfStudents;
+					var len = listOfStudents.length;
 					for(var i=0;i<len;i++){
-						var batchVal = classVal[i][$scope.groups[0].selectedItem];
-						if(batchVal){
-							var batchLength = batchVal.length;
-							for(var k=0;k<batchLength;k++){
-								var value1 = batchVal[k][$scope.groups[1].selectedItem];
-								if(value1){
-									$scope.studentsOfBatch = value1;
-								}
-							}
-						}
-					}
+            var batchVal = listOfStudents[i][classVal];
+            if(batchVal){
+              var batchLength = batchVal.length;
+              for(var k=0;k<batchLength;k++){
+                var value1 = batchVal[k][sectionVal];
+                if(value1){
+                  $scope.studentsOfBatch = value1;
+                }
+              }
+            }
+          }
 				}
-
-			}
-		  };
-		  $scope.selectItem = function(group,item) {
-			$scope.shownGroup.selectedItem = item;
-			$scope.toggleGroup(group);
-			$scope.absentList = [];
-		  };
-		  $scope.isGroupShown = function(group) {
-			return $scope.shownGroup === group;
-		  };
+        console.log($scope.studentsOfBatch)
 		   $scope.absentList = [];
 		   $scope.studentAttendanceComments =[];
           $scope.clickItem = function($event,student,rollNo){
@@ -799,6 +971,22 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 				}
 
 		  };
+
+    $scope.onFocus = function(index) {
+
+      console.log("index  " + index);
+    //var itemElement = angular.element(document.querySelectorAll(".homeworkList"));
+      $scope.activeIndex = index;
+    //itemElement[index].addClass(".homeworkBG");
+    };
+
+    $scope.showDesc = function(index) {
+    var isActive = false;
+    if($scope.activeIndex == index){ 
+      isActive = true;
+    }
+    return isActive;
+    };
 			$scope.saveAttendance = function(){
 				console.log($scope.absentList);
 			};
@@ -813,184 +1001,58 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 			  $scope.clearSearch = function() {
 				$scope.data.searchQuery = '';
 			  };
+})
 
-		    $scope.listOfStudents =[{
-			"X":[
+
+// examResultsCntrl
+.controller('examResultsCntrl', function($scope,$state) {
+  
+  $scope.items = [
+    { id: 0, title: "First Language", percentage: 9.8,grade: "A+"},
+    { id: 1, title: "Second Language", percentage: 9.5, grade: "A"},
+    { id: 2, title: "Third Language", percentage: 9.6,grade: "A" }
+  ];
+  
+  var doughnutData = [
 				{
-					"Batch A":[
-						{	Name : "Vamsi",
-							RollNo:"U081"
-						},
-						{	Name : "Gokul",
-							RollNo:"U082"
-						},
-						{	Name : "Naren",
-							RollNo:"U083"
-						},
-						{	Name : "Rahul",
-							RollNo:"U084"
-						},
-						{	Name : "Rajesh",
-							RollNo:"U085"
-						}
-						]
-				},
-				{
-					"Batch B":[
-						{	Name : "Gayatree",
-							RollNo:"U086"
-						},
-						{	Name : "Sita",
-							RollNo:"U087"
-						},
-						{	Name : "Arun",
-							RollNo:"U088"
-						},
-						{	Name : "Kiran",
-							RollNo:"U089"
-						},
-						{	Name : "Amrita",
-							RollNo:"U090"
-						}
-						]
-				},
-				{
-					"Batch C":[
-						{	Name : "Ranjitha",
-							RollNo:"U091"
-						},
-						{	Name : "Karuna",
-							RollNo:"U092"
-						},
-						{	Name : "Pankaj",
-							RollNo:"U093"
-						},
-						{	Name : "Sandeep",
-							RollNo:"U094"
-						},
-						{	Name : "Sanghu",
-							RollNo:"U095"
-						}
-						]
-				}
-			]},
-			{
-			"IX":[
-				{
-					"Batch A":[
-						{	Name : "Pooja",
-							RollNo:"U096"
-						},
-						{	Name : "Padma",
-							RollNo:"U097"
-						},
-						{	Name : "Pavitha",
-							RollNo:"U098"
-						},
-						{	Name : "Ramki",
-							RollNo:"U099"
-						},
-						{	Name : "Prakriti",
-							RollNo:"U100"
-						}]
-				},
-				{
-					"Batch B":[
-						{	Name : "Abhay",
-							RollNo:"U101"
-						},
-						{	Name : "Abhishek",
-							RollNo:"U102"
-						},
-						{	Name : "Rashu",
-							RollNo:"U103"
-						},
-						{	Name : "Virendra",
-							RollNo:"U104"
-						},
-						{	Name : "Mohan",
-							RollNo:"U105"
-						}]
-				},
-				{
-					"Batch C":[
-						{	Name : "Krishna",
-							RollNo:"U106"
-						},
-						{	Name : "Radha",
-							RollNo:"U107"
-						},
-						{	Name : "Anu",
-							RollNo:"U108"
-						},
-						{	Name : "Raghu",
-							RollNo:"U109"
-						},
-						{	Name : "Dilip",
-							RollNo:"U110"
-						}]
+					value: 400,
+					color:"#FFFFFF",
+					highlight: "#FFFFFF",
+					label: "White"
 				}
 
-			]},
-			{
-			"IIX":[
+			];
+			
+		$scope.$on('$ionicView.beforeEnter', function(){
+				var ctx = document.getElementById("chart-area").getContext("2d");
+				return window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive : true});
+			});
 
-				{
-				"Batch A":[
-					{	Name : "Ram",
-						RollNo:"U081"
-					},
-					{	Name : "Sita",
-						RollNo:"U082"
-					},
-					{	Name : "Laxman",
-						RollNo:"U083"
-					},
-					{	Name : "Ganesh",
-						RollNo:"U084"
-					},
-					{	Name : "Mahesh",
-						RollNo:"U085"
-					}]
-				},
-				{
-					"Batch B":[
-						{	Name : "Ravi",
-							RollNo:"U086"
-						},
-						{	Name : "Ankita",
-							RollNo:"U087"
-						},
-						{	Name : "Aditi",
-							RollNo:"U088"
-						},
-						{	Name : "Ruchika",
-							RollNo:"U089"
-						},
-						{	Name : "Aishwariya",
-							RollNo:"U090"
-						}]
-				},
-				{
-				"Batch C":[
-					{	Name : "Neha",
-						RollNo:"U091"
-					},
-					{	Name : "Meenu",
-						RollNo:"U092"
-					},
-					{	Name : "Sonu",
-						RollNo:"U093"
-					},
-					{	Name : "Kanhaiya",
-						RollNo:"U094"
-					},
-					{	Name : "Madhu",
-						RollNo:"U095"
-					}]
+  
+})
 
-				}
-				]}];
-
-
+.controller('feedbackCntrl', function($scope,$state) {
+  
+  $scope.items = [
+    { picture: "img/fee.jpg", name: "First Language", price: 9.8,currency: "A"},
+    { picture: "img/fee.jpg", name: "Second Language", price: 9.5, currency: "A"},
+    { picture: "img/fee.jpg", name: "Third Language", price: 9.6,currency: "A" }
+  ];
+  
+})
+  
+.controller('feedbackDetailsCntrl', function($scope,$state) {
+  
+ $scope.details = [
+  { picture: "img/fee.jpg", name: "Alexander", rollNo: 01,class: "X"}
+  ];
+  
+  $scope.items = [
+  { name1: "category1", min1: 0, max1: 10,value1: 1},
+  { name1: "category2", min1: 0, max1: 10,value1: 2},
+  { name1: "category3", min1: 0, max1: 10,value1: 3},
+  { name1: "category4", min1: 0, max1: 10,value1: 4}
+  ];
+  
 });
+

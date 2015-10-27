@@ -243,6 +243,35 @@ angular.module('starter', ['ionic', 'ngSanitize','btford.socket-io','starter.con
       }
     })
 
+	.state('app.examResults', {
+    url: "/examResults",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/examResults.html",
+		controller: 'examResultsCntrl'
+      }
+    }
+  })
+	
+	.state('app.feedback', {
+    url: "/feedback",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/feedback.html",
+		controller: 'feedbackCntrl'
+      }
+    }
+  })
+  
+  .state('app.feedbackDetails', {
+    url: "/feedbackDetails",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/feedbackDetails.html",
+		controller: 'feedbackDetailsCntrl'
+      }
+    }
+  })
   
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

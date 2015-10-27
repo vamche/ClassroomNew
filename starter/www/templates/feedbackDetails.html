@@ -1,0 +1,33 @@
+<ion-view hide-nav-bar="true" class="feedback">
+     <ion-pane>
+      <ion-header-bar class="bar-dark" style="background-color:#CCB14A;">
+		<button class="button button-icon icon ion-navicon" menu-toggle="left"></button>      
+		<h1 class="title">FEEDBACK</h1>
+      </ion-header-bar>
+      <ion-content>
+	  
+	  <body>
+	  <div class="details" style="background-color:#CCB14A; color:#FFFFFF;">
+				<a ng-repeat="item in details" ng-href="#">
+				<img style="align:center;" ng-src="{{ item.picture }}" /> 
+                <h4 style="text-align:center;">{{ item.name }}</h4>
+                <h5 style="text-align:center;">{{ item.rollNo }} | {{item.class }}</h5>
+				</a>
+	  </div>
+	  </body>
+	  
+	<!--<ion-list>-->
+	<div class="list">
+		 <!--<div class="item item-divider">
+          Pick up in {{data.pickupAfter}} minutes
+        </div>-->
+		<div class="item range range-positive" ng-repeat="item in items" ng-href="#">
+		<!--<div class="bar bar-subheader"><h2>{{ item.name }}</h2> </div></br>	-->
+		<h2>{{ item.name1 }}</h2> </br> 
+			<input type="range" name="{{ item.name1}}" min="{{ item.min1 }}" max="{{ item.max1 }}" value="{{ item.value1 }}" steps="2">
+		</div>
+	</div>	
+<!--</ion-list>-->
+      </ion-content>
+    </ion-pane>
+</ion-view>
