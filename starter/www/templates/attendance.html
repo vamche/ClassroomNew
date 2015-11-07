@@ -1,5 +1,4 @@
-
-  <style>
+<style>
     .pickadate-centered-heading {
         font-weight: normal;
         text-align: center;
@@ -8,8 +7,7 @@
         color: #fff;
       }
 
-    .pane, .view {
-     
+    .pane, .view {     
  
       background: -webkit-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* Chrome 10+, Saf5.1+ */
       background:    -moz-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* FF3.6+ */
@@ -18,19 +16,19 @@
       background:         linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* W3C */
     }
 
-  </style>
+</style>
 
 
 <ion-view class="attn" hide-nav-bar="true">
      <ion-pane class="headerBG">
 
-        <ion-header-bar class="bar-clear" style="background:transparent">
-	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-        <h1 class="title">ATTENDANCE</h1>
-      </ion-header-bar>
+        <ion-header-bar align-title="center" class="bar-clear">
+	          <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+            <h1 class="title">ATTENDANCE</h1>
+        </ion-header-bar>
 
  <ion-content  scroll="false" ng-controller="attendanceCtrl">
-   <div id="DateHeader" class="selected-date animated fadeIn" style="padding:16px">
+    <div id="DateHeader" class="selected-date animated fadeIn" style="padding:4%">
             <a class="padding">
 				{{date.date != undefined ? (date.date).split('-')[2] : day	}} </a>
     </div>

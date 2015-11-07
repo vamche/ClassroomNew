@@ -98,30 +98,39 @@
                     '{{dayName}}' +
                   '</li>' +
                 '</ul>' +
+
                 '<ul class="pickadate-cell">' +
                   '<li ng-repeat="d in dates.slice(0,7)" ng-click="setDate(d,1)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
-					       '</li>' +
+					           '<div id="Row1" class="ng-hide card padding animated fadeIn">'+
+          -           '<h4 class="calm">Date selected : {{date.date}} </br> </h4>'+
+          -           '{{ date.type }} </br>'+
+          -           'Comments : {{ date.data }}'+
+          -         '</div>'+
+
+                  '</li>' +
+
+
 					
                   '<li ng-repeat="d in dates.slice(7,14)" ng-click="setDate(d,2)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
-					'</li>' +
+					        '</li>' +
 				
                   '<li ng-repeat="d in dates.slice(14,21)" ng-click="setDate(d,3)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
-					'</li>' +
+					        '</li>' +
 					
                   '<li ng-repeat="d in dates.slice(21,28)" ng-click="setDate(d,4)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
-					'</li>' +
+					        '</li>' +
 				
                   '<li ng-repeat="d in dates.slice(28,35)" ng-click="setDate(d,5)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
                     '{{d.date | date:"d"}}' +
-					'</li>' +
+					        '</li>' +
 				
-				'<li ng-repeat="d in dates.slice(35,42)" ng-click="setDate(d,6)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
-                    '{{d.date | date:"d"}}' +
-					'</li>' +
+          				'<li ng-repeat="d in dates.slice(35,42)" ng-click="setDate(d,6)" class="{{d.className}}" ng-class="{\'pickadate-active\': date == d.date}">' +
+                              '{{d.date | date:"d"}}' +
+          				'</li>' +
 						
                 '</ul>' +
               '</div>' +

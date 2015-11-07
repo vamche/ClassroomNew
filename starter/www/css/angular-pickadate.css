@@ -11,19 +11,21 @@
 }
 
 .colorDiv{
-width: 5%;
-height:100%;
-color:#444444;
+  width: 5%;
+  height:100%;
+  color:#444444;
 }
 
 .containerAttendance{ 
-        width: 100%;
-        margin: auto;
+  width: 100%;
+  margin: auto;
 }
 
 .pickadate-header {
   position: relative;
   background: ##;
+  margin-bottom: 2%;
+  margin-top: 4%;
 }
 
 .pickadate {
@@ -83,35 +85,35 @@ color:#444444;
 
 .pickadate-cell .pickadate-enabled {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1rem;
   color: #666666;
   font-weight: bold;
 }
 
 .pickadate-cell .pickadate-absent {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1rem;
   color: #00FF7F;
   font-weight: bold;
 }
 
 .pickadate-cell .pickadate-present {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1rem;
   color: #444444;
   font-weight: bold;
 }
 
 .pickadate-cell .pickadate-holiday {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1rem;
   color: #DC143C;
   font-weight: bold;
 }
 
 .pickadate-cell .pickadate-event {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1rem;
   color: #8A2BE2;
   font-weight: bold;
 }
@@ -123,7 +125,7 @@ color:#444444;
 
 .pickadate-cell .pickadate-active {
   background-color: #ffc900;
-  border-radius: 50%;
+  border-radius: 50% 50% 0% 0%;
 }
 
 .pickadate-cell .pickadate-active {
@@ -145,7 +147,7 @@ color:#444444;
 .pickadate-centered-heading {
   font-weight: normal;
   text-align: center;
-  font-size: 1em; 
+  font-size: 1.25rem; 
   background-color: #387ef5;
   color: #fff;
 }
@@ -164,12 +166,12 @@ color:#444444;
 
 .pickadate-controls .pickadate-prevM {
   float: left;
-  margin-left: 0px;
+  margin-left: 3%;
 }
 
 .pickadate-controls .pickadate-nextM {
   float: right;
-  margin-right: 0px;
+  margin-right: 3%;
 }
 
 .pickadate-controls .pickadate-nextY {
@@ -179,7 +181,7 @@ color:#444444;
 
 .pickadate-controls a {
   text-decoration: none;
-  font-size: 0.9em;
+  font-size: 1rem;
 }
 
 .no-margin{

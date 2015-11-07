@@ -1,37 +1,36 @@
 <style>
 
-  .pane, .view {    
+  .pane, .view, .homeworkBG {    
       
-      background: -webkit-linear-gradient(to bottom, #FFD500, #FFD500 50%, white 50%); /* Chrome 10+, Saf5.1+ */
-      background:    -moz-linear-gradient(to bottom, #FFD500, #FFD500 50%, white 50%); /* FF3.6+ */
-      background:     -ms-linear-gradient(to bottom, #FFD500, #FFD500 50%, white 50%); /* IE10 */
-      background:      -o-linear-gradient(to bottom, #FFD500, #FFD500 50%, white 50%); /* Opera 11.10+ */
-      background:         linear-gradient(to bottom, #FFD500, #FFD500 50%, white 50%); /* W3C */
+      background: -webkit-linear-gradient(to bottom, #FFD500, #FFD500 20%, white 20%); /* Chrome 10+, Saf5.1+ */
+      background:    -moz-linear-gradient(to bottom, #FFD500, #FFD500 20%, white 20%); /* FF3.6+ */
+      background:     -ms-linear-gradient(to bottom, #FFD500, #FFD500 20%, white 20%); /* IE10 */
+      background:      -o-linear-gradient(to bottom, #FFD500, #FFD500 20%, white 20%); /* Opera 11.10+ */
+      background:         linear-gradient(to bottom, #FFD500, #FFD500 20%, white 20%); /* W3C */
 
     }
 
 </style>
 
 <ion-view hide-nav-bar="true">
-     <ion-pane>
-      <ion-header-bar class="bar-energized">
+     <ion-pane class="homeworkBG">
+      <ion-header-bar align-title="center" class="bar-energized">
 	    <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
-        <h1 class="title">Homework</h1>
+        <h1 class="title">HOMEWORK</h1>
 
       </ion-header-bar>
       <ion-content>
         <ion-item class="item item-energized" ng-if="isTeacher()"> <!-- add ng-if=isTeacher() -->
-            <a class="button button-block icon-left ion-android-add-circle button-energized" ng-click="showPopup()">ADD NEW HOME WORK</a>
+            <a class="button button-block icon-left ion-android-add-circle button-energized" ng-click="showPopup()">ADD NEW HOMEWORK</a>
         </ion-item>
         <ion-list>
 
           <ion-item  class="item-divider">
-              Today
+              TODAY
           </ion-item >
 
           <ion-item ng-repeat="item in items"
                     ng-click="onFocus($index)"
-                    class="animated fadeInUp"
                     ng-class="selectedClass($index)">
 
              <h3 >#{{ item.id }} {{ item.title }} </h3>
