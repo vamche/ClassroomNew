@@ -7,8 +7,7 @@
         color: #fff;
       }
 
-    .pane, .view {     
- 
+    .pane.attendanceBG{
       background: -webkit-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* Chrome 10+, Saf5.1+ */
       background:    -moz-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* FF3.6+ */
       background:     -ms-linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* IE10 */
@@ -16,11 +15,18 @@
       background:         linear-gradient(to bottom, #00D7D7, #00D7D7 50%, white 50%); /* W3C */
     }
 
+    .selectedDateRow {
+      background-color : #00D7D7;      
+    }
+
+    .pickadate-cell .pickadate-active {
+      background-color: #00D7D7;
+      border-radius: 50% 50% 0% 0%;
+    }
 </style>
 
-
 <ion-view class="attn" hide-nav-bar="true">
-     <ion-pane class="headerBG">
+     <ion-pane class="attendanceBG headerBG">
 
         <ion-header-bar align-title="center" class="bar-clear">
 	          <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>

@@ -9,27 +9,7 @@ angular.module('starter', ['pickadate']);
 		$scope.presentDates =['2015-07-03','2015-06-14'];
 	    $scope.holidayDates = ['2015-06-25','2015-06-18'];
 		$scope.eventDates = ['2015-07-15','2015-06-22'];
-		$scope.playlists = [
-						{ title: 'Reggae', id: 1 },
-						{ title: 'Chill', id: 2 },
-						{ title: 'Dubstep', id: 3 },
-						{ title: 'Indie', id: 4 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Rap', id: 5 },
-						{ title: 'Cowbell', id: 6 }
-		];
-			 
-			
+					
       })
 	  
 	 

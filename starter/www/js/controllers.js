@@ -45,17 +45,18 @@ angular.module('starter.controllers', ['pickadate','ngMaterial','ngAria'])
 .factory('menuListService',function($state){
 
 
-    var leftMenuList = [{  id: "HOME", title:"Home", icon:"ion-ios-home-outline", color:"energized", user:"parent,student,teacher"},
-	                    {  id: "ATTENDANCE", title:"Attendance", icon:"ion-ios-calendar-outline",color:"calm", user:"parent,student,teacher"},
-						{  id: "HOMEWORK", title:"Homework", icon:"ion-ios-book-outline", color:"assertive", user:"parent,student,teacher" },
-						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline", color:"balanced", user:"parent,student,teacher" },
+    var leftMenuList = [
+            {  id: "HOME", title:"Home", icon:"ion-ios-home-outline", color:"energized", user:"parent,student,teacher"},
+	          {  id: "ATTENDANCE", title:"Attendance", icon:"ion-ios-calendar-outline",color:"calm", user:"parent,student,teacher"},
+						{  id: "HOMEWORK", title:"Homework", icon:"ion-ios-book-outline", color:"assertive", user:"parent,student,teacher"},
+						{  id: "RESULTS", title:"Results", icon:"ion-ios-list-outline", color:"balanced", user:"parent,student,teacher"},
 						{  id: "FEE", title:"Fee", icon:"ion-social-usd-outline", color:"royal", user:"parent,student"},
 						{  id: "CIRCULAR", title:"Circular", icon:"ion-ios-analytics-outline", color:"royal", user:"parent,student,teacher"},
 						{  id: "ADD_RESULT", title:"Add Result", icon:"ion-ios-list-outline", color:"positive", user:"teacher"},
 						{  id: "TIME_TABLE", title:"Timetable", icon:"ion-ios-list-outline", color:"light", user:"parent,student,teacher"},
-						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline", color:"positive", user:"teacher" },
-						{  id: "EXAM_SCHEDULE", title:"Exam Schedule", icon:"ion-ios-compose-outline", color:"positive", user:"parent,student,teacher" },
-						{  id: "TIME_WEEKTABLE", title:"Week Timetable", icon:"ion-ios-list-outline", color:"energized", user:"parent,student,teacher"}
+						{  id: "TAKE_ATTENDANCE", title:"Take Attendance", icon:"ion-ios-compose-outline", color:"positive", user:"teacher"},
+						{  id: "EXAM_SCHEDULE", title:"Exam Schedule", icon:"ion-ios-compose-outline", color:"positive", user:"parent,student,teacher"}
+						
 						];
 
 	var rightMenuList = [];

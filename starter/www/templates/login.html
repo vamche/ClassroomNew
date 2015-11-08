@@ -1,14 +1,22 @@
+<style>
+  label.loginText {
+    border-style: hidden hidden solid hidden;
+    border-color: black;
+    margin: 0 6% 0 6%; 
+  }
+
+</style>
+
 <ion-view hide-nav-bar="true" class="login">
     <ion-content padding="false" class="has-header">
         <form>
-          <div class="spacer" style="width: 300px; height: 130px;"></div>
 
-          <div class="list animated bounceInDown">
-            <label class="item item-input item-floating-label label.item">
+          <div class="list loginContainer animated bounceInDown">
+            <label class="item item-input item-floating-label loginText">
               <span class="input-label positive">Username</span>
               <input type="text" placeholder="Username" ng-model="login.username">
             </label>
-            <label class="item item-input item-floating-label label.item">
+            <label class="item item-input item-floating-label loginText">
               <span class="input-label positive">Password</span>
               <input type="password" placeholder="Password" ng-model="login.password">
             </label>
